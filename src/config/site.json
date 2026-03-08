@@ -1,0 +1,19 @@
+{
+    "site": {
+        "name": "Nicho 01",
+        "title": "Headline de Alto Impacto",
+        "description": "Uma breve descrição que converte o visitante em cliente.",
+        "cta": "Quero Começar Agora",
+        "social": {
+            "whatsapp": "5500000000000",
+            "instagram": "@nicho01"
+        }
+    },
+    "theme": {
+        "colors": {
+            "primary": "#3b82f6",
+            "secondary": "#1e40af",
+            "accent": "#ef4444"
+        }
+    }
+}

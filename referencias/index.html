@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <title>Pilates Circles - Página Inicial</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000000",
+                        "accent": "#D4AF37",
+                        "background-light": "#f7f7f7",
+                        "background-dark": "#0A0A0A",
+                        "card-dark": "#141414",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hide-scroll-bar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hide-scroll-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Mobile menu toggle classes */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col">
+
+        <!-- Navigation -->
+        <header
+            class="fixed top-0 w-full z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/10 px-6 lg:px-20">
+            <div class="max-w-7xl mx-auto flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <div class="text-accent flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">all_inclusive</span>
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight serif-heading italic">Pilates Circles <span
+                            class="text-xs font-light not-italic tracking-widest uppercase opacity-60 ml-1">por
+                            Cult</span></h2>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-10">
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="#aulas">Aulas</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="#estudio">Estúdio</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors"
+                        href="#instrutores">Instrutores</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="#relatos">Clientes</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="#contato">Contato</a>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://wa.me/5521986005402?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20aula."
+                        target="_blank" rel="noopener noreferrer"
+                        class="bg-white text-black hover:bg-accent hover:text-white transition-all duration-300 px-6 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider inline-flex items-center justify-center">
+                        Agende uma Aula
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Abrir Menu"
+                    class="md:hidden flex items-center text-white focus:outline-none p-2 -mr-2">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="md:hidden flex flex-col items-center bg-background-dark/95 border-b border-white/10 w-full absolute left-0 top-20 shadow-xl">
+                <nav class="flex flex-col items-center w-full py-8 gap-6">
+                    <a class="text-base font-medium py-2 px-6 hover:text-accent transition-colors w-full text-center"
+                        href="#aulas"
+                        onclick="document.getElementById('mobile-menu').classList.remove('open')">Aulas</a>
+                    <a class="text-base font-medium py-2 px-6 hover:text-accent transition-colors w-full text-center"
+                        href="#estudio"
+                        onclick="document.getElementById('mobile-menu').classList.remove('open')">Estúdio</a>
+                    <a class="text-base font-medium py-2 px-6 hover:text-accent transition-colors w-full text-center"
+                        href="#instrutores"
+                        onclick="document.getElementById('mobile-menu').classList.remove('open')">Instrutores</a>
+                    <a class="text-base font-medium py-2 px-6 hover:text-accent transition-colors w-full text-center"
+                        href="#relatos"
+                        onclick="document.getElementById('mobile-menu').classList.remove('open')">Clientes</a>
+                    <a class="text-base font-medium py-2 px-6 hover:text-accent transition-colors w-full text-center"
+                        href="#contato"
+                        onclick="document.getElementById('mobile-menu').classList.remove('open')">Contato</a>
+                    <a href="https://wa.me/5521986005402?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20aula."
+                        target="_blank" rel="noopener noreferrer"
+                        class="mt-2 bg-white text-black hover:bg-accent hover:text-white transition-all duration-300 px-6 py-3.5 rounded-full text-sm font-bold uppercase tracking-wider w-11/12 max-w-xs text-center flex items-center justify-center shadow-lg">
+                        Agende uma Aula
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="relative min-h-[100vh] flex items-center px-6 lg:px-20 overflow-hidden py-32 md:py-24">
+
+                <!-- Background Image & Gradients -->
+                <div class="absolute inset-0 z-0">
+                    <img src="/hero_background_full_1772814268989.png"
+                        class="w-full h-full object-cover object-right grayscale-[10%]" alt="Ambiente do Estúdio" />
+                    <!-- Subtle dark fade from the left -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-background-dark/95 via-background-dark/70 to-background-dark/20">
+                    </div>
+                </div>
+
+                <div
+                    class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+
+                    <div class="flex flex-col gap-8 text-center lg:text-left lg:col-span-7 xl:col-span-6 relative z-20">
+                        <div class="space-y-4">
+                            <span class="text-accent text-sm font-bold tracking-[0.3em] uppercase drop-shadow-md">A Arte
+                                do Movimento</span>
+                            <h1
+                                class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] serif-heading mt-2 relative drop-shadow-lg">
+                                REDEFINA <br />
+                                <span class="italic font-normal">SEU FLUXO</span>
+                            </h1>
+                            <p
+                                class="text-slate-300 drop-shadow-md text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-light mt-4">
+                                Experimente o poder transformador do método Pilates Circles. Instrução profissional em
+                                equipamentos icônicos para um corpo e mente equilibrados.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
+                            <button
+                                class="border border-white/20 hover:border-accent bg-background-dark/50 px-8 md:px-10 py-4 rounded-full text-sm font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2 backdrop-blur-sm">
+                                <span class="material-symbols-outlined text-xl">play_circle</span>
+                                O Método
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Form - Now on the Right Side -->
+                    <div
+                        class="mx-auto lg:mr-0 lg:ml-auto w-full max-w-[450px] lg:col-span-5 xl:col-span-4 relative z-20">
+                        <div
+                            class="bg-card-dark/60 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl w-full text-left">
+                            <h3 class="text-white font-bold text-lg md:text-xl md:leading-tight mb-2 mt-1 sm:text-left">
+                                Inicie Sua Transformação
+                            </h3>
+                            <p class="text-slate-300 text-sm mb-6 pb-6 border-b border-white/10">Reserve já sua sessão
+                                introdutória.</p>
+
+                            <form id="lead-form" class="space-y-4">
+                                <div>
+                                    <input type="text" id="nome_lead" placeholder="Seu Nome Completo" required
+                                        class="w-full bg-background-dark/40 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-accent focus:bg-background-dark/60 transition-colors">
+                                </div>
+                                <div>
+                                    <input type="tel" id="telefone_lead" placeholder="Número de Celular" required
+                                        class="w-full bg-background-dark/40 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-accent focus:bg-background-dark/60 transition-colors">
+                                </div>
+                                <div>
+                                    <textarea id="mensagem_lead" placeholder="Conte-nos seus objetivos (Opcional)"
+                                        rows="3"
+                                        class="w-full bg-background-dark/40 border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-accent focus:bg-background-dark/60 transition-colors resize-none"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-accent hover:bg-white hover:text-black text-primary px-4 py-4 mt-4 rounded-xl text-sm font-bold uppercase tracking-widest hover:scale-[1.02] shadow-lg transition-all duration-300">
+                                    Solicitar Contato
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Method Section -->
+            <section id="aulas" class="py-16 md:py-24 px-6 lg:px-20 bg-card-dark/30">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-6 md:gap-8 mb-12 md:mb-16">
+                        <div class="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+                            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold serif-heading mb-4 md:mb-6">O Método
+                                Pilates Circles</h2>
+                            <p class="text-slate-400 text-base md:text-lg font-light">Nossa abordagem moderna combina
+                                princípios clássicos com a ciência atlética contemporânea para entregar resultados
+                                inigualáveis para sua postura, força e clareza mental.</p>
+                        </div>
+                        <a class="text-accent flex items-center justify-center md:justify-start gap-2 font-bold uppercase tracking-widest text-xs md:text-sm group"
+                            href="#">
+                            Explore todos os programas
+                            <span
+                                class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div
+                            class="group flex flex-col gap-6 p-6 md:p-8 rounded-2xl bg-card-dark border border-white/5 hover:border-accent/50 transition-all text-center md:text-left">
+                            <div class="w-full aspect-video rounded-lg overflow-hidden relative">
+                                <img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                    data-alt="Instrutor orientando aluno nos equipamentos de pilates"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN-81YhYzCN1mHhCFlia8WOHF1ZdG2OmJwh7zVCJUdBXmXNxAuot6KH_usUBnDrcvIfDmUMolV5LhZI-YbcKkN5ybvIEKHkVpzH_Kkb5tKHykncpBazQCstXxNveafqBSUtEqmTQb-Xl2PHnEHbcAclS7NDMEcwUZLQbdE5dR4kMfW9jLQ-85SHrAEjvCWMEYAQRI33cy8RXTgPFU3Q-ow924TB4tQOB3FsskPJeoGI_hJnbY9wpJGxil_DadsxbZxAN1E4bzNaZUk" />
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-bold serif-heading">Instrutores de Elite</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">Treine com os profissionais mais
+                                    certificados do mercado, que personalizam cada movimento para as necessidades
+                                    específicas do seu corpo.</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="group flex flex-col gap-6 p-6 md:p-8 rounded-2xl bg-card-dark border border-white/5 hover:border-accent/50 transition-all text-center md:text-left">
+                            <div class="w-full aspect-video rounded-lg overflow-hidden relative">
+                                <img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                    data-alt="Estúdio moderno e elegante com máquinas de reformer de alta qualidade"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_m5asd1aQaAm6ujjsJZmU1IWFmBECXA8ABRLzlmqiFoH-Sd_XxYYqDRFYofZutJUeGKrf5SkZVWkS3TFypiVE0V4IM-JIlUQoEOfcG8ignbXPwqOknVQw94r4PbYe5XXiwS3dztCz-ppRCRtKrfFneZcKScg_9aT9n8hDv-GmfYNC3VYLXgssMgDiOjzrNAGR4JjKpGaLzAJiXjby47E4J1otulDDCmUMuxZoHy2Lbmk8ECkbhwKJpIeAzFvQ-KnqXVcINJ6mL59s" />
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-bold serif-heading">Estúdio de Última Geração</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">Equipado com os mais recentes
+                                    Reformers personalizados e aparelhos especializados em um espaço sereno e
+                                    arquitetonicamente planejado.</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="group flex flex-col gap-6 p-6 md:p-8 rounded-2xl bg-card-dark border border-white/5 hover:border-accent/50 transition-all text-center md:text-left">
+                            <div class="w-full aspect-video rounded-lg overflow-hidden relative">
+                                <img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                    data-alt="Detalhe das molas e componentes mecânicos do pilates reformer"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYUYXORD5DgwCWk_Z5WFewPI0sn8icrj9lnYXp0u7cT06Ore_FfchXf4ZRecPsv2n3yUdSNN-D7531zLkSNQc1YPBMUZ53EayP25nN5JpgapW6fF1MOQ1G85LoygVopD5PxtQt7mh4EN59K4kRER3W22DblIKv9TCOcfrjknjUkS0SC6fUqX2nO6sBW8YOyvUARuK6W0P3-w-SI-7lvb5ZrpC8i3xyWeZ1XXGScsR-qmFSVMZCnRIGfOq137R6pAE1qJY8Qg0mxKbt" />
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-bold serif-heading">Programas Personalizados</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">Da reabilitação ao condicionamento
+                                    atlético, nossas aulas são desenhadas para todos os níveis, do iniciante ao
+                                    praticante avançado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            </section>
+
+            <!-- Studio Section -->
+            <section id="estudio" class="py-16 md:py-24 px-6 lg:px-20 relative overflow-hidden bg-background-dark">
+                <div class="max-w-7xl mx-auto text-center mb-12">
+                    <h2 class="text-3xl md:text-5xl font-bold serif-heading mb-4 leading-tight">Explore Nosso Espaço
+                    </h2>
+                    <p class="text-slate-400">Experimente nosso estúdio de forma imersiva.</p>
+                </div>
+
+                <div class="relative w-full max-w-[1400px] mx-auto flex items-center justify-center min-h-[500px]">
+                    <button id="prev-slide"
+                        class="absolute left-2 md:left-10 z-30 bg-white/10 hover:bg-white/20 border border-white/20 p-2 md:p-3 rounded-full backdrop-blur-md transition-all">
+                        <span class="material-symbols-outlined text-white">chevron_left</span>
+                    </button>
+
+                    <!-- Smooth Carousel Area -->
+                    <div id="carousel"
+                        class="flex overflow-x-auto w-full snap-x snap-mandatory hide-scroll-bar gap-4 md:gap-8 px-[10vw] md:px-[30vw] py-10 items-center">
+                        <div
+                            class="carousel-item snap-center shrink-0 w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden relative shadow-2xl transition-all duration-700 opacity-50 scale-90 cursor-pointer">
+                            <img src="/studio_lockers_1772812338187.png" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            </div>
+                            <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8">
+                                <h3
+                                    class="text-white text-xl md:text-3xl font-bold serif-heading drop-shadow-lg leading-tight">
+                                    Vestiários<br /><span class="text-sm font-normal font-sans opacity-70">Aconchego &
+                                        Privacidade</span></h3>
+                            </div>
+                        </div>
+                        <div
+                            class="carousel-item snap-center shrink-0 w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden relative shadow-2xl transition-all duration-700 opacity-100 scale-100 cursor-pointer">
+                            <img src="/studio_reformer_1772812354129.png" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            </div>
+                            <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8">
+                                <h3
+                                    class="text-white text-xl md:text-3xl font-bold serif-heading drop-shadow-lg leading-tight">
+                                    Reformers<br /><span class="text-sm font-normal font-sans opacity-70">Equipamento de
+                                        Elite</span></h3>
+                            </div>
+                        </div>
+                        <div
+                            class="carousel-item snap-center shrink-0 w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden relative shadow-2xl transition-all duration-700 opacity-50 scale-90 cursor-pointer">
+                            <img src="/studio_reception_1772812374347.png" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                            </div>
+                            <div class="absolute bottom-6 md:bottom-8 left-6 md:left-8">
+                                <h3
+                                    class="text-white text-xl md:text-3xl font-bold serif-heading drop-shadow-lg leading-tight">
+                                    Recepção<br /><span class="text-sm font-normal font-sans opacity-70">Boas-Vindas
+                                        Calorosas</span></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="next-slide"
+                        class="absolute right-2 md:right-10 z-30 bg-white/10 hover:bg-white/20 border border-white/20 p-2 md:p-3 rounded-full backdrop-blur-md transition-all">
+                        <span class="material-symbols-outlined text-white">chevron_right</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Instructors Section -->
+            <section id="instrutores" class="py-16 md:py-24 px-6 lg:px-20 bg-card-dark/30 border-y border-white/5">
+                <div class="max-w-7xl mx-auto text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold serif-heading mb-4">Nossos Instrutores</h2>
+                    <p class="text-slate-400">Profissionais experientes para guiar sua jornada de corpo e mente.</p>
+                </div>
+                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-center">
+                    <div class="group">
+                        <div
+                            class="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative">
+                            <div
+                                class="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay">
+                            </div>
+                            <img src="/instructor_male_1772812388656.png"
+                                class="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
+                        </div>
+                        <h3
+                            class="text-2xl font-bold serif-heading mt-8 mb-2 text-white transition-colors group-hover:text-accent">
+                            Rafael Costa</h3>
+                        <p class="text-accent uppercase text-xs font-bold tracking-[0.2em] mb-4">Mestre Especialista</p>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Com mais de 10 anos de
+                            experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta
+                            performance física.</p>
+                    </div>
+                    <div class="group mt-12 md:mt-0">
+                        <div
+                            class="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative">
+                            <div
+                                class="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay">
+                            </div>
+                            <img src="/instructor_female_1772812404108.png"
+                                class="w-full h-full object-cover grayscale-[30%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" />
+                        </div>
+                        <h3
+                            class="text-2xl font-bold serif-heading mt-8 mb-2 text-white transition-colors group-hover:text-accent">
+                            Camila Mendes</h3>
+                        <p class="text-accent uppercase text-xs font-bold tracking-[0.2em] mb-4">Instrutora Sênior</p>
+                        <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Especialista certificada no
+                            método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica
+                            o corpo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="relatos" class="py-16 md:py-24 px-6 lg:px-20 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto text-center mb-12">
+                    <span class="text-accent text-sm font-bold tracking-[0.3em] uppercase block mb-4">Sua Jornada</span>
+                    <h2 class="text-3xl md:text-5xl font-bold serif-heading mb-4">O Que Dizem Nossos Alunos</h2>
+                </div>
+
+                <div class="relative w-full max-w-[1400px] mx-auto flex items-center justify-center min-h-[400px]">
+                    <button id="prev-slide-relatos"
+                        class="absolute left-2 md:left-10 z-30 bg-white/10 hover:bg-white/20 border border-white/20 p-2 md:p-3 rounded-full backdrop-blur-md transition-all">
+                        <span class="material-symbols-outlined text-white">chevron_left</span>
+                    </button>
+
+                    <div id="carousel-relatos"
+                        class="flex overflow-x-auto w-full snap-x snap-mandatory hide-scroll-bar gap-6 md:gap-8 px-[10vw] md:px-[25vw] py-10 items-center">
+                        <div
+                            class="carousel-item-relato snap-center shrink-0 w-[280px] md:w-[350px] sm:aspect-square rounded-3xl bg-card-dark p-8 md:p-10 border border-white/10 shadow-2xl transition-all duration-700 opacity-50 scale-90 flex flex-col justify-between hover:border-accent/40 cursor-pointer">
+                            <div>
+                                <span
+                                    class="material-symbols-outlined text-accent text-4xl mb-4 opacity-80">format_quote</span>
+                                <p class="text-slate-300 italic mb-6 leading-relaxed text-sm md:text-base">"Minha vida
+                                    se transformou. O foco absoluto na respiração e no movimento exato curou minhas
+                                    dores nas costas em poucas semanas. A melhor escolha que fiz!"</p>
+                            </div>
+                            <h4
+                                class="text-white font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">
+                                - João Silva</h4>
+                        </div>
+
+                        <div
+                            class="carousel-item-relato snap-center shrink-0 w-[280px] md:w-[350px] sm:aspect-square rounded-3xl bg-card-dark p-8 md:p-10 border border-white/10 shadow-2xl transition-all duration-700 opacity-100 scale-100 flex flex-col justify-between hover:border-accent/40 cursor-pointer">
+                            <div>
+                                <span
+                                    class="material-symbols-outlined text-accent text-4xl mb-4 opacity-80">format_quote</span>
+                                <p class="text-slate-300 italic mb-6 leading-relaxed text-sm md:text-base">"Nunca
+                                    experimentei um estúdio com uma estrutura tão luxuosa. As aulas são o meu momento de
+                                    terapia para semana toda, um oásis de calma na cidade."</p>
+                            </div>
+                            <h4
+                                class="text-white font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">
+                                - Mariana Souza</h4>
+                        </div>
+
+                        <div
+                            class="carousel-item-relato snap-center shrink-0 w-[280px] md:w-[350px] sm:aspect-square rounded-3xl bg-card-dark p-8 md:p-10 border border-white/10 shadow-2xl transition-all duration-700 opacity-50 scale-90 flex flex-col justify-between hover:border-accent/40 cursor-pointer">
+                            <div>
+                                <span
+                                    class="material-symbols-outlined text-accent text-4xl mb-4 opacity-80">format_quote</span>
+                                <p class="text-slate-300 italic mb-6 leading-relaxed text-sm md:text-base">"Os
+                                    instrutores são atenciosos ao extremo. Vale cada centavo do investimento pelo nível
+                                    de cuidado e personalização no meu treino atlético."</p>
+                            </div>
+                            <h4
+                                class="text-white font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">
+                                - Carlos Ferreira</h4>
+                        </div>
+                    </div>
+
+                    <button id="next-slide-relatos"
+                        class="absolute right-2 md:right-10 z-30 bg-white/10 hover:bg-white/20 border border-white/20 p-2 md:p-3 rounded-full backdrop-blur-md transition-all">
+                        <span class="material-symbols-outlined text-white">chevron_right</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="contato" class="py-12 md:py-24 px-6">
+                <div class="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
+                    <div
+                        class="inline-flex items-center justify-center p-3 bg-accent/10 rounded-full text-accent md:mb-2">
+                        <span class="material-symbols-outlined text-3xl md:text-4xl">energy_savings_leaf</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-7xl font-bold serif-heading italic">Junte-se ao Movimento
+                    </h2>
+                    <p class="text-base md:text-xl text-slate-400 font-light max-w-2xl mx-auto">
+                        Comece sua jornada com uma sessão introdutória cortesia e descubra por que o método Cult é o
+                        padrão global em Pilates.
+                    </p>
+                    <div class="pt-4 md:pt-6">
+                        <a href="https://wa.me/5521986005402?text=Ol%C3%A1%21%20Gostaria%20de%20come%C3%A7ar%20minhas%20aulas%20de%20Pilates."
+                            target="_blank" rel="noopener noreferrer"
+                            class="inline-block bg-white text-black hover:bg-accent hover:text-white transition-all duration-300 px-8 py-3 md:px-12 md:py-5 rounded-full text-sm md:text-lg font-bold uppercase tracking-[0.2em]">
+                            Comece Agora
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer
+            class="bg-background-dark border-t border-white/5 pt-16 md:pt-20 pb-10 px-6 lg:px-20 text-center md:text-left">
+            <div
+                class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-20">
+                <div class="col-span-1 sm:col-span-2 md:col-span-1 space-y-6">
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <span class="material-symbols-outlined text-accent text-3xl">all_inclusive</span>
+                        <h2 class="text-xl font-bold serif-heading italic">Pilates Circles</h2>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Redefinando o padrão de movimento e bem-estar através de precisão, prática e orientação
+                        profissional.
+                    </p>
+                    <div class="flex justify-center md:justify-start gap-5">
+                        <a aria-label="WhatsApp" class="text-slate-500 hover:text-accent hover:scale-110 transition-all"
+                            href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.066.376-.043c.101-.109.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z" />
+                            </svg>
+                        </a>
+                        <a aria-label="Instagram"
+                            class="text-slate-500 hover:text-accent hover:scale-110 transition-all"
+                            href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <button aria-label="Compartilhar" id="native-share-btn"
+                            class="text-slate-500 hover:text-accent hover:scale-110 transition-all focus:outline-none">
+                            <span class="material-symbols-outlined text-[28px]">share</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-accent">Estúdio</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">Unidades</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Sessões Particulares</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Equipamentos</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Carreiras</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-accent">Aprenda</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">O Método</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Formação de Instrutores</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Workshops</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-accent">Conecte-se</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a class="hover:text-white transition-colors" href="#">Fale Conosco</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Dúvidas Frequentes</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Cartão Presente</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Suporte</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-500 text-xs uppercase tracking-widest">© 2024 Pilates Circles por Cult. Todos os
+                    direitos reservados.</p>
+                <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+                    <a class="text-slate-500 text-xs hover:text-white transition-colors uppercase tracking-widest"
+                        href="#">Política de Privacidade</a>
+                    <a class="text-slate-500 text-xs hover:text-white transition-colors uppercase tracking-widest"
+                        href="#">Termos de Serviço</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        // Submissão do Formulário de Lead para o WhatsApp
+        const leadForm = document.getElementById('lead-form');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const nome = document.getElementById('nome_lead').value;
+                const telefone = document.getElementById('telefone_lead').value;
+                const mensagem = document.getElementById('mensagem_lead').value;
+
+                let text = `Olá! Meu nome é ${nome}, meu celular é ${telefone}. Gostaria de garantir minha vaga.`;
+                if (mensagem.trim() !== "") {
+                    text += `\n\nMensagem: ${mensagem}`;
+                }
+
+                const whatsappUrl = `https://wa.me/5521986005402?text=${encodeURIComponent(text)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        }
+
+        // Compartilhamento Nativo (Web Share API)
+        const shareBtn = document.getElementById('native-share-btn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: 'Pilates Circles por Cult',
+                            text: 'Descubra a arte do movimento e agende sua sessão introdutória.',
+                            url: window.location.href,
+                        });
+                    } catch (err) {
+                        // O erro mais comum é AbortError quando o usuário fecha a gaveta no celular.
+                        console.log('Compartilhamento fechado ou falhou.');
+                    }
+                } else {
+                    // Fallback para Copiar Link no Desktop se API não suportada
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        alert('Link copiado para a área de transferência!');
+                    }).catch(console.error);
+                }
+            });
+        }
+
+        // Efeito de Flocos de Neve (Partículas)
+        const canvas = document.createElement('canvas');
+        canvas.id = 'snow-canvas';
+        canvas.className = 'fixed inset-0 z-0 pointer-events-none opacity-50';
+        document.body.insertBefore(canvas, document.body.firstChild);
+
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset(true);
+            }
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                this.y = initial ? Math.random() * height : height + 10;
+                this.size = Math.random() * 2 + 0.8;
+                this.speedY = -(Math.random() * 0.4 + 0.1);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+
+                if (this.y < -10) {
+                    this.reset();
+                }
+
+                // Interação com o Mouse
+                let dx = this.x - mouse.x;
+                let dy = this.y - mouse.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let maxDist = 120;
+
+                if (distance < maxDist) {
+                    let force = (maxDist - distance) / maxDist;
+                    let dirX = dx / distance;
+                    let dirY = dy / distance;
+                    this.x += dirX * force * 5;
+                    this.y += dirY * force * 5;
+                } else {
+                    this.x -= this.speedX * 0.05;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 120; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            for (let p of particles) {
+                p.update();
+                p.draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Configuração Geral dos Carrosséis (Scroll lateral com efeito 3D Opacity/Scale)
+        function setupCarousel(carouselId, prevId, nextId, itemClass) {
+            const carousel = document.getElementById(carouselId);
+            const prevBtn = document.getElementById(prevId);
+            const nextBtn = document.getElementById(nextId);
+            const items = carousel.querySelectorAll('.' + itemClass);
+
+            if (!carousel) return;
+
+            function updateClasses() {
+                const scrollLeft = carousel.scrollLeft;
+                const center = scrollLeft + carousel.clientWidth / 2;
+
+                let minDiff = Infinity;
+                let activeIndex = 0;
+
+                items.forEach((item, index) => {
+                    const itemCenter = item.offsetLeft + item.clientWidth / 2;
+                    const diff = Math.abs(center - itemCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        activeIndex = index;
+                    }
+                });
+
+                items.forEach((item, index) => {
+                    if (index === activeIndex) {
+                        item.classList.remove('opacity-50', 'scale-90');
+                        item.classList.add('opacity-100', 'scale-100');
+                    } else {
+                        item.classList.remove('opacity-100', 'scale-100');
+                        item.classList.add('opacity-50', 'scale-90');
+                    }
+                });
+            }
+
+            carousel.addEventListener('scroll', updateClasses, { passive: true });
+            window.addEventListener('resize', updateClasses);
+
+            // Garantir que a renderização inicial funcione
+            setTimeout(() => {
+                // Forçar o scroll pro meio para começar com o card do meio selecionado, se aplicável
+                if (items.length > 2) {
+                    const middleItemOffset = items[1].offsetLeft;
+                    carousel.scrollTo({ left: middleItemOffset - (carousel.clientWidth / 2) + (items[1].clientWidth / 2), behavior: 'instant' });
+                }
+                updateClasses();
+            }, 100);
+
+            prevBtn.addEventListener('click', () => {
+                const itemWidth = items[0].clientWidth;
+                // Calculado dinamicamente caso mude de tela
+                carousel.scrollBy({ left: -(itemWidth + 20), behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const itemWidth = items[0].clientWidth;
+                carousel.scrollBy({ left: (itemWidth + 20), behavior: 'smooth' });
+            });
+
+            // Clicar no card faz scroll até ele
+            items.forEach((item) => {
+                item.addEventListener('click', () => {
+                    const itemCenter = item.offsetLeft + item.clientWidth / 2;
+                    carousel.scrollTo({ left: itemCenter - (carousel.clientWidth / 2), behavior: 'smooth' });
+                });
+            });
+        }
+
+        setupCarousel('carousel', 'prev-slide', 'next-slide', 'carousel-item');
+        setupCarousel('carousel-relatos', 'prev-slide-relatos', 'next-slide-relatos', 'carousel-item-relato');
+
+    </script>
+</body>
+
+</html>

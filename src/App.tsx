@@ -3,9 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
-import { CircleDot, Menu, X, ArrowRight, Instagram, Share2, Mail, Play, MapPin, Phone, Clock } from 'lucide-react';
+import React, { useState, useEffect, useRef, useLayoutEffect, useMemo } from 'react';
+import { CircleDot, Menu, X, ArrowRight, Instagram, Share2, Mail, Play, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Quote, ArrowUp, Activity, TrendingUp, Heart, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
+import { Canvas, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,19 +30,18 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-8 relative z-50">
           <nav className="hidden md:flex items-center gap-10">
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">Aulas</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">Estúdios</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">O Método</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }}>MÉTODO</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>INSTRUTORES</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
           </nav>
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex items-center justify-center p-2 rounded-full border border-slate-100/20 hover:bg-slate-100/10 transition-all md:hidden"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5 text-slate-100" /> : <Menu className="w-5 h-5 text-slate-100" />}
-            </button>
-            <button className="hidden md:flex items-center justify-center p-2 rounded-full border border-slate-100/20 hover:bg-slate-100/10 transition-all">
-              <Menu className="w-5 h-5 text-slate-100" />
             </button>
           </div>
         </div>
@@ -43,15 +49,17 @@ function Navbar() {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-[#121212] flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            <a onClick={() => setIsMobileMenuOpen(false)} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">Aulas</a>
-            <a onClick={() => setIsMobileMenuOpen(false)} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">Estúdios</a>
-            <a onClick={() => setIsMobileMenuOpen(false)} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors" href="#">O Método</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">MÉTODO</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">ESTÚDIO</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">INSTRUTORES</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">DEPOIMENTOS</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">CONTATO</a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -60,81 +68,104 @@ function Navbar() {
 }
 
 function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.3, defaults: { ease: "power3.out" } });
+
+      // Configuração inicial (escondendo)
+      gsap.set(bgRef.current, { scale: 1.1 });
+      gsap.set(titleRef.current, { y: 100, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+      gsap.set([badgeRef.current, subtitleRef.current, buttonsRef.current], { y: 20, opacity: 0 });
+      gsap.set(cardRef.current, { y: 50, opacity: 0, rotationX: 10 });
+
+      tl.to(bgRef.current, { scale: 1, duration: 2, ease: "power2.out" })
+        .to(titleRef.current, {
+          y: 0,
+          opacity: 1,
+          clipPath: 'inset(0 0 0% 0)',
+          duration: 1.2
+        }, "-=1.5")
+        .to(badgeRef.current, { y: 0, opacity: 1, duration: 0.8 }, "-=1.0")
+        .to(subtitleRef.current, { y: 0, opacity: 1, duration: 0.8 }, "-=0.8")
+        .to(buttonsRef.current, { y: 0, opacity: 1, duration: 0.8 }, "-=0.6")
+        .to(cardRef.current, { y: 0, opacity: 1, rotationX: 0, duration: 1, ease: "back.out(1.2)" }, "-=0.8");
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0">
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="w-full h-full bg-center bg-cover" 
-          style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB65b-PfNEnO18_KdNKaVr1BKYM-aq79vsYMQjbiKWGRdPxs7zBRHy8fB1CRfyleEZW6hXPhBfqVAIz2lwKP8Gzhwgfhtsgac277L67c3eHfwKsm1OBmzw25HAPBMuluXQgUogdNisZzAUg-E05cwRt4WPrD8_qV7nDcAO8dCZy-I0mbNsy9ggfU52rdlxn-R78PMPML9bgMppG9jpNOn9JoOsmZVelw9UlUjPuqJfr7OkWp8UyBVHMYxCOvs0Z-VGLeRbOeO_C9b1X')" }}
+    <main ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div
+          ref={bgRef}
+          className="w-full h-full bg-center bg-cover"
+          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
         ></div>
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
-      
+
       <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 mt-10 lg:mt-0">
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
-          <div className="mb-4">
+          <div ref={badgeRef} className="mb-4">
             <span className="text-slate-400 text-xs font-bold tracking-[0.5em] uppercase">Refinamento em Movimento</span>
           </div>
-          <h1 className="text-slate-100 text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none mb-8 opacity-90 font-display">
-            CULT<br/>PILATES
+          <h1 ref={titleRef} className="text-slate-100 text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none mb-8 opacity-90 font-display">
+            CULT<br />PILATES
           </h1>
-          <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-xl mb-12 italic">
+          <p ref={subtitleRef} className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-xl mb-12 italic">
             "Força não é apenas poder, é precisão. Experimente a arte minimalista do Cadillac."
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 items-center w-full sm:w-auto">
-            <button className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto">
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 items-center w-full sm:w-auto">
+            <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto text-center">
               Junte-se ao Movimento
-            </button>
-            <button className="group flex items-center justify-center gap-3 text-slate-100 px-10 py-4 font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
-              <span>Agende um Estúdio</span>
+            </a>
+            <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 text-slate-100 px-10 py-4 font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
+              <span>AGENDE UMA VISITA</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Booking Card */}
-        <div className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-            <div className="relative z-10">
-              <div className="text-center mb-6">
-                <h2 className="text-2xl font-display font-bold text-slate-100 mb-2">Comece Sua Transformação</h2>
-                <p className="text-slate-300 text-sm">A partir de R$900 por sessão</p>
-              </div>
-              
-              <form className="flex flex-col gap-4">
-                <input 
-                  type="text" 
-                  placeholder="Nome Completo" 
-                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors text-sm"
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Digite seu Telefone" 
-                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors text-sm"
-                />
-                <div className="relative">
-                  <select className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 appearance-none focus:outline-none focus:border-white/30 transition-colors text-sm">
-                    <option value="" disabled selected className="text-slate-500 bg-[#121212]">Escolha sua localização *</option>
-                    <option value="sp" className="bg-[#121212]">São Paulo</option>
-                    <option value="rj" className="bg-[#121212]">Rio de Janeiro</option>
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg width="10" height="6" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 1.5L6 6.5L11 1.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
-                <textarea 
-                  placeholder="Mensagem (Opcional)" 
-                  rows={3}
-                  className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors resize-none text-sm"
-                ></textarea>
-                
-                <button type="button" className="w-full bg-slate-100 text-black font-bold text-sm rounded-xl py-3 mt-2 hover:bg-slate-200 transition-colors uppercase tracking-wider">
-                  Solicitar Contato
-                </button>
-              </form>
+        <div ref={cardRef} className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
+          <div className="relative z-10">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-display font-bold text-slate-100 mb-2">Comece Sua Transformação</h2>
             </div>
+
+            <form className="flex flex-col gap-4">
+              <input
+                type="text"
+                placeholder="Nome Completo"
+                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors text-sm"
+              />
+              <input
+                type="tel"
+                placeholder="Digite seu Telefone"
+                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors text-sm"
+              />
+              <textarea
+                placeholder="Mensagem (Opcional)"
+                rows={3}
+                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-white/30 transition-colors resize-none text-sm"
+              ></textarea>
+
+              <button type="button" className="w-full bg-slate-100 text-black font-bold text-sm rounded-xl py-3 mt-2 hover:bg-slate-200 transition-colors uppercase tracking-wider">
+                Solicitar Contato
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -147,13 +178,83 @@ function Hero() {
 }
 
 function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const title1Ref = useRef<HTMLHeadingElement>(null);
+  const pRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      // Title and paragraph reveal
+      gsap.fromTo(title1Ref.current,
+        { y: 50, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
+        {
+          y: 0, opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: title1Ref.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      gsap.fromTo(pRef.current,
+        { y: 30, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 1, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: pRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      gsap.fromTo(cardsRef.current,
+        { y: 100, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 1.2, stagger: 0.2, ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          }
+        }
+      );
+
+      // --- Interactive 3D Tilt for Features ---
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        gsap.set(card, { transformPerspective: 1000, transformStyle: "preserve-3d" });
+        const xTo = gsap.quickTo(card, "rotationY", { duration: 0.8, ease: "power3" });
+        const yTo = gsap.quickTo(card, "rotationX", { duration: 0.8, ease: "power3" });
+
+        card.addEventListener('mousemove', (e: any) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          xTo(x * 30); // 15 degrees max each side
+          yTo(-y * 30);
+        });
+        card.addEventListener('mouseleave', () => {
+          xTo(0);
+          yTo(0);
+        });
+      });
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="bg-[#121212] py-24 px-6 md:px-24 relative z-10">
+    <section ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-slate-100 text-4xl md:text-5xl font-bold tracking-tight mb-6 font-display">A Arquitetura do Poder</h2>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <h2 ref={title1Ref} className="text-slate-100 text-4xl md:text-5xl font-bold tracking-tight mb-6 font-display leading-[1.1]">
+              A Arquitetura do Controle
+            </h2>
+            <p ref={pRef} className="text-slate-400 text-lg leading-relaxed">
               Nossos espaços são projetados para remover distrações. Na Cult Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.
             </p>
           </div>
@@ -164,10 +265,10 @@ function Features() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
+          <div ref={el => { cardsRef.current[0] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
             <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div 
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105" 
+              <div
+                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDg2auW3Zcgj_Ges8_a-tTci75DanLw3LMyWyLrkh51HVlbDrgTCtqMjwxffHe31QZop4U7Jsax1tovNW1Bu47Rw1Rx5_E-t7OAKRwuRTAVDN20UF8fNJU5476_GIsGSru8F9kc-zkaPWpWVYjtVjNy8NarB2f2Ubapc5OJ18o0jsi8g6rLjeoY7t8HKYKPJwgxCE4U88qfoWQRukCPVt2ml-aNPm725tBWnch1DJIMAvz3Dgp_O2dIbs7tO8pcjoqat8Tag_pJFS_B')" }}
               ></div>
             </div>
@@ -178,10 +279,10 @@ function Features() {
           </div>
 
           {/* Card 2 */}
-          <div className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
+          <div ref={el => { cardsRef.current[1] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
             <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div 
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105" 
+              <div
+                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6gW-HfUPGSmim9qodfCpkg4xI0HIN3tJvE_U_vdplcxDrJjXEBlTHNxRT9lZySDBz-ritzEM-hp09VYS3UX40yhnbyjRa6n16iBU9p9Y1jSXH1P6sFiNmtV3KeHKlf1-pFBf-x4st1BGB9mKCFyIFt-28hsvWA0dTiwgnZZRnWjsf3A0RhVpNy0_sCv-TrPG_EmxO5bNq2L2_Z4PuItLdqnIk3Dg8CjYiaQz8JOo1TSLHANWOgA1cRI4h0F4rFPLZ8MSkfrJ3ipm6')" }}
               ></div>
             </div>
@@ -192,10 +293,10 @@ function Features() {
           </div>
 
           {/* Card 3 */}
-          <div className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
+          <div ref={el => { cardsRef.current[2] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
             <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div 
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105" 
+              <div
+                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_FWvLzDS_3DC1PVedpInCLvv3u4TDQpKsiTOOTFHEMev_6nDwyfq_h2MQ5_JWYMZOuo43Ud2HlAwu7rJesxN6gplDwEX0fRTDohYUBtRxUvWNCnmAoYhoVPrPl_aHy_J2F1g1kSc12WLGlHeWrrtxl6zOnY9AMAh_3GUNPs9rSLRiZypQ97kCdmwfIgE92ekZeqcUm1aklfYiNykkvL2cTjpWLKBVfxlCaAW4HAkdxq8QDkLqf689nIj4p2zsyt6Gu_BotUhOdoF_')" }}
               ></div>
             </div>
@@ -211,130 +312,246 @@ function Features() {
 }
 
 function Footer() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<'termos' | 'politica'>('termos');
+
+  const modalContent = {
+    termos: {
+      title: "Termos de Uso",
+      text: "Bem-vindo à Cult Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. A Cult Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio mínimo estipulado em contrato, sujeito a verificação e disponibilidade de agenda na unidade."
+    },
+    politica: {
+      title: "Política de Privacidade",
+      text: "Na Cult Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios. Seus dados jamais serão repassados, vendidos ou comercializados com terceiros sem seu consentimento expresso. Você pode, a qualquer tempo, solicitar o descadastramento e remoção dos seus dados sistêmicos contatando nossos canais oficiais."
+    }
+  };
+
   return (
-    <footer className="bg-[#121212] border-t border-white/5 py-12 px-6 md:px-24 relative z-10">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <CircleDot className="w-5 h-5 text-slate-100" />
-            <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">Cult Pilates</h2>
+    <>
+      <footer className="border-t border-white/5 pt-12 pb-48 md:pb-64 px-6 md:px-24 relative z-10">
+        <div className="max-w-7xl mx-auto flex flex-col gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-3">
+              <CircleDot className="w-5 h-5 text-slate-100" />
+              <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">Cult Pilates</h2>
+            </div>
+            <div className="flex gap-8">
+              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href="https://instagram.com/cultpilates" target="_blank" rel="noopener noreferrer">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <button
+                className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer"
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({
+                      title: 'Cult Pilates',
+                      url: window.location.href,
+                    }).catch(console.error);
+                  }
+                }}
+              >
+                <Share2 className="w-5 h-5" />
+              </button>
+              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                </svg>
+              </a>
+            </div>
           </div>
-          <div className="flex gap-8">
-            <a className="text-slate-500 hover:text-slate-100 transition-colors" href="#"><Instagram className="w-5 h-5" /></a>
-            <a className="text-slate-500 hover:text-slate-100 transition-colors" href="#"><Share2 className="w-5 h-5" /></a>
-            <a className="text-slate-500 hover:text-slate-100 transition-colors" href="#"><Mail className="w-5 h-5" /></a>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
+            <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
+              © 2024 CULT PILATES BY CULT. TODOS OS DIREITOS RESERVADOS.
+            </p>
+            <div className="flex gap-6">
+              <a onClick={(e) => { e.preventDefault(); setModalType('termos'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Termos de Uso</a>
+              <a onClick={(e) => { e.preventDefault(); setModalType('politica'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Política de Privacidade</a>
+            </div>
           </div>
         </div>
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
-          <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
-            © 2024 CULT PILATES BY CULT. TODOS OS DIREITOS RESERVADOS.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Termos de Uso</a>
-            <a href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Política de Privacidade</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121212] border border-white/10 p-8 md:p-12 rounded-3xl max-w-3xl w-full relative shadow-2xl"
+            >
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-slate-100 transition-colors p-2 rounded-full hover:bg-white/5"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <CircleDot className="w-8 h-8 text-slate-500 mb-6" />
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
+              <div className="prose prose-invert max-w-none">
+                <p className="text-slate-300 leading-relaxed text-sm md:text-base font-light">
+                  {modalContent[modalType].text}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+function ParticleScene() {
+  const count = 400;
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const lightRef = useRef<THREE.PointLight>(null);
+
+  const particles = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < count; i++) {
+      const x = (Math.random() - 0.5) * 20;
+      const y = (Math.random() - 0.5) * 20;
+      const z = (Math.random() - 0.5) * 10 - 5;
+      const speed = Math.random() * 0.01 + 0.002;
+      temp.push({ x, y, z, speed });
+    }
+    return temp;
+  }, [count]);
+
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+
+  useFrame((state) => {
+    // Mouse Interaction
+    const mouseX = (state.pointer.x * state.viewport.width) / 2;
+    const mouseY = (state.pointer.y * state.viewport.height) / 2;
+
+    if (lightRef.current) {
+      lightRef.current.position.x = mouseX;
+      lightRef.current.position.y = mouseY;
+    }
+
+    particles.forEach((particle, i) => {
+      particle.y += particle.speed;
+      if (particle.y > 10) particle.y = -10;
+
+      // Slight reaction to mouse
+      const dx = mouseX - particle.x;
+      const dy = mouseY - particle.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 2 && distance > 0.01) {
+        // The closer the mouse, the stronger the push force
+        const force = (2 - distance) / 2;
+        particle.x -= (dx / distance) * force * 0.15;
+        particle.y -= (dy / distance) * force * 0.15;
+      }
+
+      let targetX = particle.x;
+      let targetY = particle.y;
+
+      dummy.position.set(targetX, targetY, particle.z);
+
+      // Add slight floating rotation
+      const time = state.clock.getElapsedTime();
+      dummy.rotation.x = time * particle.speed;
+      dummy.rotation.y = time * particle.speed;
+
+      const scale = distance < 3 ? 1.5 : 1;
+      dummy.scale.set(scale, scale, scale);
+
+      dummy.updateMatrix();
+      meshRef.current?.setMatrixAt(i, dummy.matrix);
+    });
+
+    if (meshRef.current) {
+      meshRef.current.instanceMatrix.needsUpdate = true;
+    }
+  });
+
+  return (
+    <>
+      <ambientLight intensity={0.5} />
+      <pointLight ref={lightRef} distance={5} intensity={5} color="#ffffff" />
+      <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+        <sphereGeometry args={[0.02, 8, 8]} />
+        <meshStandardMaterial color="#ffffff" transparent opacity={0.3} roughness={0.2} metalness={0.8} />
+      </instancedMesh>
+    </>
   );
 }
 
 function Particles() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-
-    const particles: { x: number, y: number, radius: number, vx: number, vy: number }[] = [];
-    const particleCount = 150;
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        radius: Math.random() * 2 + 0.5,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-      });
-    }
-
-    let mouseX = width / 2;
-    let mouseY = height / 2;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    let animationFrameId: number;
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        const dx = mouseX - p.x;
-        const dy = mouseY - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-          p.x -= dx * 0.03;
-          p.y -= dy * 0.03;
-        }
-
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-50"
-    />
+    <div className="fixed inset-0 pointer-events-none z-0 mix-blend-screen opacity-60">
+      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 2]}>
+        <ParticleScene />
+      </Canvas>
+    </div>
   );
 }
 
 function Classes() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(titleRef.current,
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.5)',
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      gsap.fromTo(cardsRef.current,
+        { scale: 0.9, y: 50, opacity: 0 },
+        {
+          scale: 1, y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+          }
+        }
+      );
+
+      // --- Interactive Magnetic Pull for Classes ---
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        const xTo = gsap.quickTo(card, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
+        const yTo = gsap.quickTo(card, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
+
+        card.addEventListener('mousemove', (e: any) => {
+          const rect = card.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          xTo((e.clientX - centerX) * 0.15); // Pull 15% towards cursor
+          yTo((e.clientY - centerY) * 0.15);
+        });
+        card.addEventListener('mouseleave', () => {
+          xTo(0);
+          yTo(0);
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const classes = [
     {
       title: "Reformer Pilates",
@@ -354,11 +571,14 @@ function Classes() {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-24 relative z-10">
+    <section id="metodo" ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">MÉTODO</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {classes.map((cls, i) => (
-            <div key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
+            <div ref={el => { cardsRef.current[i] = el; }} key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
               <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.img})` }}></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -374,44 +594,66 @@ function Classes() {
 }
 
 function TourSpace() {
+  const [activeIndex, setActiveIndex] = useState(1);
+  const images = [
+    { title: "Vestiários", desc: "Aconchego & Privacidade", img: "/images/locker.png" },
+    { title: "Reformers", desc: "Equipamento de Elite", img: "/images/reformer.png" },
+    { title: "Recepção", desc: "Boas-Vindas Calorosas", img: "/images/reception.png" }
+  ];
+
+  const next = () => setActiveIndex((prev) => (prev + 1) % images.length);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+
   return (
-    <section className="py-24 px-6 md:px-24 relative z-10">
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">Conheça nosso Espaço</h2>
-        <p className="text-slate-400 text-lg">Experimente nosso estúdio em 3D imersivo.</p>
+    <section id="estudio" className="py-24 px-6 md:px-24 relative z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center mb-20 relative z-20">
+        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">NOSSO ESPAÇO</h2>
       </div>
-      
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6 max-w-6xl mx-auto">
-        <div className="w-full md:w-1/3 aspect-[4/5] rounded-3xl overflow-hidden relative group">
-          <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800')" }}></div>
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:bg-white/30 transition-colors">
-              <Play className="w-6 h-6 ml-1" />
-            </div>
-          </div>
+
+      <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center min-h-[500px]">
+        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
+        </button>
+
+        <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible">
+          <AnimatePresence>
+            {images.map((item, i) => {
+              let offset = i - activeIndex;
+              if (offset < -1) offset += images.length;
+              if (offset > 1) offset -= images.length;
+
+              const isCenter = offset === 0;
+
+              return (
+                <motion.div
+                  key={i}
+                  animate={{
+                    x: offset * (window.innerWidth < 768 ? 120 : 250),
+                    scale: isCenter ? 1 : 0.8,
+                    z: isCenter ? 100 : 0,
+                    opacity: isCenter ? 1 : 0.5,
+                  }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  style={{ zIndex: isCenter ? 30 : 10 }}
+                  onClick={() => setActiveIndex(i)}
+                  className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
+                >
+                  <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.img}')` }}></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+                  <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 pointer-events-none">
+                    <h3 className="text-white text-xl md:text-3xl font-bold font-display drop-shadow-lg leading-tight">
+                      {item.title}<br /><span className="text-sm font-normal font-sans text-slate-300">{item.desc}</span>
+                    </h3>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
-        
-        <div className="w-full md:w-1/3 aspect-[3/4] md:scale-110 z-10 rounded-3xl overflow-hidden relative group shadow-2xl">
-          <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800')" }}></div>
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:bg-white/30 transition-colors">
-              <Play className="w-8 h-8 ml-1" />
-            </div>
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-            <h3 className="text-xl font-bold text-white mb-1">Sessão de Fluxo Matinal</h3>
-            <p className="text-white/80 text-sm">Comece seu dia com movimentos suaves</p>
-          </div>
-        </div>
-        
-        <div className="w-full md:w-1/3 aspect-[4/5] rounded-3xl overflow-hidden relative group">
-          <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800')" }}></div>
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white cursor-pointer hover:bg-white/30 transition-colors">
-              <Play className="w-6 h-6 ml-1" />
-            </div>
-          </div>
-        </div>
+
+        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+          <ChevronRight className="w-6 h-6 text-slate-100" />
+        </button>
       </div>
     </section>
   );
@@ -419,54 +661,52 @@ function TourSpace() {
 
 function VisitStudio() {
   return (
-    <section className="py-24 px-6 md:px-24 relative z-10">
+    <section id="contato" className="py-24 px-6 md:px-24 relative z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">Visite Nosso Estúdio</h2>
           <p className="text-slate-400 text-lg">Afastado do barulho. Projetado para harmonia.</p>
         </div>
-        
+
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           <div className="w-full lg:w-1/2 rounded-3xl overflow-hidden aspect-video lg:aspect-square bg-white/5 border border-white/10">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197505068153!2d-46.65882668447573!3d-23.56134956747246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1689700000000!5m2!1spt-BR!2sbr" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }} 
-              allowFullScreen={false} 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197505068153!2d-46.65882668447573!3d-23.56134956747246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1689700000000!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
+              allowFullScreen={false}
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          
+
           <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="flex flex-wrap gap-3">
-              <button className="px-6 py-2 rounded-full bg-slate-100 text-black font-semibold text-sm">São Paulo</button>
-              <button className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-colors font-semibold text-sm">Rio de Janeiro</button>
-              <button className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-colors font-semibold text-sm">Curitiba</button>
+              <button className="px-6 py-2 rounded-full bg-slate-100 text-black font-semibold text-sm">Rio de Janeiro</button>
             </div>
-            
+
             <div className="flex flex-col gap-8 mt-4">
               <div className="flex gap-4">
                 <MapPin className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">Estúdio São Paulo</h3>
-                  <p className="text-slate-400 leading-relaxed">Av. Paulista, 1000, Conjunto 42<br/>Bela Vista, São Paulo - SP<br/>01310-100</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">Estúdio Rio de Janeiro</h3>
+                  <p className="text-slate-400 leading-relaxed">Rua Visconde de Pirajá, 550, Sala 202<br />Ipanema, Rio de Janeiro - RJ<br />22410-002</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-4">
                 <Phone className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <p className="text-slate-100 font-medium">+55 11 99999-9999</p>
+                  <p className="text-slate-100 font-medium">(21) 98600-5402</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-4">
                 <Clock className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
                   <h3 className="text-xl font-bold text-slate-100 mb-2">Horário do Estúdio</h3>
-                  <p className="text-slate-400">Seg - Sex: 06:00 - 21:00<br/>Sáb - Dom: 07:00 - 14:00</p>
+                  <p className="text-slate-400">Seg - Sex: 06:00 - 21:00<br />Sáb - Dom: 07:00 - 14:00</p>
                 </div>
               </div>
             </div>
@@ -477,17 +717,435 @@ function VisitStudio() {
   );
 }
 
+function Instructors() {
+  return (
+    <section id="instrutores" className="py-24 px-6 md:px-24 relative z-10 border-y border-white/5">
+      <div className="max-w-7xl mx-auto text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">INSTRUTORES</h2>
+        <p className="text-slate-400 text-lg">Profissionais experientes para guiar sua jornada de corpo e mente.</p>
+      </div>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-center">
+        <div className="group">
+          <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
+            <img src="/images/rafael.png" className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 object-top mix-blend-luminosity hover:mix-blend-normal" alt="Rafael Costa" />
+          </div>
+          <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">Rafael Costa</h3>
+          <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">Mestre Especialista</p>
+          <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.</p>
+        </div>
+        <div className="group mt-12 md:mt-0">
+          <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
+            <img src="/images/camila.png" className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 object-top mix-blend-luminosity hover:mix-blend-normal" alt="Camila Mendes" />
+          </div>
+          <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">Camila Mendes</h3>
+          <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">Instrutora Sênior</p>
+          <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const [activeIndex, setActiveIndex] = useState(2);
+
+  const testimonials = [
+    { text: "Aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.", author: "Mariana Souza" },
+    { text: "Os instrutores são atenciosos ao extremo. Nível de cuidado excelente.", author: "Carlos Ferreira" },
+    { text: "Ambiente espetacular e método preciso. Simplesmente incrível.", author: "Roberto Albuquerque" },
+    { text: "Equipamentos novos, de elite e uma arquitetura que inspira calma total.", author: "Aline Bastos" },
+    { text: "O Cadillac reformou minha mobilidade. Devo tudo aos profissionais.", author: "Guilherme Santos" }
+  ];
+
+  const next = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
+  return (
+    <section id="depoimentos" className="py-24 px-6 md:px-24 relative overflow-hidden z-10 border-b border-white/5">
+      <div className="max-w-7xl mx-auto text-center mb-12">
+        <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Sua Jornada</span>
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">O Que Dizem Nossos Alunos</h2>
+      </div>
+
+      <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px]">
+        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
+        </button>
+
+        <div className="relative w-full h-[400px] flex justify-center items-center overflow-visible">
+          <AnimatePresence>
+            {testimonials.map((t, i) => {
+              let offset = i - activeIndex;
+              if (offset < -2) offset += testimonials.length;
+              if (offset > 2) offset -= testimonials.length;
+
+              const isCenter = offset === 0;
+              const absOffset = Math.abs(offset);
+              const isHidden = absOffset > 2;
+
+              if (isHidden) return null;
+
+              return (
+                <motion.div
+                  key={i}
+                  animate={{
+                    x: offset * (window.innerWidth < 768 ? 90 : 220),
+                    scale: isCenter ? 1 : (absOffset === 1 ? 0.8 : 0.6),
+                    z: isCenter ? 100 : (absOffset === 1 ? 50 : 0),
+                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.5 : 0.2),
+                  }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
+                  onClick={() => setActiveIndex(i)}
+                  className="absolute w-[260px] md:w-[350px] aspect-square rounded-3xl bg-white/5 backdrop-blur-md p-6 md:p-8 border border-white/20 shadow-2xl flex flex-col justify-center gap-4 cursor-pointer"
+                >
+                  <div>
+                    <Quote className="w-8 h-8 text-slate-500 mb-4" />
+                    <p className="text-slate-300 italic mb-4 leading-relaxed text-sm">"{t.text}"</p>
+                  </div>
+                  <h4 className="text-slate-100 font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">- {t.author}</h4>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+          <ChevronRight className="w-6 h-6 text-slate-100" />
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  return (
+    <section className="py-24 px-6 z-10 relative">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="inline-flex items-center justify-center p-4 bg-white/5 border border-white/10 rounded-full mb-2">
+          <CircleDot className="w-10 h-10 text-slate-100" />
+        </div>
+        <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">
+          Junte-se ao Movimento
+        </h2>
+        <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
+          Comece sua jornada com uma sessão introdutória cortesia e descubra por que o método Cult é o padrão global em Pilates.
+        </p>
+        <div className="pt-6">
+          <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-100 text-black px-12 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl">
+            Comece Agora
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
+
+// --- Elastic Mouse (Pilates Band Effect) ---
+function ElasticMouse() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    let mouse = { x: width / 2, y: height / 2 };
+    let anchor: { x: number, y: number } | null = null;
+    let isDrawing = false;
+    let springValue = 0; // value for the release jiggle
+
+    const handleResize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseDown = (e: MouseEvent) => {
+      // Ignora o efeito de elástico se o alvo for um botão, link, input ou elemento do formulário
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.closest('button') ||
+        target.closest('a') ||
+        target.closest('form')
+      ) {
+        return;
+      }
+
+      if (anchor) {
+        // Segundo clique: solta o elástico
+        isDrawing = false;
+        // Animate the band snapping back
+        gsap.to(window, {
+          duration: 1.5,
+          springValue: 1,
+          ease: "elastic.out(1, 0.3)",
+          onUpdate: () => {
+            springValue = (gsap.getProperty(window, "springValue") as number) || 0;
+          },
+          onComplete: () => {
+            anchor = null;
+          }
+        });
+      } else {
+        // Primeiro clique: fixa a âncora
+        anchor = { x: e.clientX, y: e.clientY };
+        isDrawing = true;
+        springValue = 0;
+        gsap.killTweensOf(window, "springValue");
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousedown', handleMouseDown);
+
+    let animationFrameId: number;
+
+    const render = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      // Always draw a small dot following cursor for general feeling
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = anchor ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.8)';
+      ctx.fill();
+
+      // Elastic band drawing
+      if (anchor) {
+        ctx.beginPath();
+
+        let endX = mouse.x;
+        let endY = mouse.y;
+
+        if (!isDrawing) {
+          // Snap back logic
+          endX = mouse.x + (anchor.x - mouse.x) * springValue;
+          endY = mouse.y + (anchor.y - mouse.y) * springValue;
+        }
+
+        ctx.moveTo(anchor.x, anchor.y);
+
+        // Simple straight line or slightly curved
+        // To make it look like a pilates band, let's draw a thick line
+        ctx.lineTo(endX, endY);
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+
+        // Draw anchor point
+        ctx.beginPath();
+        ctx.arc(anchor.x, anchor.y, 6, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.fill();
+
+        // Draw pulling point
+        ctx.beginPath();
+        ctx.arc(endX, endY, 6, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.fill();
+      }
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousedown', handleMouseDown);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none z-[100]"
+    />
+  );
+}
+
+// --- Floating Science Stats (Scientific Data) ---
+function FloatingScienceStats() {
+  const statsLeft = [
+    { text: "+47% Flexibilidade", icon: ArrowUp, delay: 0, duration: 55 },
+    { text: "↑ Força do Core", icon: TrendingUp, delay: 15, duration: 60 },
+    { text: "+25% Capac. Pulmonar", icon: Heart, delay: 30, duration: 50 },
+  ];
+
+  const statsRight = [
+    { text: "-30% Dores Lombares", icon: Activity, delay: 5, duration: 58 },
+    { text: "Biomecânica Melhorada", icon: Zap, delay: 25, duration: 65 },
+    { text: "+50% Equilíbrio Analítico", icon: ArrowUp, delay: 35, duration: 52 },
+  ];
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden">
+      {/* Container Left Edge */}
+      <div className="absolute top-0 bottom-0 left-2 md:left-8 w-1/4">
+        {statsLeft.map((stat, i) => (
+          <motion.div
+            key={`left-${i}`}
+            animate={{
+              y: ["110vh", "-20vh"],
+              opacity: [0, 0, 0.6, 0.6, 0]
+            }}
+            transition={{
+              y: { duration: stat.duration, repeat: Infinity, ease: "linear", delay: stat.delay },
+              opacity: { duration: stat.duration, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
+            }}
+            className="absolute left-0 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 md:px-4 md:py-3 rounded-2xl flex items-center gap-2 shadow-xl"
+            style={{ x: (i % 2 === 0) ? 0 : '10vw' }} // Staggering horizontally slightly
+          >
+            <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+              <stat.icon className="w-3 h-3 text-slate-100" />
+            </div>
+            <span className="text-white text-[10px] md:text-xs font-bold font-sans uppercase tracking-wider">{stat.text}</span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Container Right Edge */}
+      <div className="absolute top-0 bottom-0 right-2 md:right-8 w-1/4 flex justify-end">
+        {statsRight.map((stat, i) => (
+          <motion.div
+            key={`right-${i}`}
+            animate={{
+              y: ["110vh", "-20vh"],
+              opacity: [0, 0, 0.6, 0.6, 0]
+            }}
+            transition={{
+              y: { duration: stat.duration, repeat: Infinity, ease: "linear", delay: stat.delay },
+              opacity: { duration: stat.duration, repeat: Infinity, ease: "easeInOut", delay: stat.delay }
+            }}
+            className="absolute right-0 bg-white/5 backdrop-blur-sm border border-white/10 px-3 py-2 md:px-4 md:py-3 rounded-2xl flex items-center gap-2 shadow-xl"
+            style={{ x: (i % 2 === 0) ? 0 : '-10vw' }} // Staggering horizontally slightly
+          >
+            <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">
+              <stat.icon className="w-3 h-3 text-slate-100" />
+            </div>
+            <span className="text-white text-[10px] md:text-xs font-bold font-sans uppercase tracking-wider">{stat.text}</span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// --- Light Transition Animation (Infinite Loop Border Crossing) ---
+function LightTransition() {
+  const smokeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = (e: CustomEvent) => {
+      const { scroll, limit } = e.detail;
+      if (limit > 0 && smokeRef.current) {
+        let p = 0;
+        const threshold = window.innerHeight * 0.25; // Diminishing the fade area to 25% height
+
+        if (scroll < threshold) {
+          // Approaching the top, or just wrapped to the top
+          p = Math.pow(1 - (scroll / threshold), 3);
+        } else if (scroll > limit - threshold) {
+          // Approaching the bottom
+          p = Math.pow(1 - ((limit - scroll) / threshold), 3);
+        }
+
+        gsap.set(smokeRef.current, { opacity: p });
+      }
+    };
+
+    window.addEventListener('lenis-scroll', handleScroll as EventListener);
+    return () => {
+      window.removeEventListener('lenis-scroll', handleScroll as EventListener);
+    }
+  }, []);
+
+  return (
+    <div
+      ref={smokeRef}
+      className="fixed inset-0 pointer-events-none z-[300] flex justify-center items-center overflow-hidden"
+      style={{ mixBlendMode: 'screen', opacity: 0 }}
+    >
+      <div className="absolute w-[150vw] h-[150vh] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] blur-[80px]" />
+      <div className="absolute w-[100vw] h-[100vh] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_50%)] blur-[40px] translate-y-20 translate-x-20" />
+      <div className="absolute w-[120vw] h-[120vh] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_70%)] blur-[60px] -translate-y-20 -translate-x-20" />
+    </div>
+  );
+}
+
+// --- App Root ---
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.5, // slightly smoother scroll tracking
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo out
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: true, // Native smooth infinite scrolling (Efeito Igloo real)
+    });
+
+    lenis.on('scroll', (e: any) => {
+      ScrollTrigger.update();
+      window.dispatchEvent(new CustomEvent('lenis-scroll', { detail: { scroll: e.scroll, limit: e.limit } }));
+    });
+
+    const handleNavScroll = (e: CustomEvent) => {
+      lenis.scrollTo(`#${e.detail.targetId}`, { offset: -80 });
+    };
+
+    window.addEventListener('nav-scroll', handleNavScroll as EventListener);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      window.removeEventListener('nav-scroll', handleNavScroll as EventListener);
+    };
+  }, []);
+
   return (
     <div className="bg-[#121212] min-h-screen text-slate-100 font-sans selection:bg-slate-100 selection:text-black relative overflow-hidden">
+      <LightTransition />
+      <ElasticMouse />
       <Particles />
+      <FloatingScienceStats />
       <Navbar />
       <Hero />
       <Features />
       <Classes />
       <TourSpace />
+      <Instructors />
+      <Testimonials />
+      <CTA />
       <VisitStudio />
       <Footer />
     </div>
