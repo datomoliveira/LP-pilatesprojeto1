@@ -11,6 +11,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import siteConfig from './config/site.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +26,7 @@ function Navbar() {
             <CircleDot className="w-6 h-6" />
           </div>
           <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-widest uppercase font-display">
-            Cult Pilates
+            {siteConfig.brand.name}
           </h2>
         </div>
         <div className="flex items-center gap-8 relative z-50">
@@ -117,20 +118,20 @@ function Hero() {
       <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 mt-10 lg:mt-0">
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
           <div ref={badgeRef} className="mb-4">
-            <span className="text-slate-400 text-xs font-bold tracking-[0.5em] uppercase">Refinamento em Movimento</span>
+            <span className="text-slate-400 text-xs font-bold tracking-[0.5em] uppercase">{siteConfig.brand.badge}</span>
           </div>
           <h1 ref={titleRef} className="text-slate-100 text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none mb-8 opacity-90 font-display">
-            CULT<br />PILATES
+            {siteConfig.hero.titleLine1}<br />{siteConfig.hero.titleLine2}
           </h1>
           <p ref={subtitleRef} className="text-slate-300 text-lg md:text-xl font-light leading-relaxed max-w-xl mb-12 italic">
-            "Força não é apenas poder, é precisão. Experimente a arte minimalista do Cadillac."
+            {siteConfig.hero.subtitle}
           </p>
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 items-center w-full sm:w-auto">
-            <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto text-center">
-              Junte-se ao Movimento
+            <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto text-center">
+              {siteConfig.hero.ctaButton1}
             </a>
-            <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 text-slate-100 px-10 py-4 font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
-              <span>AGENDE UMA VISITA</span>
+            <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 text-slate-100 px-10 py-4 font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
+              <span>{siteConfig.hero.ctaButton2}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
@@ -141,7 +142,7 @@ function Hero() {
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
           <div className="relative z-10">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-display font-bold text-slate-100 mb-2">Comece Sua Transformação</h2>
+              <h2 className="text-2xl font-display font-bold text-slate-100 mb-2">{siteConfig.hero.formTitle}</h2>
             </div>
 
             <form className="flex flex-col gap-4">
@@ -162,7 +163,7 @@ function Hero() {
               ></textarea>
 
               <button type="button" className="w-full bg-slate-100 text-black font-bold text-sm rounded-xl py-3 mt-2 hover:bg-slate-200 transition-colors uppercase tracking-wider">
-                Solicitar Contato
+                {siteConfig.hero.formSubmit}
               </button>
             </form>
           </div>
@@ -252,59 +253,32 @@ function Features() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
             <h2 ref={title1Ref} className="text-slate-100 text-4xl md:text-5xl font-bold tracking-tight mb-6 font-display leading-[1.1]">
-              A Arquitetura do Controle
+              {siteConfig.features.title}
             </h2>
             <p ref={pRef} className="text-slate-400 text-lg leading-relaxed">
-              Nossos espaços são projetados para remover distrações. Na Cult Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.
+              {siteConfig.features.description}
             </p>
           </div>
           <div className="flex gap-2">
-            <span className="text-slate-500 font-display text-8xl font-black opacity-10 select-none">01</span>
+            <span className="text-slate-500 font-display text-8xl font-black opacity-10 select-none">{siteConfig.features.sectionNumber}</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <div ref={el => { cardsRef.current[0] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
-            <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDg2auW3Zcgj_Ges8_a-tTci75DanLw3LMyWyLrkh51HVlbDrgTCtqMjwxffHe31QZop4U7Jsax1tovNW1Bu47Rw1Rx5_E-t7OAKRwuRTAVDN20UF8fNJU5476_GIsGSru8F9kc-zkaPWpWVYjtVjNy8NarB2f2Ubapc5OJ18o0jsi8g6rLjeoY7t8HKYKPJwgxCE4U88qfoWQRukCPVt2ml-aNPm725tBWnch1DJIMAvz3Dgp_O2dIbs7tO8pcjoqat8Tag_pJFS_B')" }}
-              ></div>
+          {siteConfig.features.cards.map((card, idx) => (
+            <div key={idx} ref={el => { cardsRef.current[idx] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
+              <div className="aspect-[4/5] overflow-hidden rounded-xl">
+                <div
+                  className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url('${card.image}')` }}
+                ></div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-slate-100 text-xl font-bold tracking-tight">{card.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{card.description}</p>
+              </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="text-slate-100 text-xl font-bold tracking-tight">O Reformer</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Projetado para resistência. Criado para transformação. Nossos reformers são ajustados sob medida para cada corpo.</p>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div ref={el => { cardsRef.current[1] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
-            <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6gW-HfUPGSmim9qodfCpkg4xI0HIN3tJvE_U_vdplcxDrJjXEBlTHNxRT9lZySDBz-ritzEM-hp09VYS3UX40yhnbyjRa6n16iBU9p9Y1jSXH1P6sFiNmtV3KeHKlf1-pFBf-x4st1BGB9mKCFyIFt-28hsvWA0dTiwgnZZRnWjsf3A0RhVpNy0_sCv-TrPG_EmxO5bNq2L2_Z4PuItLdqnIk3Dg8CjYiaQz8JOo1TSLHANWOgA1cRI4h0F4rFPLZ8MSkfrJ3ipm6')" }}
-              ></div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="text-slate-100 text-xl font-bold tracking-tight">A Cadeira</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">Compacta. Poderosa. Implacável. Domine a arte do equilíbrio e da força vertical.</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div ref={el => { cardsRef.current[2] = el; }} className="group flex flex-col gap-6 p-1 border-b border-white/5 pb-12">
-            <div className="aspect-[4/5] overflow-hidden rounded-xl">
-              <div
-                className="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_FWvLzDS_3DC1PVedpInCLvv3u4TDQpKsiTOOTFHEMev_6nDwyfq_h2MQ5_JWYMZOuo43Ud2HlAwu7rJesxN6gplDwEX0fRTDohYUBtRxUvWNCnmAoYhoVPrPl_aHy_J2F1g1kSc12WLGlHeWrrtxl6zOnY9AMAh_3GUNPs9rSLRiZypQ97kCdmwfIgE92ekZeqcUm1aklfYiNykkvL2cTjpWLKBVfxlCaAW4HAkdxq8QDkLqf689nIj4p2zsyt6Gu_BotUhOdoF_')" }}
-              ></div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <h3 className="text-slate-100 text-xl font-bold tracking-tight">O Cadillac</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">O ápice do método Pilates. Movimentos que desafiam a gravidade e reconstroem a coluna.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -317,12 +291,12 @@ function Footer() {
 
   const modalContent = {
     termos: {
-      title: "Termos de Uso",
-      text: "Bem-vindo à Cult Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. A Cult Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio mínimo estipulado em contrato, sujeito a verificação e disponibilidade de agenda na unidade."
+      title: siteConfig.footer.termsTitle,
+      text: siteConfig.footer.termsText
     },
     politica: {
-      title: "Política de Privacidade",
-      text: "Na Cult Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios. Seus dados jamais serão repassados, vendidos ou comercializados com terceiros sem seu consentimento expresso. Você pode, a qualquer tempo, solicitar o descadastramento e remoção dos seus dados sistêmicos contatando nossos canais oficiais."
+      title: siteConfig.footer.privacyTitle,
+      text: siteConfig.footer.privacyText
     }
   };
 
@@ -336,7 +310,7 @@ function Footer() {
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">Cult Pilates</h2>
             </div>
             <div className="flex gap-8">
-              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href="https://instagram.com/cultpilates" target="_blank" rel="noopener noreferrer">
+              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
                 <Instagram className="w-5 h-5" />
               </a>
               <button
@@ -352,7 +326,7 @@ function Footer() {
               >
                 <Share2 className="w-5 h-5" />
               </button>
-              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer">
+              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                 </svg>
@@ -362,11 +336,11 @@ function Footer() {
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
             <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
-              © 2024 CULT PILATES BY CULT. TODOS OS DIREITOS RESERVADOS.
+              {siteConfig.footer.copyright}
             </p>
             <div className="flex gap-6">
-              <a onClick={(e) => { e.preventDefault(); setModalType('termos'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Termos de Uso</a>
-              <a onClick={(e) => { e.preventDefault(); setModalType('politica'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">Política de Privacidade</a>
+              <a onClick={(e) => { e.preventDefault(); setModalType('termos'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">{siteConfig.footer.termsTitle}</a>
+              <a onClick={(e) => { e.preventDefault(); setModalType('politica'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">{siteConfig.footer.privacyTitle}</a>
             </div>
           </div>
         </div>
@@ -552,38 +526,22 @@ function Classes() {
     return () => ctx.revert();
   }, []);
 
-  const classes = [
-    {
-      title: "Reformer Pilates",
-      desc: "Treine com suporte e resistência usando reformers.",
-      img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Mat Pilates",
-      desc: "Construa força e estabilidade com exercícios de peso corporal.",
-      img: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      title: "Wunda Chair Pilates",
-      desc: "Desafie sua força e controle usando a cadeira Wunda.",
-      img: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
-    }
-  ];
+  const classes = siteConfig.classes.cards;
 
   return (
     <section id="metodo" ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">MÉTODO</h2>
+          <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">{siteConfig.classes.title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {classes.map((cls, i) => (
             <div ref={el => { cardsRef.current[i] = el; }} key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
-              <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.img})` }}></div>
+              <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.image})` }}></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h3 className="text-2xl font-bold text-slate-100 mb-2 font-display">{cls.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{cls.desc}</p>
+                <p className="text-slate-300 text-sm leading-relaxed">{cls.description}</p>
               </div>
             </div>
           ))}
@@ -595,11 +553,7 @@ function Classes() {
 
 function TourSpace() {
   const [activeIndex, setActiveIndex] = useState(1);
-  const images = [
-    { title: "Vestiários", desc: "Aconchego & Privacidade", img: "/images/locker.png" },
-    { title: "Reformers", desc: "Equipamento de Elite", img: "/images/reformer.png" },
-    { title: "Recepção", desc: "Boas-Vindas Calorosas", img: "/images/reception.png" }
-  ];
+  const images = siteConfig.tourSpace.images;
 
   const next = () => setActiveIndex((prev) => (prev + 1) % images.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -607,7 +561,7 @@ function TourSpace() {
   return (
     <section id="estudio" className="py-24 px-6 md:px-24 relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center mb-20 relative z-20">
-        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">NOSSO ESPAÇO</h2>
+        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.tourSpace.title}</h2>
       </div>
 
       <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center min-h-[500px]">
@@ -638,11 +592,11 @@ function TourSpace() {
                   onClick={() => setActiveIndex(i)}
                   className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
                 >
-                  <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.img}')` }}></div>
+                  <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.image}')` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
                   <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 pointer-events-none">
                     <h3 className="text-white text-xl md:text-3xl font-bold font-display drop-shadow-lg leading-tight">
-                      {item.title}<br /><span className="text-sm font-normal font-sans text-slate-300">{item.desc}</span>
+                      {item.title}<br /><span className="text-sm font-normal font-sans text-slate-300">{item.description}</span>
                     </h3>
                   </div>
                 </motion.div>
@@ -664,14 +618,14 @@ function VisitStudio() {
     <section id="contato" className="py-24 px-6 md:px-24 relative z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">Visite Nosso Estúdio</h2>
-          <p className="text-slate-400 text-lg">Afastado do barulho. Projetado para harmonia.</p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.visitStudio.title}</h2>
+          <p className="text-slate-400 text-lg">{siteConfig.visitStudio.subtitle}</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           <div className="w-full lg:w-1/2 rounded-3xl overflow-hidden aspect-video lg:aspect-square bg-white/5 border border-white/10">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197505068153!2d-46.65882668447573!3d-23.56134956747246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1689700000000!5m2!1spt-BR!2sbr"
+              src={siteConfig.visitStudio.mapEmbedUrl}
               width="100%"
               height="100%"
               style={{ border: 0, filter: 'grayscale(1) invert(0.9) contrast(1.2)' }}
@@ -683,30 +637,30 @@ function VisitStudio() {
 
           <div className="w-full lg:w-1/2 flex flex-col gap-8">
             <div className="flex flex-wrap gap-3">
-              <button className="px-6 py-2 rounded-full bg-slate-100 text-black font-semibold text-sm">Rio de Janeiro</button>
+              <button className="px-6 py-2 rounded-full bg-slate-100 text-black font-semibold text-sm">{siteConfig.visitStudio.locationBadge}</button>
             </div>
 
             <div className="flex flex-col gap-8 mt-4">
               <div className="flex gap-4">
                 <MapPin className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">Estúdio Rio de Janeiro</h3>
-                  <p className="text-slate-400 leading-relaxed">Rua Visconde de Pirajá, 550, Sala 202<br />Ipanema, Rio de Janeiro - RJ<br />22410-002</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">{siteConfig.visitStudio.studioName}</h3>
+                  <p className="text-slate-400 leading-relaxed" dangerouslySetInnerHTML={{ __html: siteConfig.visitStudio.addressDetails }}></p>
                 </div>
               </div>
 
               <div className="flex gap-4">
                 <Phone className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <p className="text-slate-100 font-medium">(21) 98600-5402</p>
+                  <p className="text-slate-100 font-medium">{siteConfig.contact.whatsappFormatted}</p>
                 </div>
               </div>
 
               <div className="flex gap-4">
                 <Clock className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">Horário do Estúdio</h3>
-                  <p className="text-slate-400">Seg - Sex: 06:00 - 21:00<br />Sáb - Dom: 07:00 - 14:00</p>
+                  <h3 className="text-xl font-bold text-slate-100 mb-2">{siteConfig.visitStudio.hoursTitle}</h3>
+                  <p className="text-slate-400" dangerouslySetInnerHTML={{ __html: siteConfig.visitStudio.hoursDetails }}></p>
                 </div>
               </div>
             </div>
@@ -721,26 +675,20 @@ function Instructors() {
   return (
     <section id="instrutores" className="py-24 px-6 md:px-24 relative z-10 border-y border-white/5">
       <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">INSTRUTORES</h2>
-        <p className="text-slate-400 text-lg">Profissionais experientes para guiar sua jornada de corpo e mente.</p>
+        <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.instructors.title}</h2>
+        <p className="text-slate-400 text-lg">{siteConfig.instructors.subtitle}</p>
       </div>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-center">
-        <div className="group">
-          <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
-            <img src="/images/rafael.png" className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 object-top mix-blend-luminosity hover:mix-blend-normal" alt="Rafael Costa" />
+        {siteConfig.instructors.list.map((inst, idx) => (
+          <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
+            <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
+              <img src={inst.image} className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 object-top mix-blend-luminosity hover:mix-blend-normal" alt={inst.name} />
+            </div>
+            <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">{inst.name}</h3>
+            <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">{inst.role}</p>
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">{inst.bio}</p>
           </div>
-          <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">Rafael Costa</h3>
-          <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">Mestre Especialista</p>
-          <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.</p>
-        </div>
-        <div className="group mt-12 md:mt-0">
-          <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
-            <img src="/images/camila.png" className="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 object-top mix-blend-luminosity hover:mix-blend-normal" alt="Camila Mendes" />
-          </div>
-          <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">Camila Mendes</h3>
-          <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">Instrutora Sênior</p>
-          <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.</p>
-        </div>
+        ))}
       </div>
     </section>
   );
@@ -749,13 +697,7 @@ function Instructors() {
 function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(2);
 
-  const testimonials = [
-    { text: "Aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.", author: "Mariana Souza" },
-    { text: "Os instrutores são atenciosos ao extremo. Nível de cuidado excelente.", author: "Carlos Ferreira" },
-    { text: "Ambiente espetacular e método preciso. Simplesmente incrível.", author: "Roberto Albuquerque" },
-    { text: "Equipamentos novos, de elite e uma arquitetura que inspira calma total.", author: "Aline Bastos" },
-    { text: "O Cadillac reformou minha mobilidade. Devo tudo aos profissionais.", author: "Guilherme Santos" }
-  ];
+  const testimonials = siteConfig.testimonials.list;
 
   const next = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -763,8 +705,8 @@ function Testimonials() {
   return (
     <section id="depoimentos" className="py-24 px-6 md:px-24 relative overflow-hidden z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">Sua Jornada</span>
-        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">O Que Dizem Nossos Alunos</h2>
+        <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.testimonials.badge}</span>
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.testimonials.title}</h2>
       </div>
 
       <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px]">
@@ -826,14 +768,14 @@ function CTA() {
           <CircleDot className="w-10 h-10 text-slate-100" />
         </div>
         <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">
-          Junte-se ao Movimento
+          {siteConfig.cta.title}
         </h2>
         <p className="text-lg md:text-xl text-slate-400 font-light max-w-2xl mx-auto leading-relaxed">
-          Comece sua jornada com uma sessão introdutória cortesia e descubra por que o método Cult é o padrão global em Pilates.
+          {siteConfig.cta.subtitle}
         </p>
         <div className="pt-6">
-          <a href="https://wa.me/5521986005402" target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-100 text-black px-12 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl">
-            Comece Agora
+          <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-100 text-black px-12 py-5 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl">
+            {siteConfig.cta.buttonText}
           </a>
         </div>
       </div>
@@ -989,15 +931,15 @@ function ElasticMouse() {
 // --- Floating Science Stats (Scientific Data) ---
 function FloatingScienceStats() {
   const statsLeft = [
-    { text: "+47% Flexibilidade", icon: ArrowUp, delay: 0, duration: 55 },
-    { text: "↑ Força do Core", icon: TrendingUp, delay: 15, duration: 60 },
-    { text: "+25% Capac. Pulmonar", icon: Heart, delay: 30, duration: 50 },
+    { text: siteConfig.floatingStats.left[0].text, icon: ArrowUp, delay: 0, duration: 55 },
+    { text: siteConfig.floatingStats.left[1].text, icon: TrendingUp, delay: 15, duration: 60 },
+    { text: siteConfig.floatingStats.left[2].text, icon: Heart, delay: 30, duration: 50 },
   ];
 
   const statsRight = [
-    { text: "-30% Dores Lombares", icon: Activity, delay: 5, duration: 58 },
-    { text: "Biomecânica Melhorada", icon: Zap, delay: 25, duration: 65 },
-    { text: "+50% Equilíbrio Analítico", icon: ArrowUp, delay: 35, duration: 52 },
+    { text: siteConfig.floatingStats.right[0].text, icon: Activity, delay: 5, duration: 58 },
+    { text: siteConfig.floatingStats.right[1].text, icon: Zap, delay: 25, duration: 65 },
+    { text: siteConfig.floatingStats.right[2].text, icon: ArrowUp, delay: 35, duration: 52 },
   ];
 
   return (
@@ -1097,6 +1039,15 @@ function LightTransition() {
 
 // --- App Root ---
 export default function App() {
+  // Update SEO Title and Description
+  useEffect(() => {
+    document.title = `${siteConfig.brand.name} | ${siteConfig.features.title}`;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", siteConfig.features.description);
+    }
+  }, []);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.5, // slightly smoother scroll tracking

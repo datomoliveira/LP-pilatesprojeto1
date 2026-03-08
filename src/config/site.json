@@ -1,19 +1,179 @@
 {
-    "site": {
-        "name": "Nicho 01",
-        "title": "Headline de Alto Impacto",
-        "description": "Uma breve descrição que converte o visitante em cliente.",
-        "cta": "Quero Começar Agora",
-        "social": {
-            "whatsapp": "5500000000000",
-            "instagram": "@nicho01"
-        }
+    "brand": {
+        "name": "CULT PILATES",
+        "shortName": "Cult Pilates",
+        "badge": "Refinamento em Movimento"
     },
-    "theme": {
-        "colors": {
-            "primary": "#3b82f6",
-            "secondary": "#1e40af",
-            "accent": "#ef4444"
-        }
+    "contact": {
+        "whatsappNumber": "5521986005402",
+        "whatsappFormatted": "(21) 98600-5402",
+        "instagramUrl": "https://instagram.com/cultpilates"
+    },
+    "hero": {
+        "titleLine1": "CULT",
+        "titleLine2": "PILATES",
+        "subtitle": "\"Força não é apenas poder, é precisão. Experimente a arte minimalista do Cadillac.\"",
+        "ctaButton1": "Junte-se ao Movimento",
+        "ctaButton2": "AGENDE UMA VISITA",
+        "formTitle": "Comece Sua Transformação",
+        "formSubmit": "Solicitar Contato"
+    },
+    "floatingStats": {
+        "left": [
+            {
+                "text": "+47% Flexibilidade",
+                "icon": "ArrowUp"
+            },
+            {
+                "text": "↑ Força do Core",
+                "icon": "TrendingUp"
+            },
+            {
+                "text": "+25% Capac. Pulmonar",
+                "icon": "Heart"
+            }
+        ],
+        "right": [
+            {
+                "text": "-30% Dores Lombares",
+                "icon": "Activity"
+            },
+            {
+                "text": "Biomecânica Melhorada",
+                "icon": "Zap"
+            },
+            {
+                "text": "+50% Equilíbrio Analítico",
+                "icon": "ArrowUp"
+            }
+        ]
+    },
+    "features": {
+        "sectionNumber": "01",
+        "title": "A Arquitetura do Controle",
+        "description": "Nossos espaços são projetados para remover distrações. Na Cult Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
+        "cards": [
+            {
+                "title": "O Reformer",
+                "description": "Projetado para resistência. Criado para transformação. Nossos reformers são ajustados sob medida para cada corpo.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDg2auW3Zcgj_Ges8_a-tTci75DanLw3LMyWyLrkh51HVlbDrgTCtqMjwxffHe31QZop4U7Jsax1tovNW1Bu47Rw1Rx5_E-t7OAKRwuRTAVDN20UF8fNJU5476_GIsGSru8F9kc-zkaPWpWVYjtVjNy8NarB2f2Ubapc5OJ18o0jsi8g6rLjeoY7t8HKYKPJwgxCE4U88qfoWQRukCPVt2ml-aNPm725tBWnch1DJIMAvz3Dgp_O2dIbs7tO8pcjoqat8Tag_pJFS_B"
+            },
+            {
+                "title": "A Cadeira",
+                "description": "Compacta. Poderosa. Implacável. Domine a arte do equilíbrio e da força vertical.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC6gW-HfUPGSmim9qodfCpkg4xI0HIN3tJvE_U_vdplcxDrJjXEBlTHNxRT9lZySDBz-ritzEM-hp09VYS3UX40yhnbyjRa6n16iBU9p9Y1jSXH1P6sFiNmtV3KeHKlf1-pFBf-x4st1BGB9mKCFyIFt-28hsvWA0dTiwgnZZRnWjsf3A0RhVpNy0_sCv-TrPG_EmxO5bNq2L2_Z4PuItLdqnIk3Dg8CjYiaQz8JOo1TSLHANWOgA1cRI4h0F4rFPLZ8MSkfrJ3ipm6"
+            },
+            {
+                "title": "O Cadillac",
+                "description": "O ápice do método Pilates. Movimentos que desafiam a gravidade e reconstroem a coluna.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD_FWvLzDS_3DC1PVedpInCLvv3u4TDQpKsiTOOTFHEMev_6nDwyfq_h2MQ5_JWYMZOuo43Ud2HlAwu7rJesxN6gplDwEX0fRTDohYUBtRxUvWNCnmAoYhoVPrPl_aHy_J2F1g1kSc12WLGlHeWrrtxl6zOnY9AMAh_3GUNPs9rSLRiZypQ97kCdmwfIgE92ekZeqcUm1aklfYiNykkvL2cTjpWLKBVfxlCaAW4HAkdxq8QDkLqf689nIj4p2zsyt6Gu_BotUhOdoF_"
+            }
+        ]
+    },
+    "classes": {
+        "title": "MÉTODO",
+        "cards": [
+            {
+                "title": "Reformer Pilates",
+                "description": "Treine com suporte e resistência usando reformers.",
+                "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                "title": "Mat Pilates",
+                "description": "Construa força e estabilidade com exercícios de peso corporal.",
+                "image": "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                "title": "Wunda Chair Pilates",
+                "description": "Desafie sua força e controle usando a cadeira Wunda.",
+                "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
+            }
+        ]
+    },
+    "tourSpace": {
+        "title": "NOSSO ESPAÇO",
+        "images": [
+            {
+                "title": "Vestiários",
+                "description": "Aconchego & Privacidade",
+                "image": "/images/locker.png"
+            },
+            {
+                "title": "Reformers",
+                "description": "Equipamento de Elite",
+                "image": "/images/reformer.png"
+            },
+            {
+                "title": "Recepção",
+                "description": "Boas-Vindas Calorosas",
+                "image": "/images/reception.png"
+            }
+        ]
+    },
+    "instructors": {
+        "title": "INSTRUTORES",
+        "subtitle": "Profissionais experientes para guiar sua jornada de corpo e mente.",
+        "list": [
+            {
+                "name": "Rafael Costa",
+                "role": "Mestre Especialista",
+                "bio": "Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.",
+                "image": "/images/rafael.png"
+            },
+            {
+                "name": "Camila Mendes",
+                "role": "Instrutora Sênior",
+                "bio": "Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
+                "image": "/images/camila.png"
+            }
+        ]
+    },
+    "testimonials": {
+        "badge": "Sua Jornada",
+        "title": "O Que Dizem Nossos Alunos",
+        "list": [
+            {
+                "text": "Aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.",
+                "author": "Mariana Souza"
+            },
+            {
+                "text": "Os instrutores são atenciosos ao extremo. Nível de cuidado excelente.",
+                "author": "Carlos Ferreira"
+            },
+            {
+                "text": "Ambiente espetacular e método preciso. Simplesmente incrível.",
+                "author": "Roberto Albuquerque"
+            },
+            {
+                "text": "Equipamentos novos, de elite e uma arquitetura que inspira calma total.",
+                "author": "Aline Bastos"
+            },
+            {
+                "text": "O Cadillac reformou minha mobilidade. Devo tudo aos profissionais.",
+                "author": "Guilherme Santos"
+            }
+        ]
+    },
+    "cta": {
+        "title": "Junte-se ao Movimento",
+        "subtitle": "Comece sua jornada com uma sessão introdutória cortesia e descubra por que o método Cult é o padrão global em Pilates.",
+        "buttonText": "Comece Agora"
+    },
+    "visitStudio": {
+        "title": "Visite Nosso Estúdio",
+        "subtitle": "Afastado do barulho. Projetado para harmonia.",
+        "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197505068153!2d-46.65882668447573!3d-23.56134956747246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1689700000000!5m2!1spt-BR!2sbr",
+        "locationBadge": "Rio de Janeiro",
+        "studioName": "Estúdio Rio de Janeiro",
+        "addressDetails": "Rua Visconde de Pirajá, 550, Sala 202<br />Ipanema, Rio de Janeiro - RJ<br />22410-002",
+        "hoursTitle": "Horário do Estúdio",
+        "hoursDetails": "Seg - Sex: 06:00 - 21:00<br />Sáb - Dom: 07:00 - 14:00"
+    },
+    "footer": {
+        "copyright": "© 2024 CULT PILATES BY CULT. TODOS OS DIREITOS RESERVADOS.",
+        "termsTitle": "Termos de Uso",
+        "termsText": "Bem-vindo à Cult Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. A Cult Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio mínimo estipulado em contrato, sujeito a verificação e disponibilidade de agenda na unidade.",
+        "privacyTitle": "Política de Privacidade",
+        "privacyText": "Na Cult Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios. Seus dados jamais serão repassados, vendidos ou comercializados com terceiros sem seu consentimento expresso. Você pode, a qualquer tempo, solicitar o descadastramento e remoção dos seus dados sistêmicos contatando nossos canais oficiais."
     }
 }
