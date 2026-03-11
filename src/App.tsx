@@ -110,7 +110,7 @@ function Hero() {
         <div
           ref={bgRef}
           className="w-full h-full bg-center bg-cover"
-          style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+          style={{ backgroundImage: "url('/images/hero-bg.jpeg')" }}
         ></div>
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
