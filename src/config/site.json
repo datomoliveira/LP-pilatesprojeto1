@@ -12,8 +12,8 @@
     "hero": {
         "titleLine1": "CULT",
         "titleLine2": "PILATES",
-        "subtitle": "\"Força não é apenas poder, é precisão. Experimente a arte minimalista do Cadillac.\"",
-        "ctaButton1": "Junte-se ao Movimento",
+        "subtitle": "\"Força não é apenas poder, é precisão.\"",
+        "ctaButton1": "Garanta Sua Exclusividade",
         "ctaButton2": "AGENDE UMA VISITA",
         "formTitle": "Comece Sua Transformação",
         "formSubmit": "Solicitar Contato"
@@ -51,7 +51,7 @@
     "features": {
         "sectionNumber": "01",
         "title": "A Arquitetura do Controle",
-        "description": "Nossos espaços são projetados para remover distrações. Na Cult Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
+        "description": "Nossos espaços são projetados para remover distrações. Força muscular sem impacto. Na Cult Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
         "cards": [
             {
                 "title": "O Reformer",
@@ -72,6 +72,7 @@
     },
     "classes": {
         "title": "MÉTODO",
+        "badge": "Fim das dores no corpo",
         "cards": [
             {
                 "title": "Reformer Pilates",
@@ -92,6 +93,7 @@
     },
     "tourSpace": {
         "title": "NOSSO ESPAÇO",
+        "subtitle": "Seu espaço exclusivo. Sem lotação!",
         "images": [
             {
                 "title": "Vestiários",

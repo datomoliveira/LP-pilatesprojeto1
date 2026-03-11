@@ -115,7 +115,7 @@ function Hero() {
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 mt-10 lg:mt-0">
+      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 xl:gap-40 mt-10 lg:mt-0">
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
           <div ref={badgeRef} className="mb-4">
             <span className="text-slate-400 text-xs font-bold tracking-[0.5em] uppercase">{siteConfig.brand.badge}</span>
@@ -175,6 +175,47 @@ function Hero() {
         <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent"></div>
       </div>
     </main>
+  );
+}
+
+function ScientificBenefits() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(cardsRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const stats = [...siteConfig.floatingStats.left, ...siteConfig.floatingStats.right];
+
+  return (
+    <section ref={sectionRef} className="py-20 px-6 md:px-24 relative z-10 border-t border-white/5 bg-[#121212]/50 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+          {stats.map((stat, idx) => (
+            <div key={idx} ref={el => { cardsRef.current[idx] = el; }} className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 hover:bg-white/10 transition-colors">
+              <div className="w-12 h-12 rounded-full bg-slate-100/10 flex items-center justify-center mb-2">
+                <stat.icon className="w-6 h-6 text-slate-100" />
+              </div>
+              <h4 className="text-slate-100 font-bold text-sm md:text-base tracking-wide leading-tight">{stat.text}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -532,6 +573,9 @@ function Classes() {
     <section id="metodo" ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          {siteConfig.classes.badge && (
+            <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.classes.badge}</span>
+          )}
           <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">{siteConfig.classes.title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -562,9 +606,12 @@ function TourSpace() {
     <section id="estudio" className="py-24 px-6 md:px-24 relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center mb-20 relative z-20">
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.tourSpace.title}</h2>
+        {siteConfig.tourSpace.subtitle && (
+          <p className="text-slate-400 text-lg uppercase tracking-widest">{siteConfig.tourSpace.subtitle}</p>
+        )}
       </div>
 
-      <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center min-h-[500px]">
+      <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[500px]">
         <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
@@ -678,7 +725,7 @@ function Instructors() {
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.instructors.title}</h2>
         <p className="text-slate-400 text-lg">{siteConfig.instructors.subtitle}</p>
       </div>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 xl:gap-32 text-center">
         {siteConfig.instructors.list.map((inst, idx) => (
           <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
             <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
@@ -923,7 +970,7 @@ function ElasticMouse() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[100]"
+      className="hidden md:block fixed inset-0 pointer-events-none z-[100]"
     />
   );
 }
@@ -1027,7 +1074,7 @@ function LightTransition() {
   return (
     <div
       ref={smokeRef}
-      className="fixed inset-0 pointer-events-none z-[300] flex justify-center items-center overflow-hidden"
+      className="hidden md:flex fixed inset-0 pointer-events-none z-[300] justify-center items-center overflow-hidden"
       style={{ mixBlendMode: 'screen', opacity: 0 }}
     >
       <div className="absolute w-[150vw] h-[150vh] bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_60%)] blur-[80px]" />
@@ -1091,6 +1138,7 @@ export default function App() {
       <FloatingScienceStats />
       <Navbar />
       <Hero />
+      <ScientificBenefits />
       <Features />
       <Classes />
       <TourSpace />
