@@ -120,7 +120,7 @@ function Hero() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div
           ref={bgRef}
-          className="w-full h-full bg-center bg-cover"
+          className="w-full h-full bg-[35%_center] md:bg-center bg-cover"
           style={{ backgroundImage: "url('/images/hero-new.png')" }}
         ></div>
         <div className="absolute inset-0 hero-gradient"></div>
