@@ -438,11 +438,10 @@ function Footer() {
                 <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
-              <div className="prose prose-invert max-w-none">
-                <p className="text-slate-300 leading-relaxed text-sm md:text-base font-light">
-                  {modalContent[modalType].text}
-                </p>
-              </div>
+              <div
+                className="prose prose-invert max-w-none text-slate-300 leading-relaxed text-sm md:text-base font-light"
+                dangerouslySetInnerHTML={{ __html: modalContent[modalType].text }}
+              />
             </motion.div>
           </motion.div>
         )}
