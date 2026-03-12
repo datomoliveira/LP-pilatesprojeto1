@@ -600,7 +600,7 @@ function Classes() {
           )}
           <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">{siteConfig.classes.title}</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {classes.map((cls, i) => (
             <div ref={el => { cardsRef.current[i] = el; }} key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
               <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.image})` }}></div>
@@ -1153,7 +1153,7 @@ function PilatesOnlineModal() {
               </div>
               <div>
                 <h3 className="text-white font-bold mb-2">Quais materiais eu preciso?</h3>
-                <p className="text-sm">Apenas roupas confortáveis e um tapete de exercícios (mat) ou espaço acolchoado. Nós iremos orientar sobre qualquer equipamento básico complementar ao longo da sua evolução se for necessário.</p>
+                <p className="text-sm">Apenas roupas confortáveis, um tapete de exercícios (mat) ou espaço acolchoado, e um dispositivo como celular, tablet ou notebook com câmera. É importante que ele fique posicionado de forma que você e a instrutora possam se ver em tempo real para os ajustes e correções. Nós também iremos orientar sobre qualquer demanda específica ao longo da sua evolução.</p>
               </div>
             </div>
             <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20de%20Pilates%20Online!`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-slate-100 text-black py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 transition-colors">

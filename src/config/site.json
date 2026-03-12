@@ -78,44 +78,19 @@
         "badge": "Saúde Integrada",
         "cards": [
             {
-                "title": "Pilates Terapêutico",
-                "description": "Foco na reabilitação e alívio de dores através do movimento consciente.",
+                "title": "Pilates Fitness",
+                "description": "Treinamento focado no fortalecimento muscular profundo, flexibilidade corporal e condicionamento físico rigoroso para o bem-estar diário.",
                 "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800"
             },
             {
-                "title": "Pilates Fitness",
-                "description": "Treinamento intenso para fortalecimento, flexibilidade e condicionamento físico.",
-                "image": "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                "title": "Fisioterapia",
-                "description": "Prevenção e tratamento de lesões com técnicas especializadas.",
-                "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                "title": "Massagens Terapêuticas",
-                "description": "Relaxamento e liberação de tensões musculares com massagens diversificadas.",
-                "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                "title": "Home Care",
-                "description": "Atendimento especializado no conforto da sua casa.",
-                "image": "https://plus.unsplash.com/premium_photo-1661765270275-c088eff445d4?auto=format&fit=crop&q=80&w=800"
-            },
-            {
                 "title": "Quiropraxia",
-                "description": "Ajustes articulares para restaurar a função nervosa e biomecânica.",
+                "description": "Ajustes articulares precisos para otimizar ao máximo o sistema nervoso, restaurar a biomecânica e combater o estresse musculoesquelético.",
                 "image": "https://images.unsplash.com/photo-1575424909138-46b05e592b57?auto=format&fit=crop&q=80&w=800"
             },
             {
                 "title": "RPG",
-                "description": "Reeducação Postural Global para alinhamento e saúde da coluna.",
-                "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                "title": "Auriculoterapia",
-                "description": "Estímulo de pontos na orelha para tratamento e bem-estar geral.",
-                "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800"
+                "description": "Sessões rigorosas de Reeducação Postural Global para alinhamento assertivo, corrigindo sobrecargas e devolvendo a funcionalidade da sua coluna.",
+                "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800"
             }
         ]
     },
@@ -124,36 +99,41 @@
         "subtitle": "Seu espaço exclusivo. Sem lotação!",
         "images": [
             {
-                "title": "Vestiários",
-                "description": "Aconchego & Privacidade",
-                "image": "/images/locker.png"
+                "title": "Espaço Integrado",
+                "description": "Amplo espaço para aparelhos e tatame",
+                "image": "/images/space-1.jpg"
             },
             {
-                "title": "Aparelhos",
-                "description": "Equipamento de Elite",
-                "image": "/images/reformer.png"
+                "title": "Aparelhos Clássicos",
+                "description": "Equipamentos de Qualidade",
+                "image": "/images/space-2.jpg"
             },
             {
-                "title": "Recepção",
-                "description": "Boas-Vindas Calorosas",
-                "image": "/images/reception.png"
+                "title": "Climatização ideal",
+                "description": "Ambiente Sempre Preparado",
+                "image": "/images/space-3.jpg"
+            },
+            {
+                "title": "Studio de Movimento",
+                "description": "Dinâmico prático",
+                "image": "/images/space-4.jpg"
             }
         ]
     },
     "instructors": {
         "title": "PROFISSIONAIS",
-        "subtitle": "Profissionais experientes para guiar sua jornada de corpo e mente.",
+        "subtitle": "Excelência e afeto para guiar sua jornada de corpo, reabilitação e mente.",
         "list": [
             {
-                "name": "Rafael Costa",
+                "name": "Rafaela Rosa",
                 "role": "Mestre Especialista",
-                "bio": "Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.",
+                "bio": "Dedicada e com amor pelo que faz, é especialista em reabilitação clínica e biomecânica, possuindo foco integral em seu bem-estar diário e melhora da dor.",
                 "image": "/images/rafael.png"
             },
             {
-                "name": "Camila Mendes",
+                "name": "Fabiana Oliveira",
                 "role": "Instrutora Sênior",
-                "bio": "Especialista certificada, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
+                "bio": "Especialista em movimentos corretivos, Fabiana guia suas aulas em um ritmo engajante e seguro, tonificando o seu corpo com total maestria e controle.",
                 "image": "/images/camila.png"
             }
         ]
@@ -163,31 +143,31 @@
         "title": "O Que Dizem Nossos Alunos",
         "list": [
             {
-                "text": "Aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.",
+                "text": "As sessões resolvem minhas dores de cabeça da semana toda, as profissionais são atenciosas em todos os níveis.",
                 "author": "Mariana Souza"
             },
             {
-                "text": "Os instrutores são atenciosos ao extremo. Nível de cuidado excelente.",
+                "text": "Meus problemas de lombar simplesmente sumiram. Recomendo muito o trabalho.",
                 "author": "Carlos Ferreira"
             },
             {
-                "text": "Ambiente espetacular e método preciso. Simplesmente incrível.",
+                "text": "As instrutoras mudaram totalmente meu dia a dia, corrigindo minha pisada e trazendo leveza.",
                 "author": "Roberto Albuquerque"
             },
             {
-                "text": "Equipamentos novos de elite e uma arquitetura que inspira calma total.",
+                "text": "Melhor espaço de convívio para saúde e de Pilates que eu já visitei, com equipamentos firmes de elite e acolhimento em excelência.",
                 "author": "Aline Bastos"
             },
             {
-                "text": "O Pilates reformou minha mobilidade. Devo tudo aos profissionais.",
+                "text": "A Fabiana e a Rafaela foram o divisor de águas na minha mobilidade este ano.",
                 "author": "Guilherme Santos"
             }
         ]
     },
     "cta": {
         "title": "Junte-se ao Movimento",
-        "subtitle": "Comece sua jornada com uma sessão introdutória cortesia e descubra por que o nosso método é o padrão global em saúde e Pilates.",
-        "buttonText": "Comece Agora"
+        "subtitle": "Comece sua jornada e agende logo a sua aula para descobrir por que somos os favoritos do Rio de Janeiro.",
+        "buttonText": "Fale com uma Especialista"
     },
     "visitStudio": {
         "title": "Visite Nosso Estúdio",
