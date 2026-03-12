@@ -653,28 +653,32 @@ function TourSpace() {
           <AnimatePresence>
             {images.map((item, i) => {
               let offset = i - activeIndex;
-              if (offset < -1) offset += images.length;
-              if (offset > 1) offset -= images.length;
+              if (offset < -2) offset += images.length;
+              if (offset > 2) offset -= images.length;
 
               const isCenter = offset === 0;
+              const absOffset = Math.abs(offset);
+              const isHidden = absOffset > 2;
+
+              if (isHidden) return null;
 
               return (
                 <motion.div
                   key={i}
                   animate={{
-                    x: offset * (window.innerWidth < 768 ? 120 : 250),
-                    scale: isCenter ? 1 : 0.8,
-                    z: isCenter ? 100 : 0,
-                    opacity: isCenter ? 1 : 0.5,
+                    x: offset * (window.innerWidth < 768 ? 90 : 250),
+                    scale: isCenter ? 1 : (absOffset === 1 ? 0.8 : 0.6),
+                    z: isCenter ? 100 : (absOffset === 1 ? 50 : 0),
+                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.5 : 0.2),
                   }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  style={{ zIndex: isCenter ? 30 : 10 }}
+                  style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
                   onClick={() => setActiveIndex(i)}
                   className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
                 >
                   <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.image}')` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                  <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 pointer-events-none">
+                  <div className={`absolute bottom-6 md:bottom-8 left-6 md:left-8 pointer-events-none transition-opacity duration-300 ${isCenter ? 'opacity-100' : 'opacity-0'}`}>
                     <h3 className="text-white text-xl md:text-3xl font-bold font-display drop-shadow-lg leading-tight">
                       {item.title}<br /><span className="text-sm font-normal font-sans text-slate-300">{item.description}</span>
                     </h3>
