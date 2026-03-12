@@ -22,8 +22,8 @@ function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 bg-transparent backdrop-blur-sm">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-6 text-slate-100">
-            <CircleDot className="w-6 h-6" />
+          <div className="size-8 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+            <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
@@ -362,7 +362,9 @@ function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
-              <CircleDot className="w-5 h-5 text-slate-100" />
+              <div className="size-8 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+                <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+              </div>
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
             </div>
             <div className="flex gap-8">
@@ -432,7 +434,9 @@ function Footer() {
                 <X className="w-6 h-6" />
               </button>
 
-              <CircleDot className="w-8 h-8 text-slate-500 mb-6" />
+              <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 mb-6">
+                <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+              </div>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
               <div className="prose prose-invert max-w-none">
                 <p className="text-slate-300 leading-relaxed text-sm md:text-base font-light">
@@ -619,7 +623,15 @@ function Classes() {
 
 function TourSpace() {
   const [activeIndex, setActiveIndex] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const images = siteConfig.tourSpace.images;
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const next = () => setActiveIndex((prev) => (prev + 1) % images.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -651,7 +663,7 @@ function TourSpace() {
                 <motion.div
                   key={i}
                   animate={{
-                    x: offset * (window.innerWidth < 768 ? 120 : 250),
+                    x: offset * (isMobile ? 180 : 400),
                     scale: isCenter ? 1 : 0.8,
                     z: isCenter ? 100 : 0,
                     opacity: isCenter ? 1 : 0.5,
@@ -659,7 +671,7 @@ function TourSpace() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ zIndex: isCenter ? 30 : 10 }}
                   onClick={() => setActiveIndex(i)}
-                  className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
+                  className={`absolute ${isMobile ? 'w-[280px] aspect-[4/5]' : 'w-[600px] aspect-video'} rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10 transition-shadow`}
                 >
                   <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.image}')` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
@@ -845,8 +857,10 @@ function CTA() {
   return (
     <section className="py-24 px-6 z-10 relative">
       <div className="max-w-4xl mx-auto text-center space-y-8">
-        <div className="inline-flex items-center justify-center p-4 bg-white/5 border border-white/10 rounded-full mb-2">
-          <CircleDot className="w-10 h-10 text-slate-100" />
+        <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
+          <div className="size-16 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+            <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+          </div>
         </div>
         <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">
           {siteConfig.cta.title}
