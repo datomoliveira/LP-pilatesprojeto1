@@ -1,7 +1,7 @@
 {
     "brand": {
         "name": "ESPAÇO FITNESS PILATES",
-        "shortName": "Espaço Pilates",
+        "shortName": "Espaço Fitness Pilates",
         "badge": "Refinamento em Movimento"
     },
     "contact": {
@@ -13,7 +13,7 @@
         "instagramUrl": "https://www.instagram.com/espacofitnesspilat/"
     },
     "hero": {
-        "titleLine1": "ESPAÇO",
+        "titleLine1": "ESPAÇO FITNESS",
         "titleLine2": "PILATES",
         "subtitle": "\"Para o corpo, equilíbrio. Para a mente, paz.\"",
         "ctaButton1": "Começar Jornada",
@@ -54,7 +54,7 @@
     "features": {
         "sectionNumber": "01",
         "title": "A Arquitetura do Controle",
-        "description": "Nossos espaços são projetados para remover distrações. Força muscular sem impacto. No Espaço Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
+        "description": "Nossos espaços são projetados para remover distrações. Força muscular sem impacto. No Espaço Fitness Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
         "cards": [
             {
                 "title": "O Reformer",
@@ -192,8 +192,8 @@
     "footer": {
         "copyright": "© 2026 ESPAÇO FITNESS PILATES. TODOS OS DIREITOS RESERVADOS.",
         "termsTitle": "Termos de Uso",
-        "termsText": "Bem-vindo ao Espaço Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. O Espaço Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
+        "termsText": "Bem-vindo ao Espaço Fitness Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. O Espaço Fitness Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
-        "privacyText": "No Espaço Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios.<br /><br /><strong>Uso de Cookies</strong><br /><br />Sobre o uso de Cookies Essenciais: Nosso site utiliza apenas cookies estritamente necessários (vitais) para garantir o funcionamento básico, a segurança e a correta exibição das páginas no seu dispositivo. Como estes cookies não coletam dados para marketing ou rastreamento (tracking), e são indispensáveis para a navegação, eles não exigem consentimento prévio, conforme as diretrizes da LGPD."
+        "privacyText": "No Espaço Fitness Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios.<br /><br /><strong>Uso de Cookies</strong><br /><br />Sobre o uso de Cookies Essenciais: Nosso site utiliza apenas cookies estritamente necessários (vitais) para garantir o funcionamento básico, a segurança e a correta exibição das páginas no seu dispositivo. Como estes cookies não coletam dados para marketing ou rastreamento (tracking), e são indispensáveis para a navegação, eles não exigem consentimento prévio, conforme as diretrizes da LGPD."
     }
 }
