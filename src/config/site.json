@@ -105,13 +105,28 @@
             },
             {
                 "title": "Aparelhos Clássicos",
-                "description": "Equipamentos de Qualidade",
+                "description": "Equipamentos de Elevada Qualidade",
                 "image": "/images/space-2.jpg"
             },
             {
-                "title": "Climatização ideal",
+                "title": "Climatização Ideal",
                 "description": "Ambiente Sempre Preparado",
                 "image": "/images/space-3.jpg"
+            },
+            {
+                "title": "Recepção e Acolhimento",
+                "description": "Boas-vindas ao nosso estúdio",
+                "image": "/images/space-4.jpg"
+            },
+            {
+                "title": "Área de Exercícios",
+                "description": "Mais espaço para sua saúde",
+                "image": "/images/space-5.jpg"
+            },
+            {
+                "title": "Estúdio de Movimento",
+                "description": "Dinâmico e Exclusivo",
+                "image": "/images/space-6.jpg"
             }
         ]
     },

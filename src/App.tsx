@@ -22,7 +22,7 @@ function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 bg-transparent backdrop-blur-sm">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-8 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+          <div className="size-12 md:size-14 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
             <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-widest uppercase font-display">
@@ -362,7 +362,7 @@ function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
-              <div className="size-8 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+              <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
                 <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
@@ -434,7 +434,7 @@ function Footer() {
                 <X className="w-6 h-6" />
               </button>
 
-              <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 mb-6">
+              <div className="size-16 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 mb-6">
                 <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
@@ -858,7 +858,7 @@ function CTA() {
     <section className="py-24 px-6 z-10 relative">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
-          <div className="size-16 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+          <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
             <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
           </div>
         </div>
