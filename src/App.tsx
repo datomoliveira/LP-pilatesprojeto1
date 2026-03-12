@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef, useLayoutEffect, useMemo } from 'react';
-import { CircleDot, Menu, X, ArrowRight, Instagram, Share2, Mail, Play, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Quote, ArrowUp, Activity, TrendingUp, Heart, Zap } from 'lucide-react';
+import { CircleDot, Menu, ChevronDown, X, ArrowRight, Instagram, Share2, Mail, Play, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Quote, ArrowUp, Activity, TrendingUp, Heart, Zap, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,9 +31,19 @@ function Navbar() {
         </div>
         <div className="flex items-center gap-8 relative z-50">
           <nav className="hidden md:flex items-center gap-10">
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }}>MÉTODO</a>
+            <div className="relative group">
+              <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer flex items-center gap-1" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }}>
+                MODALIDADES <ChevronDown className="w-4 h-4" />
+              </a>
+              <div className="absolute top-full left-0 mt-4 w-60 bg-[#1a1a1a] backdrop-blur-xl border border-white/10 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-3 shadow-2xl z-50">
+                {siteConfig.classes.cards.map((card, idx) => (
+                  <a key={idx} onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="px-5 py-2.5 text-slate-300 text-xs font-semibold hover:text-white hover:bg-white/10 transition-colors cursor-pointer tracking-wide">{card.title}</a>
+                ))}
+              </div>
+            </div>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }}>PILATES ONLINE</a>
             <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>INSTRUTORES</a>
+            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>PROFISSIONAIS</a>
             <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
             <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
           </nav>
@@ -56,7 +66,8 @@ function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-[#121212] flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">MÉTODO</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">MODALIDADES</a>
+            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">PILATES ONLINE</a>
             <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">ESTÚDIO</a>
             <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">INSTRUTORES</a>
             <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">DEPOIMENTOS</a>
@@ -352,18 +363,25 @@ function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
               <CircleDot className="w-5 h-5 text-slate-100" />
-              <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">Cult Pilates</h2>
+              <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
             </div>
             <div className="flex gap-8">
-              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
-                <Instagram className="w-5 h-5" />
-              </a>
+              {siteConfig.contact.instagramUrl && (
+                <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {siteConfig.contact.youtubeUrl && (
+                <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                  <Youtube className="w-5 h-5" />
+                </a>
+              )}
               <button
                 className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer"
                 onClick={() => {
                   if (navigator.share) {
                     navigator.share({
-                      title: 'Cult Pilates',
+                      title: siteConfig.brand.name,
                       url: window.location.href,
                     }).catch(console.error);
                   }
@@ -582,7 +600,7 @@ function Classes() {
           )}
           <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">{siteConfig.classes.title}</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {classes.map((cls, i) => (
             <div ref={el => { cardsRef.current[i] = el; }} key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
               <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.image})` }}></div>
@@ -703,9 +721,21 @@ function VisitStudio() {
               <div className="flex gap-4">
                 <Phone className="w-6 h-6 text-slate-400 shrink-0" />
                 <div>
-                  <p className="text-slate-100 font-medium">{siteConfig.contact.whatsappFormatted}</p>
+                  <p className="text-slate-100 font-medium">{siteConfig.contact.whatsappFormatted} (WhatsApp)</p>
+                  {siteConfig.contact.phone2 && (
+                    <p className="text-slate-100 font-medium mt-1">{siteConfig.contact.phone2} (Fixo)</p>
+                  )}
                 </div>
               </div>
+
+              {siteConfig.contact.email && (
+                <div className="flex gap-4">
+                  <Mail className="w-6 h-6 text-slate-400 shrink-0" />
+                  <div>
+                    <a href={`mailto:${siteConfig.contact.email}`} className="text-slate-100 font-medium hover:underline word-break break-all">{siteConfig.contact.email}</a>
+                  </div>
+                </div>
+              )}
 
               <div className="flex gap-4">
                 <Clock className="w-6 h-6 text-slate-400 shrink-0" />
@@ -1088,6 +1118,54 @@ function LightTransition() {
   );
 }
 
+function PilatesOnlineModal() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-pilates-modal', handleOpen);
+    return () => window.removeEventListener('open-pilates-modal', handleOpen);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 md:p-6" onClick={() => setIsOpen(false)}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="bg-[#1a1a1a] border border-white/10 rounded-3xl p-6 md:p-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto relative shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-colors text-slate-400 hover:text-white">
+              <X className="w-6 h-6" />
+            </button>
+            <h2 className="text-3xl font-bold font-display text-white mb-6">Pilates Online</h2>
+            <div className="space-y-6 mb-8 text-slate-300">
+              <div>
+                <h3 className="text-white font-bold mb-2">Como funciona o Pilates Online?</h3>
+                <p className="text-sm">Oferecemos aulas ao vivo e personalizadas, onde nossos instrutores acompanham e corrigem seus movimentos em tempo real. Tudo isso no conforto da sua casa, bastando uma conexão com a internet e espaço para um tapete de exercícios.</p>
+              </div>
+              <div>
+                <h3 className="text-white font-bold mb-2">Funciona mesmo?</h3>
+                <p className="text-sm">Sim! O Pilates Mat (solo) é a base de todo o método. Com nossa atenção intensiva e profissional ao vivo, você recruta uma estabilidade profunda, adquirindo os mesmos benefícios de fortalecimento e flexibilidade do estúdio.</p>
+              </div>
+              <div>
+                <h3 className="text-white font-bold mb-2">Quais materiais eu preciso?</h3>
+                <p className="text-sm">Apenas roupas confortáveis e um tapete de exercícios (mat) ou espaço acolchoado. Nós iremos orientar sobre qualquer equipamento básico complementar ao longo da sua evolução se for necessário.</p>
+              </div>
+            </div>
+            <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20aulas%20de%20Pilates%20Online!`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full bg-slate-100 text-black py-4 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-200 transition-colors">
+              Agendar Aula Online <ArrowRight className="w-5 h-5" />
+            </a>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 // --- App Root ---
 export default function App() {
   // Update SEO Title and Description
@@ -1136,6 +1214,7 @@ export default function App() {
 
   return (
     <div className="bg-[#121212] min-h-screen text-slate-100 font-sans selection:bg-slate-100 selection:text-black relative overflow-hidden">
+      <PilatesOnlineModal />
       <LightTransition />
       <ElasticMouse />
       <Particles />
