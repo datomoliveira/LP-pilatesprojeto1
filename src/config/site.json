@@ -85,12 +85,12 @@
             {
                 "title": "Quiropraxia",
                 "description": "Ajustes articulares precisos para otimizar ao máximo o sistema nervoso, restaurar a biomecânica e combater o estresse musculoesquelético.",
-                "image": "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&q=80&w=800"
+                "image": "/images/quiropraxia.png"
             },
             {
                 "title": "RPG",
                 "description": "Sessões rigorosas de Reeducação Postural Global para alinhamento assertivo, corrigindo sobrecargas e devolvendo a funcionalidade da sua coluna.",
-                "image": "https://images.unsplash.com/photo-1570829460005-c840387bb1ea?auto=format&fit=crop&q=80&w=800"
+                "image": "/images/rpg.png"
             }
         ]
     },
