@@ -663,7 +663,7 @@ function TourSpace() {
                 <motion.div
                   key={i}
                   animate={{
-                    x: offset * (isMobile ? 180 : 400),
+                    x: offset * (window.innerWidth < 768 ? 120 : 250),
                     scale: isCenter ? 1 : 0.8,
                     z: isCenter ? 100 : 0,
                     opacity: isCenter ? 1 : 0.5,
@@ -671,7 +671,7 @@ function TourSpace() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ zIndex: isCenter ? 30 : 10 }}
                   onClick={() => setActiveIndex(i)}
-                  className={`absolute ${isMobile ? 'w-[280px] aspect-[4/5]' : 'w-[600px] aspect-video'} rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10 transition-shadow`}
+                  className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
                 >
                   <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.image}')` }}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>

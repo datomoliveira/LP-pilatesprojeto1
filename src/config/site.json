@@ -59,17 +59,17 @@
             {
                 "title": "O Reformer",
                 "description": "Projetado para resistência. Criado para transformação. Nossos reformers são ajustados sob medida para cada corpo.",
-                "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800"
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDg2auW3Zcgj_Ges8_a-tTci75DanLw3LMyWyLrkh51HVlbDrgTCtqMjwxffHe31QZop4U7Jsax1tovNW1Bu47Rw1Rx5_E-t7OAKRwuRTAVDN20UF8fNJU5476_GIsGSru8F9kc-zkaPWpWVYjtVjNy8NarB2f2Ubapc5OJ18o0jsi8g6rLjeoY7t8HKYKPJwgxCE4U88qfoWQRukCPVt2ml-aNPm725tBWnch1DJIMAvz3Dgp_O2dIbs7tO8pcjoqat8Tag_pJFS_B"
             },
             {
                 "title": "A Cadeira",
                 "description": "Compacta. Poderosa. Implacável. Domine a arte do equilíbrio e da força vertical.",
-                "image": "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800"
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC6gW-HfUPGSmim9qodfCpkg4xI0HIN3tJvE_U_vdplcxDrJjXEBlTHNxRT9lZySDBz-ritzEM-hp09VYS3UX40yhnbyjRa6n16iBU9p9Y1jSXH1P6sFiNmtV3KeHKlf1-pFBf-x4st1BGB9mKCFyIFt-28hsvWA0dTiwgnZZRnWjsf3A0RhVpNy0_sCv-TrPG_EmxO5bNq2L2_Z4PuItLdqnIk3Dg8CjYiaQz8JOo1TSLHANWOgA1cRI4h0F4rFPLZ8MSkfrJ3ipm6"
             },
             {
                 "title": "O Cadillac",
                 "description": "O ápice do método Pilates. Movimentos que desafiam a gravidade e reconstroem a coluna.",
-                "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD_FWvLzDS_3DC1PVedpInCLvv3u4TDQpKsiTOOTFHEMev_6nDwyfq_h2MQ5_JWYMZOuo43Ud2HlAwu7rJesxN6gplDwEX0fRTDohYUBtRxUvWNCnmAoYhoVPrPl_aHy_J2F1g1kSc12WLGlHeWrrtxl6zOnY9AMAh_3GUNPs9rSLRiZypQ97kCdmwfIgE92ekZeqcUm1aklfYiNykkvL2cTjpWLKBVfxlCaAW4HAkdxq8QDkLqf689nIj4p2zsyt6Gu_BotUhOdoF_"
             }
         ]
     },
@@ -85,12 +85,12 @@
             {
                 "title": "Quiropraxia",
                 "description": "Ajustes articulares precisos para otimizar ao máximo o sistema nervoso, restaurar a biomecânica e combater o estresse musculoesquelético.",
-                "image": "https://images.unsplash.com/photo-1575424909138-46b05e592b57?auto=format&fit=crop&q=80&w=800"
+                "image": "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&q=80&w=800"
             },
             {
                 "title": "RPG",
                 "description": "Sessões rigorosas de Reeducação Postural Global para alinhamento assertivo, corrigindo sobrecargas e devolvendo a funcionalidade da sua coluna.",
-                "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800"
+                "image": "https://images.unsplash.com/photo-1570829460005-c840387bb1ea?auto=format&fit=crop&q=80&w=800"
             }
         ]
     },
@@ -112,11 +112,6 @@
                 "title": "Climatização ideal",
                 "description": "Ambiente Sempre Preparado",
                 "image": "/images/space-3.jpg"
-            },
-            {
-                "title": "Studio de Movimento",
-                "description": "Dinâmico prático",
-                "image": "/images/space-4.jpg"
             }
         ]
     },
