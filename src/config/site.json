@@ -1,24 +1,64 @@
 {
     "brand": {
-        "name": "ESPAÇO FITNESS PILATES",
-        "shortName": "Espaço Fitness Pilates",
-        "badge": "Refinamento em Movimento"
+        "name": "GM Studio Pilates",
+        "shortName": "GM Studio Pilates",
+        "badge": "Refinamento em Movimento",
+        "logoIcon": "all_inclusive",
+        "logoUrl": "https://images2.imgbox.com/d8/40/O8Pd3VvT_o.jpg",
+        "tagline": "A Arte do Movimento"
+    },
+    "seo": {
+        "title": "GM Studio Pilates | A Arte do Movimento",
+        "description": "GM Studio Pilates - A interseção entre engenharia física e clareza mental. Estúdio de Pilates premium focado em alta performance e reabilitação.",
+        "keywords": "Pilates, Original Pilates, Estúdio, Saúde, Reabilitação, Alta Performance, Aparelhos"
     },
     "contact": {
         "whatsappNumber": "5521983199177",
         "whatsappFormatted": "(21) 98319-9177",
         "phone2": "(21) 3245-5758",
-        "email": "espacofitnesspilates@gmail.com",
-        "youtubeUrl": "https://www.youtube.com/@espacofitnesspilates8960",
-        "instagramUrl": "https://www.instagram.com/espacofitnesspilat/"
+        "email": "contato@originalpilates.com.br",
+        "youtubeUrl": "https://www.youtube.com",
+        "instagramUrl": "https://www.instagram.com"
+    },
+    "nav": {
+        "links": [
+            {
+                "label": "Aulas",
+                "href": "#aulas"
+            },
+            {
+                "label": "Estúdio",
+                "href": "#estudio"
+            },
+            {
+                "label": "Instrutores",
+                "href": "#instrutores"
+            },
+            {
+                "label": "Clientes",
+                "href": "#relatos"
+            },
+            {
+                "label": "Contato",
+                "href": "#contato"
+            }
+        ],
+        "ctaLabel": "Agende uma Aula"
     },
     "hero": {
-        "titleLine1": "ESPAÇO FITNESS",
-        "titleLine2": "PILATES",
-        "subtitle": "\"Para o corpo, equilíbrio. Para a mente, paz.\"",
-        "ctaButton1": "Quero Entrar",
+        "titleLine1": "DÓI PARA FAZER O",
+        "titleLine2": "SIMPLES?",
+        "subtitle": "REDEFINA SUA PRIORIDADE! Volte a brincar com filhos e netos sem dor, fortalecendo o corpo em um ambiente que te acompanha e te faz sentir bem. Desligue a tensão, durma melhor e recupere a elegância da sua postura.",
+        "backgroundImage": "https://images2.imgbox.com/04/e2/O3GsZaR5_o.png",
+        "ctaButton1": "O Método",
         "ctaButton2": "AGENDE UMA VISITA",
-        "formTitle": "Comece Sua Transformação",
+        "formTitle": "Inicie Sua Transformação",
+        "formSubtitle": "Reserve uma experiência.",
+        "formFields": {
+            "name": "Seu Nome Completo",
+            "phone": "Número de Celular",
+            "message": "Conte-nos seus objetivos (Opcional)"
+        },
         "formSubmit": "Solicitar Contato"
     },
     "floatingStats": {
@@ -52,24 +92,30 @@
         ]
     },
     "features": {
+        "sectionId": "aulas",
         "sectionNumber": "01",
-        "title": "A Arquitetura do Controle",
-        "description": "Nossos espaços são projetados para remover distrações. Força muscular sem impacto. No Espaço Fitness Pilates, focamos na interseção entre engenharia física e clareza mental usando os equipamentos mais avançados do mundo.",
+        "title": "O Método",
+        "titleAccent": "Estúdio Katia Rodrigues",
+        "description": "Nossa abordagem moderna combina princípios clássicos com a ciência atlética contemporânea para entregar resultados inigualáveis para sua postura, força e clareza mental.",
+        "exploreLinkLabel": "Explore todos os programas",
         "cards": [
             {
-                "title": "O Reformer",
-                "description": "Projetado para resistência. Criado para transformação. Nossos reformers são ajustados sob medida para cada corpo.",
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDg2auW3Zcgj_Ges8_a-tTci75DanLw3LMyWyLrkh51HVlbDrgTCtqMjwxffHe31QZop4U7Jsax1tovNW1Bu47Rw1Rx5_E-t7OAKRwuRTAVDN20UF8fNJU5476_GIsGSru8F9kc-zkaPWpWVYjtVjNy8NarB2f2Ubapc5OJ18o0jsi8g6rLjeoY7t8HKYKPJwgxCE4U88qfoWQRukCPVt2ml-aNPm725tBWnch1DJIMAvz3Dgp_O2dIbs7tO8pcjoqat8Tag_pJFS_B"
+                "title": "Instrutores de Elite",
+                "description": "Treine com os profissionais mais certificados do mercado, que personalizam cada movimento para as necessidades específicas do seu corpo.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDN-81YhYzCN1mHhCFlia8WOHF1ZdG2OmJwh7zVCJUdBXmXNxAuot6KH_usUBnDrcvIfDmUMolV5LhZI-YbcKkN5ybvIEKHkVpzH_Kkb5tKHykncpBazQCstXxNveafqBSUtEqmTQb-Xl2PHnEHbcAclS7NDMEcwUZLQbdE5dR4kMfW9jLQ-85SHrAEjvCWMEYAQRI33cy8RXTgPFU3Q-ow924TB4tQOB3FsskPJeoGI_hJnbY9wpJGxil_DadsxbZxAN1E4bzNaZUk",
+                "imageAlt": "Instrutor orientando aluno nos equipamentos de pilates"
             },
             {
-                "title": "A Cadeira",
-                "description": "Compacta. Poderosa. Implacável. Domine a arte do equilíbrio e da força vertical.",
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC6gW-HfUPGSmim9qodfCpkg4xI0HIN3tJvE_U_vdplcxDrJjXEBlTHNxRT9lZySDBz-ritzEM-hp09VYS3UX40yhnbyjRa6n16iBU9p9Y1jSXH1P6sFiNmtV3KeHKlf1-pFBf-x4st1BGB9mKCFyIFt-28hsvWA0dTiwgnZZRnWjsf3A0RhVpNy0_sCv-TrPG_EmxO5bNq2L2_Z4PuItLdqnIk3Dg8CjYiaQz8JOo1TSLHANWOgA1cRI4h0F4rFPLZ8MSkfrJ3ipm6"
+                "title": "Estúdio de Última Geração",
+                "description": "Equipado com os mais recentes Reformers personalizados e aparelhos especializados em um espaço sereno e arquitetonicamente planejado.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD_m5asd1aQaAm6ujjsJZmU1IWFmBECXA8ABRLzlmqiFoH-Sd_XxYYqDRFYofZutJUeGKrf5SkZVWkS3TFypiVE0V4IM-JIlUQoEOfcG8ignbXPwqOknVQw94r4PbYe5XXiwS3dztCz-ppRCRtKrfFneZcKScg_9aT9n8hDv-GmfYNC3VYLXgssMgDiOjzrNAGR4JjKpGaLzAJiXjby47E4J1otulDDCmUMuxZoHy2Lbmk8ECkbhwKJpIeAzFvQ-KnqXVcINJ6mL59s",
+                "imageAlt": "Estúdio moderno e elegante com máquinas de reformer de alta qualidade"
             },
             {
-                "title": "O Cadillac",
-                "description": "O ápice do método Pilates. Movimentos que desafiam a gravidade e reconstroem a coluna.",
-                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuD_FWvLzDS_3DC1PVedpInCLvv3u4TDQpKsiTOOTFHEMev_6nDwyfq_h2MQ5_JWYMZOuo43Ud2HlAwu7rJesxN6gplDwEX0fRTDohYUBtRxUvWNCnmAoYhoVPrPl_aHy_J2F1g1kSc12WLGlHeWrrtxl6zOnY9AMAh_3GUNPs9rSLRiZypQ97kCdmwfIgE92ekZeqcUm1aklfYiNykkvL2cTjpWLKBVfxlCaAW4HAkdxq8QDkLqf689nIj4p2zsyt6Gu_BotUhOdoF_"
+                "title": "Programas Personalizados",
+                "description": "Da reabilitação ao condicionamento atlético, nossas aulas são desenhadas para todos os níveis, do iniciante ao praticante avançado.",
+                "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDYUYXORD5DgwCWk_Z5WFewPI0sn8icrj9lnYXp0u7cT06Ore_FfchXf4ZRecPsv2n3yUdSNN-D7531zLkSNQc1YPBMUZ53EayP25nN5JpgapW6fF1MOQ1G85LoygVopD5PxtQt7mh4EN59K4kRER3W22DblIKv9TCOcfrjknjUkS0SC6fUqX2nO6sBW8YOyvUARuK6W0P3-w-SI-7lvb5ZrpC8i3xyWeZ1XXGScsR-qmFSVMZCnRIGfOq137R6pAE1qJY8Qg0mxKbt",
+                "imageAlt": "Detalhe das molas e componentes mecânicos do pilates reformer"
             }
         ]
     },
@@ -95,105 +141,153 @@
         ]
     },
     "tourSpace": {
-        "title": "NOSSO ESPAÇO",
-        "subtitle": "Seu espaço exclusivo. Sem lotação!",
+        "sectionId": "estudio",
+        "title": "Explore Nosso Espaço",
+        "subtitle": "Experimente nosso estúdio de forma imersiva.",
         "images": [
             {
-                "title": "Espaço Integrado",
-                "description": "Amplo espaço para aparelhos e tatame",
-                "image": "/images/space-1.jpg"
+                "title": "Vestiários",
+                "description": "Aconchego & Privacidade",
+                "image": "/studio_lockers_1772812338187.png"
             },
             {
-                "title": "Aparelhos Clássicos",
-                "description": "Equipamentos de Elevada Qualidade",
-                "image": "/images/space-2.jpg"
+                "title": "Reformers",
+                "description": "Equipamento de Elite",
+                "image": "/studio_reformer_1772812354129.png"
             },
             {
-                "title": "Climatização Ideal",
-                "description": "Ambiente Sempre Preparado",
-                "image": "/images/space-3.jpg"
-            },
-            {
-                "title": "Recepção e Acolhimento",
-                "description": "Boas-vindas ao nosso estúdio",
-                "image": "/images/reception.png"
-            },
-            {
-                "title": "Área de Exercícios",
-                "description": "Mais espaço para sua saúde",
-                "image": "/images/space-5.jpg"
-            },
-            {
-                "title": "Estúdio de Movimento",
-                "description": "Dinâmico e Exclusivo",
-                "image": "/images/space-6.jpg"
+                "title": "Recepção",
+                "description": "Boas-Vindas Calorosas",
+                "image": "/studio_reception_1772812374347.png"
             }
         ]
     },
     "instructors": {
-        "title": "PROFISSIONAIS",
-        "subtitle": "Excelência e afeto para guiar sua jornada de corpo, reabilitação e mente.",
+        "sectionId": "instrutores",
+        "title": "Nossos Instrutores",
+        "subtitle": "Profissionais experientes para guiar sua jornada de corpo e mente.",
         "list": [
             {
-                "name": "Rafaela Rosa",
+                "name": "Rafael Costa",
                 "role": "Mestre Especialista",
-                "bio": "Dedicada e com amor pelo que faz, é especialista em reabilitação clínica e biomecânica, possuindo foco integral em seu bem-estar diário e melhora da dor.",
-                "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800"
+                "bio": "Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.",
+                "image": "/instructor_male_1772812388656.png"
             },
             {
-                "name": "Fabiana Oliveira",
+                "name": "Camila Mendes",
                 "role": "Instrutora Sênior",
-                "bio": "Especialista em movimentos corretivos, Fabiana guia suas aulas em um ritmo engajante e seguro, tonificando o seu corpo com total maestria e controle.",
-                "image": "/images/camila.png"
+                "bio": "Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
+                "image": "/instructor_female_1772812404108.png"
             }
         ]
     },
     "testimonials": {
+        "sectionId": "relatos",
         "badge": "Sua Jornada",
         "title": "O Que Dizem Nossos Alunos",
         "list": [
             {
-                "text": "As sessões resolvem minhas dores de cabeça da semana toda, as profissionais são atenciosas em todos os níveis.",
+                "text": "Minha vida se transformou. O foco absoluto na respiração e no movimento exato curou minhas dores das costas em poucas semanas. A melhor escolha que fiz!",
+                "author": "João Silva"
+            },
+            {
+                "text": "Nunca experimentei um estúdio com uma estrutura tão luxuosa. As aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.",
                 "author": "Mariana Souza"
             },
             {
-                "text": "Meus problemas de lombar simplesmente sumiram. Recomendo muito o trabalho.",
+                "text": "Os instrutores são atenciosos ao extremo. Vale cada centavo do investimento pelo nível de cuidado e personalização no meu treino atlético.",
                 "author": "Carlos Ferreira"
             },
             {
-                "text": "As instrutoras mudaram totalmente meu dia a dia, corrigindo minha pisada e trazendo leveza.",
-                "author": "Roberto Albuquerque"
-            },
-            {
-                "text": "Melhor espaço de convívio para saúde e de Pilates que eu já visitei, com equipamentos firmes de elite e acolhimento em excelência.",
+                "text": "Melhor espaço de Pilates que já visitei, com equipamentos de elite e acolhimento em excelência. Recomendo muito o trabalho.",
                 "author": "Aline Bastos"
             },
             {
-                "text": "A Fabiana e a Rafaela foram o divisor de águas na minha mobilidade este ano.",
+                "text": "As instrutoras foram o divisor de águas na minha mobilidade este ano. Resultados incríveis em pouco tempo.",
                 "author": "Guilherme Santos"
             }
         ]
     },
     "cta": {
+        "sectionId": "contato",
+        "icon": "energy_savings_leaf",
         "title": "Junte-se ao Movimento",
-        "subtitle": "Comece sua jornada e agende logo a sua aula para descobrir por que somos os favoritos do Rio de Janeiro.",
-        "buttonText": "Fale com uma Especialista"
+        "subtitle": "Comece sua jornada com uma sessão introdutória e descubra por que somos os favoritos do Rio de Janeiro.",
+        "buttonText": "Comece Agora"
     },
     "visitStudio": {
+        "sectionId": "localizacao",
         "title": "Visite Nosso Estúdio",
         "subtitle": "Afastado do barulho. Projetado para harmonia.",
-        "mapEmbedUrl": "https://maps.google.com/maps?q=Espa%C3%A7o%20Fitness%20Pilates%2C%20Rua%20Vitor%20Alves%2C%202096&t=&z=16&ie=UTF8&iwloc=&output=embed",
+        "mapEmbedUrl": "https://maps.google.com/maps?q=Rua+Vitor+Alves,+2096,+Campo+Grande,+Rio+de+Janeiro&t=&z=16&ie=UTF8&iwloc=&output=embed",
         "locationBadge": "Rio de Janeiro",
-        "studioName": "Espaço Fitness Pilates",
+        "studioName": "Original Pilates",
         "addressDetails": "Rua Vitor Alves, 2096 Sala-101 Sobreloja<br />Campo Grande, Rio de Janeiro – RJ<br />23087-230",
         "hoursTitle": "Horário do Estúdio",
         "hoursDetails": "Segunda-feira: 07:00 – 21:00<br />Terça-feira: 06:00 – 21:00<br />Quarta-feira: 07:00 – 21:00<br />Quinta-feira: 06:00 – 21:00<br />Sexta-feira: 07:00 – 21:00<br />Sábado: 07:00 – 12:00<br />Domingo: Fechado"
     },
     "footer": {
-        "copyright": "© 2026 ESPAÇO FITNESS PILATES. TODOS OS DIREITOS RESERVADOS.",
+        "description": "Redefinando o padrão de movimento e bem-estar através de precisão, prática e orientação profissional.",
+        "copyright": "© 2026 ORIGINAL PILATES. TODOS OS DIREITOS RESERVADOS.",
+        "links": {
+            "studio": [
+                {
+                    "label": "Unidades",
+                    "href": "#"
+                },
+                {
+                    "label": "Sessões Particulares",
+                    "href": "#"
+                },
+                {
+                    "label": "Equipamentos",
+                    "href": "#"
+                },
+                {
+                    "label": "Carreiras",
+                    "href": "#"
+                }
+            ],
+            "learn": [
+                {
+                    "label": "O Método",
+                    "href": "#"
+                },
+                {
+                    "label": "Formação de Instrutores",
+                    "href": "#"
+                },
+                {
+                    "label": "Workshops",
+                    "href": "#"
+                },
+                {
+                    "label": "Blog",
+                    "href": "#"
+                }
+            ],
+            "connect": [
+                {
+                    "label": "Fale Conosco",
+                    "href": "#"
+                },
+                {
+                    "label": "Dúvidas Frequentes",
+                    "href": "#"
+                },
+                {
+                    "label": "Cartão Presente",
+                    "href": "#"
+                },
+                {
+                    "label": "Suporte",
+                    "href": "#"
+                }
+            ]
+        },
         "termsTitle": "Termos de Uso",
-        "termsText": "Bem-vindo ao Espaço Fitness Pilates. Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. O Espaço Fitness Pilates se reserva o direito de modificar as condições a qualquer momento. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
+        "termsText": "Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
-        "privacyText": "No Espaço Fitness Pilates, a sua privacidade é uma prioridade. Em conformidade absoluta com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos (como nome, telefone e e-mail) serão recolhidos e utilizados de forma transparente, exclusivamente visando a facilitação do seu agendamento, comunicação direta e melhoria da sua experiência nos nossos estúdios.<br /><br /><strong>Uso de Cookies</strong><br /><br />Sobre o uso de Cookies Essenciais: Nosso site utiliza apenas cookies estritamente necessários (vitais) para garantir o funcionamento básico, a segurança e a correta exibição das páginas no seu dispositivo. Como estes cookies não coletam dados para marketing ou rastreamento (tracking), e são indispensáveis para a navegação, eles não exigem consentimento prévio, conforme as diretrizes da LGPD."
+        "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento prévio conforme diretrizes da LGPD."
     }
 }
