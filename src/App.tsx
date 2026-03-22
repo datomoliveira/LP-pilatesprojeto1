@@ -20,12 +20,12 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 bg-transparent backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:py-6 md:px-12 bg-transparent backdrop-blur-sm">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-12 md:size-14 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+          <div className="size-10 md:size-14 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
             <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" className="w-full h-full object-cover scale-110" />
           </div>
-          <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-widest uppercase font-display">
+          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
           </h2>
         </div>
@@ -85,20 +85,117 @@ function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    let loadedCount = 0;
+    const loadedImages: HTMLImageElement[] = [];
+    const count = isMobile ? 66 : 82;
+    const pathPrefix = isMobile ? '/images/hero_mobile/202603221804_' : '/images/hero/Woman_performin_';
+
+    for (let i = 0; i < count; i++) {
+      const img = new Image();
+      const frameNum = String(i).padStart(3, '0');
+      img.src = `${pathPrefix}${frameNum}.webp`;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === count) {
+          setImages(loadedImages);
+        }
+      };
+      loadedImages.push(img);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (images.length === 0 || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const render = (index: number) => {
+      if (!images[index]) return;
+      const img = images[index];
+      
+      const winW = window.innerWidth;
+      const winH = window.innerHeight;
+      canvas.width = winW;
+      canvas.height = winH;
+
+      const imgW = img.naturalWidth;
+      const imgH = img.naturalHeight;
+      const imgRatio = imgW / imgH;
+      const canvasRatio = winW / winH;
+
+      let dW, dH, dX, dY;
+      if (canvasRatio > imgRatio) {
+        dW = winW;
+        dH = winW / imgRatio;
+        dX = 0;
+        dY = (winH - dH) / 2;
+      } else {
+        dW = winH * imgRatio;
+        dH = winH;
+        dX = (winW - dW) / 2;
+        dY = 0;
+      }
+
+      ctx.clearRect(0, 0, winW, winH);
+      ctx.drawImage(img, dX, dY, dW, dH);
+    };
+
+    render(0);
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: "bottom top",
+      scrub: 1.5, // Suavização extra no Canvas
+      onUpdate: (self) => {
+        const index = Math.min(images.length - 1, Math.floor(self.progress * images.length));
+        render(index);
+      }
+    });
+
+    const handleResize = () => {
+      if (trigger) {
+        const index = Math.min(images.length - 1, Math.floor(trigger.progress * images.length));
+        render(index);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      trigger.kill();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [images]);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.3, defaults: { ease: "power3.out" } });
 
       // Configuração inicial (escondendo)
-      gsap.set(bgRef.current, { scale: 1.1 });
+      if (canvasRef.current) gsap.set(canvasRef.current, { scale: 1.1 });
       gsap.set(titleRef.current, { y: 100, opacity: 0, clipPath: 'inset(0 0 100% 0)' });
       gsap.set([badgeRef.current, subtitleRef.current, buttonsRef.current], { y: 20, opacity: 0 });
       gsap.set(cardRef.current, { y: 50, opacity: 0, rotationX: 10 });
 
-      tl.to(bgRef.current, { scale: 1, duration: 2, ease: "power2.out" })
+      // @ts-ignore
+      tl.to(canvasRef.current, { scale: 1, duration: 2, ease: "power2.out" })
         .to(titleRef.current, {
           y: 0,
           opacity: 1,
@@ -118,11 +215,18 @@ function Hero() {
   return (
     <main ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div
-          ref={bgRef}
-          className="w-full h-full bg-[35%_center] md:bg-center bg-cover"
-          style={{ backgroundImage: "url('/images/hero-new.png')" }}
-        ></div>
+        <canvas
+          ref={canvasRef}
+          className="w-full h-full"
+        />
+        {images.length === 0 && (
+          <div 
+            className="absolute inset-0 z-0 bg-cover bg-center" 
+            style={{ 
+              backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
+            }}
+          ></div>
+        )}
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 
@@ -304,7 +408,7 @@ function Features() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10">
+    <section ref={sectionRef} className="py-12 px-6 md:px-24 relative z-10 bg-[#121212] -mt-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
@@ -315,9 +419,7 @@ function Features() {
               {siteConfig.features.description}
             </p>
           </div>
-          <div className="flex gap-2">
-            <span className="text-slate-500 font-display text-8xl font-black opacity-10 select-none">{siteConfig.features.sectionNumber}</span>
-          </div>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -595,7 +697,7 @@ function Classes() {
   const classes = siteConfig.classes.cards;
 
   return (
-    <section id="metodo" ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10 border-t border-white/5">
+    <section id="metodo" ref={sectionRef} className="py-12 px-6 md:px-24 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           {siteConfig.classes.badge && (
@@ -636,7 +738,7 @@ function TourSpace() {
   const prev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section id="estudio" className="py-24 px-6 md:px-24 relative z-10 overflow-hidden">
+    <section id="estudio" className="py-12 px-6 md:px-24 relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center mb-20 relative z-20">
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.tourSpace.title}</h2>
         {siteConfig.tourSpace.subtitle && (
@@ -649,7 +751,7 @@ function TourSpace() {
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
-        <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible">
+        <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible" style={{ perspective: "1000px" }}>
           <AnimatePresence>
             {images.map((item, i) => {
               let offset = i - activeIndex;
@@ -662,16 +764,23 @@ function TourSpace() {
 
               if (isHidden) return null;
 
+              // Circular orbit coords index
+              const angle = offset * 40 * (Math.PI / 180); // 40 degrees step
+              const radiusX = window.innerWidth < 768 ? 100 : 280;
+              const xPos = Math.sin(angle) * radiusX;
+              const zPos = Math.cos(angle) * 150; 
+
               return (
                 <motion.div
                   key={i}
                   animate={{
-                    x: offset * (window.innerWidth < 768 ? 90 : 250),
-                    scale: isCenter ? 1 : (absOffset === 1 ? 0.8 : 0.6),
-                    z: isCenter ? 100 : (absOffset === 1 ? 50 : 0),
-                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.5 : 0.2),
+                    x: xPos,
+                    z: zPos,
+                    scale: isCenter ? 1 : 0.82,
+                    rotateY: offset * -15, // rotate inward
+                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.5 : 0.1),
                   }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
                   style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
                   onClick={() => setActiveIndex(i)}
                   className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
@@ -699,7 +808,7 @@ function TourSpace() {
 
 function VisitStudio() {
   return (
-    <section id="contato" className="py-24 px-6 md:px-24 relative z-10 border-b border-white/5">
+    <section id="contato" className="py-12 px-6 md:px-24 relative z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.visitStudio.title}</h2>
@@ -752,11 +861,24 @@ function VisitStudio() {
                 </div>
               )}
 
-              <div className="flex gap-4">
-                <Clock className="w-6 h-6 text-slate-400 shrink-0" />
-                <div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">{siteConfig.visitStudio.hoursTitle}</h3>
-                  <p className="text-slate-400" dangerouslySetInnerHTML={{ __html: siteConfig.visitStudio.hoursDetails }}></p>
+              <div className="flex flex-col gap-4 w-full">
+                <div className="flex gap-4 items-center">
+                  <Clock className="w-6 h-6 text-slate-400 shrink-0" />
+                  <h3 className="text-xl font-bold text-slate-100">{siteConfig.visitStudio.hoursTitle}</h3>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col gap-2 w-full max-w-sm">
+                  {siteConfig.visitStudio.hoursDetails.split('<br />').map((row: string, idx: number) => {
+                     const parts = row.split(':');
+                     const day = parts[0];
+                     const hour = parts.slice(1).join(':').trim();
+                     if (!day) return null;
+                     return (
+                       <div key={idx} className="flex justify-between items-center py-1.5 border-b border-white/5 last:border-b-0 text-sm">
+                         <span className="text-slate-400 font-medium">{day}</span>
+                         <span className="text-slate-100 font-bold">{hour}</span>
+                       </div>
+                     );
+                  })}
                 </div>
               </div>
             </div>
@@ -769,7 +891,7 @@ function VisitStudio() {
 
 function Instructors() {
   return (
-    <section id="instrutores" className="py-24 px-6 md:px-24 relative z-10 border-y border-white/5">
+    <section id="instrutores" className="py-12 px-6 md:px-24 relative z-10 border-y border-white/5">
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.instructors.title}</h2>
         <p className="text-slate-400 text-lg">{siteConfig.instructors.subtitle}</p>
@@ -799,7 +921,7 @@ function Testimonials() {
   const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section id="depoimentos" className="py-24 px-6 md:px-24 relative overflow-hidden z-10 border-b border-white/5">
+    <section id="depoimentos" className="py-12 px-6 md:px-24 relative overflow-hidden z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.testimonials.badge}</span>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.testimonials.title}</h2>
@@ -858,7 +980,7 @@ function Testimonials() {
 
 function CTA() {
   return (
-    <section className="py-24 px-6 z-10 relative">
+    <section className="py-12 px-6 z-10 relative">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
           <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
