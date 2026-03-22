@@ -815,7 +815,7 @@ function VisitStudio() {
           <p className="text-slate-400 text-lg">{siteConfig.visitStudio.subtitle}</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
+        <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="w-full lg:w-1/2 rounded-3xl overflow-hidden aspect-video lg:aspect-square bg-white/5 border border-white/10">
             <iframe
               src={siteConfig.visitStudio.mapEmbedUrl}
