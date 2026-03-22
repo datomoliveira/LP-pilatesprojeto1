@@ -88,7 +88,7 @@ function Hero() {
     const cardRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -219,6 +219,14 @@ function Hero() {
           ref={canvasRef}
           className="w-full h-full"
         />
+        {images.length === 0 && (
+          <div 
+            className="absolute inset-0 z-0 bg-cover bg-center" 
+            style={{ 
+              backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
+            }}
+          ></div>
+        )}
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 
