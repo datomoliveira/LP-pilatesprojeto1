@@ -1,14 +1,14 @@
 {
     "brand": {
-        "name": "GM Studio Pilates",
-        "shortName": "GM Studio Pilates",
+        "name": "MS STUDIO PILATES",
+        "shortName": "MS Studio Pilates",
         "badge": "Refinamento em Movimento",
         "logoIcon": "all_inclusive",
-        "logoUrl": "https://images2.imgbox.com/d8/40/O8Pd3VvT_o.jpg",
+        "logoUrl": "/logo.jpg",
         "tagline": "A Arte do Movimento"
     },
     "seo": {
-        "title": "GM Studio Pilates | A Arte do Movimento",
+        "title": "MS Studio Pilates | A Arte do Movimento",
         "description": "GM Studio Pilates - A interseção entre engenharia física e clareza mental. Estúdio de Pilates premium focado em alta performance e reabilitação.",
         "keywords": "Pilates, Original Pilates, Estúdio, Saúde, Reabilitação, Alta Performance, Aparelhos"
     },
@@ -46,10 +46,10 @@
         "ctaLabel": "Agende uma Aula"
     },
     "hero": {
-        "titleLine1": "DÓI PARA FAZER O",
+        "titleLine1": "DÓI FAZER O",
         "titleLine2": "SIMPLES?",
-        "subtitle": "REDEFINA SUA PRIORIDADE! Volte a brincar com filhos e netos sem dor, fortalecendo o corpo em um ambiente que te acompanha e te faz sentir bem. Desligue a tensão, durma melhor e recupere a elegância da sua postura.",
-        "backgroundImage": "https://images2.imgbox.com/04/e2/O3GsZaR5_o.png",
+        "subtitle": "Recupere sua postura e viva sem dor para brincar com quem ama. Fortaleça o corpo em um ambiente acolhedor, durma melhor e elimine a tensão diária.",
+        "backgroundImage": "",
         "ctaButton1": "O Método",
         "ctaButton2": "AGENDE UMA VISITA",
         "formTitle": "Inicie Sua Transformação",
@@ -126,17 +126,17 @@
             {
                 "title": "Pilates Fitness",
                 "description": "Treinamento focado no fortalecimento muscular profundo, flexibilidade corporal e condicionamento físico rigoroso para o bem-estar diário.",
-                "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800"
+                "image": "/images/pilates-fitness.webp"
             },
             {
                 "title": "Quiropraxia",
                 "description": "Ajustes articulares precisos para otimizar ao máximo o sistema nervoso, restaurar a biomecânica e combater o estresse musculoesquelético.",
-                "image": "/images/quiropraxia.png"
+                "image": "/images/quiropraxia.webp"
             },
             {
                 "title": "RPG",
                 "description": "Sessões rigorosas de Reeducação Postural Global para alinhamento assertivo, corrigindo sobrecargas e devolvendo a funcionalidade da sua coluna.",
-                "image": "/images/rpg.png"
+                "image": "/images/rpg.webp"
             }
         ]
     },
@@ -148,17 +148,17 @@
             {
                 "title": "Vestiários",
                 "description": "Aconchego & Privacidade",
-                "image": "/studio_lockers_1772812338187.png"
+                "image": "/images/locker.webp"
             },
             {
                 "title": "Reformers",
                 "description": "Equipamento de Elite",
-                "image": "/studio_reformer_1772812354129.png"
+                "image": "/images/reformer.webp"
             },
             {
                 "title": "Recepção",
                 "description": "Boas-Vindas Calorosas",
-                "image": "/studio_reception_1772812374347.png"
+                "image": "/images/reception.webp"
             }
         ]
     },
@@ -171,13 +171,13 @@
                 "name": "Rafael Costa",
                 "role": "Mestre Especialista",
                 "bio": "Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.",
-                "image": "/instructor_male_1772812388656.png"
+                "image": "/images/rafael.webp"
             },
             {
                 "name": "Camila Mendes",
                 "role": "Instrutora Sênior",
                 "bio": "Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
-                "image": "/instructor_female_1772812404108.png"
+                "image": "/images/camila.webp"
             }
         ]
     },
