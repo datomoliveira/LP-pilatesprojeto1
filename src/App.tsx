@@ -21,10 +21,10 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:py-6 md:px-12 bg-transparent backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2 md:py-3 md:px-12 bg-transparent backdrop-blur-md">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-10 md:size-14 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" width="56" height="56" className="w-full h-full object-cover scale-110" />
+          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+            <img src="/images/logo.jpg" alt="Logo Cult Pilates" width="40" height="40" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
@@ -433,7 +433,7 @@ function Features() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 px-6 md:px-24 relative z-10 bg-[#121212] -mt-16 lg:mt-10 xl:mt-16 2xl:-mt-16">
+    <section ref={sectionRef} className="py-24 px-6 md:px-24 relative z-10 bg-[#121212] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
