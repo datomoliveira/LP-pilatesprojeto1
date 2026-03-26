@@ -3,15 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef, useLayoutEffect, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect, useMemo, Suspense, lazy } from 'react';
 import { CircleDot, Menu, ChevronDown, X, ArrowRight, Instagram, Share2, Mail, Play, MapPin, Phone, Clock, ChevronLeft, ChevronRight, Quote, ArrowUp, Activity, TrendingUp, Heart, Zap, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
 import siteConfig from './config/site.json';
+
+const Particles = lazy(() => import('./components/ParticlesWrapper'));
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:py-6 md:px-12 bg-transparent backdrop-blur-sm">
         <div className="flex items-center gap-3 relative z-50">
           <div className="size-10 md:size-14 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" className="w-full h-full object-cover scale-110" />
+            <img src="/images/logo.jpg" alt="Logo Espaço Fitness Pilates" width="56" height="56" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
@@ -32,25 +33,26 @@ function Navbar() {
         <div className="flex items-center gap-8 relative z-50">
           <nav className="hidden md:flex items-center gap-10">
             <div className="relative group">
-              <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer flex items-center gap-1" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }}>
+              <a href="#metodo" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer flex items-center gap-1" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }}>
                 MODALIDADES <ChevronDown className="w-4 h-4" />
               </a>
               <div className="absolute top-full left-0 mt-4 w-60 bg-[#1a1a1a] backdrop-blur-xl border border-white/10 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-3 shadow-2xl z-50">
                 {siteConfig.classes.cards.map((card, idx) => (
-                  <a key={idx} onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="px-5 py-2.5 text-slate-300 text-xs font-semibold hover:text-white hover:bg-white/10 transition-colors cursor-pointer tracking-wide">{card.title}</a>
+                  <a key={idx} href="#metodo" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="px-5 py-2.5 text-slate-300 text-xs font-semibold hover:text-white hover:bg-white/10 transition-colors cursor-pointer tracking-wide">{card.title}</a>
                 ))}
               </div>
             </div>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }}>PILATES ONLINE</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>PROFISSIONAIS</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
-            <a className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
+            <a href="#online" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }}>PILATES ONLINE</a>
+            <a href="#estudio" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
+            <a href="#instrutores" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>PROFISSIONAIS</a>
+            <a href="#depoimentos" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
+            <a href="#contato" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
           </nav>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="flex items-center justify-center p-2 rounded-full border border-slate-100/20 hover:bg-slate-100/10 transition-all md:hidden"
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isMobileMenuOpen ? <X className="w-5 h-5 text-slate-100" /> : <Menu className="w-5 h-5 text-slate-100" />}
             </button>
@@ -66,12 +68,12 @@ function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-40 bg-[#121212] flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">MODALIDADES</a>
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">PILATES ONLINE</a>
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">ESTÚDIO</a>
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">INSTRUTORES</a>
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">DEPOIMENTOS</a>
-            <a onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">CONTATO</a>
+            <a href="#metodo" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">MODALIDADES</a>
+            <a href="#online" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">PILATES ONLINE</a>
+            <a href="#estudio" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">ESTÚDIO</a>
+            <a href="#instrutores" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">INSTRUTORES</a>
+            <a href="#depoimentos" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">DEPOIMENTOS</a>
+            <a href="#contato" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }} className="text-slate-100 text-2xl font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer">CONTATO</a>
           </motion.div>
         )}
       </AnimatePresence>
@@ -100,23 +102,46 @@ function Hero() {
   }, []);
 
   useEffect(() => {
-    let loadedCount = 0;
-    const loadedImages: HTMLImageElement[] = [];
-    const count = isMobile ? 66 : 82;
-    const pathPrefix = isMobile ? '/images/hero_mobile/202603221804_' : '/images/hero/Woman_performin_';
+    let isCancelled = false;
+    const loadImages = async () => {
+      const loadedCount = 0;
+      const loadedImages: HTMLImageElement[] = [];
+      const count = isMobile ? 66 : 82;
+      const pathPrefix = isMobile ? '/images/hero_mobile/202603221804_' : '/images/hero/Woman_performin_';
 
-    for (let i = 0; i < count; i++) {
-      const img = new Image();
-      const frameNum = String(i).padStart(3, '0');
-      img.src = `${pathPrefix}${frameNum}.webp`;
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === count) {
-          setImages(loadedImages);
+      // Load first image immediately for LCP
+      const firstImg = new Image();
+      firstImg.src = `${pathPrefix}000.webp`;
+      await new Promise((resolve) => {
+        firstImg.onload = resolve;
+      });
+      if (isCancelled) return;
+      loadedImages.push(firstImg);
+      setImages([...loadedImages]);
+
+      // Use RequestIdleCallback or timeout to load the rest without blocking
+      const loadRest = async () => {
+        for (let i = 1; i < count; i++) {
+          if (isCancelled) break;
+          const img = new Image();
+          const frameNum = String(i).padStart(3, '0');
+          img.src = `${pathPrefix}${frameNum}.webp`;
+          await new Promise((resolve) => {
+            img.onload = resolve;
+          });
+          loadedImages.push(img);
+          if (i % 10 === 0 || i === count - 1) {
+            setImages([...loadedImages]);
+          }
         }
       };
-      loadedImages.push(img);
-    }
+
+      // Delay loading remaining frames to prioritize initial render
+      setTimeout(loadRest, 1000);
+    };
+
+    loadImages();
+    return () => { isCancelled = true; };
   }, [isMobile]);
 
   useEffect(() => {
@@ -213,7 +238,7 @@ function Hero() {
   }, []);
 
   return (
-    <main ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
+    <section id="hero" ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
         <canvas
           ref={canvasRef}
@@ -288,10 +313,10 @@ function Hero() {
       <ScientificBenefits />
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 lg:hidden">
-        <p className="text-slate-500 text-[10px] font-bold tracking-[0.3em] uppercase">Role para explorar</p>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent"></div>
+        <p className="text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">Role para explorar</p>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-400 to-transparent"></div>
       </div>
-    </main >
+    </section >
   );
 }
 
@@ -320,7 +345,7 @@ function ScientificBenefits() {
   const iconMap: Record<string, any> = { ArrowUp, TrendingUp, Heart, Activity, Zap };
 
   return (
-    <div ref={sectionRef} className="relative z-10 w-full max-w-7xl px-6 md:px-12 mt-12 pb-12 md:pb-0">
+    <div ref={sectionRef} className="relative z-10 w-full max-w-7xl px-6 md:px-12 mt-12 pb-12 md:pb-0 lg:pb-16 xl:pb-20 2xl:pb-0">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
         {stats.map((stat, idx) => {
           const Icon = iconMap[stat.icon] || CircleDot;
@@ -329,7 +354,7 @@ function ScientificBenefits() {
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-100/10 flex items-center justify-center mb-1 md:mb-2">
                 <Icon className="w-5 h-5 md:w-6 md:h-6 text-slate-100" />
               </div>
-              <h4 className="text-slate-100 font-bold text-xs md:text-sm tracking-wide leading-tight">{stat.text}</h4>
+              <h3 className="text-slate-100 font-bold text-xs md:text-sm tracking-wide leading-tight">{stat.text}</h3>
             </div>
           );
         })}
@@ -408,7 +433,7 @@ function Features() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 px-6 md:px-24 relative z-10 bg-[#121212] -mt-16">
+    <section ref={sectionRef} className="py-12 px-6 md:px-24 relative z-10 bg-[#121212] -mt-16 lg:mt-10 xl:mt-16 2xl:-mt-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
@@ -465,23 +490,24 @@ function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
               <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-                <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+                <img src="/images/logo.jpg" alt="Logo" width="48" height="48" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
             </div>
             <div className="flex gap-8">
               {siteConfig.contact.instagramUrl && (
-                <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
+                <a className="text-slate-400 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <Instagram className="w-5 h-5" />
                 </a>
               )}
               {siteConfig.contact.youtubeUrl && (
-                <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                <a className="text-slate-400 hover:text-slate-100 transition-colors cursor-pointer" href={siteConfig.contact.youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="Youtube">
                   <Youtube className="w-5 h-5" />
                 </a>
               )}
               <button
-                className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer"
+                className="text-slate-400 hover:text-slate-100 transition-colors cursor-pointer"
+                aria-label="Compartilhar"
                 onClick={() => {
                   if (navigator.share) {
                     navigator.share({
@@ -493,7 +519,7 @@ function Footer() {
               >
                 <Share2 className="w-5 h-5" />
               </button>
-              <a className="text-slate-500 hover:text-slate-100 transition-colors cursor-pointer" href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+              <a className="text-slate-400 hover:text-slate-100 transition-colors cursor-pointer" href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                 </svg>
@@ -502,12 +528,12 @@ function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-white/5">
-            <p className="text-slate-500 text-xs font-medium uppercase tracking-widest text-center md:text-left">
+            <p className="text-slate-400 text-xs font-medium uppercase tracking-widest text-center md:text-left">
               {siteConfig.footer.copyright}
             </p>
             <div className="flex gap-6">
-              <a onClick={(e) => { e.preventDefault(); setModalType('termos'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">{siteConfig.footer.termsTitle}</a>
-              <a onClick={(e) => { e.preventDefault(); setModalType('politica'); setIsModalOpen(true); }} href="#" className="text-slate-500 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors">{siteConfig.footer.privacyTitle}</a>
+              <a onClick={(e) => { e.preventDefault(); setModalType('termos'); setIsModalOpen(true); }} href="#termos" className="text-slate-400 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors hover:underline">{siteConfig.footer.termsTitle}</a>
+              <a onClick={(e) => { e.preventDefault(); setModalType('politica'); setIsModalOpen(true); }} href="#politica" className="text-slate-400 hover:text-slate-100 text-xs font-medium uppercase tracking-widest transition-colors hover:underline">{siteConfig.footer.privacyTitle}</a>
             </div>
           </div>
         </div>
@@ -537,7 +563,7 @@ function Footer() {
               </button>
 
               <div className="size-16 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 mb-6">
-                <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+                <img src="/images/logo.jpg" alt="Logo" width="64" height="64" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
               <div
@@ -552,94 +578,7 @@ function Footer() {
   );
 }
 
-function ParticleScene() {
-  const count = 400;
-  const meshRef = useRef<THREE.InstancedMesh>(null);
-  const lightRef = useRef<THREE.PointLight>(null);
 
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 20;
-      const y = (Math.random() - 0.5) * 20;
-      const z = (Math.random() - 0.5) * 10 - 5;
-      const speed = Math.random() * 0.01 + 0.002;
-      temp.push({ x, y, z, speed });
-    }
-    return temp;
-  }, [count]);
-
-  const dummy = useMemo(() => new THREE.Object3D(), []);
-
-  useFrame((state) => {
-    // Mouse Interaction
-    const mouseX = (state.pointer.x * state.viewport.width) / 2;
-    const mouseY = (state.pointer.y * state.viewport.height) / 2;
-
-    if (lightRef.current) {
-      lightRef.current.position.x = mouseX;
-      lightRef.current.position.y = mouseY;
-    }
-
-    particles.forEach((particle, i) => {
-      particle.y += particle.speed;
-      if (particle.y > 10) particle.y = -10;
-
-      // Slight reaction to mouse
-      const dx = mouseX - particle.x;
-      const dy = mouseY - particle.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < 2 && distance > 0.01) {
-        // The closer the mouse, the stronger the push force
-        const force = (2 - distance) / 2;
-        particle.x -= (dx / distance) * force * 0.15;
-        particle.y -= (dy / distance) * force * 0.15;
-      }
-
-      let targetX = particle.x;
-      let targetY = particle.y;
-
-      dummy.position.set(targetX, targetY, particle.z);
-
-      // Add slight floating rotation
-      const time = state.clock.getElapsedTime();
-      dummy.rotation.x = time * particle.speed;
-      dummy.rotation.y = time * particle.speed;
-
-      const scale = distance < 3 ? 1.5 : 1;
-      dummy.scale.set(scale, scale, scale);
-
-      dummy.updateMatrix();
-      meshRef.current?.setMatrixAt(i, dummy.matrix);
-    });
-
-    if (meshRef.current) {
-      meshRef.current.instanceMatrix.needsUpdate = true;
-    }
-  });
-
-  return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight ref={lightRef} distance={5} intensity={5} color="#ffffff" />
-      <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-        <sphereGeometry args={[0.02, 8, 8]} />
-        <meshStandardMaterial color="#ffffff" transparent opacity={0.3} roughness={0.2} metalness={0.8} />
-      </instancedMesh>
-    </>
-  );
-}
-
-function Particles() {
-  return (
-    <div className="fixed inset-0 pointer-events-none z-0 mix-blend-screen opacity-60">
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 2]}>
-        <ParticleScene />
-      </Canvas>
-    </div>
-  );
-}
 
 function Classes() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -701,14 +640,14 @@ function Classes() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           {siteConfig.classes.badge && (
-            <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.classes.badge}</span>
+            <span className="text-slate-400 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.classes.badge}</span>
           )}
           <h2 ref={titleRef} className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 inline-block tracking-wider uppercase">{siteConfig.classes.title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {classes.map((cls, i) => (
             <div ref={el => { cardsRef.current[i] = el; }} key={i} className="group relative rounded-3xl overflow-hidden aspect-[3/4] md:aspect-auto md:h-[500px]">
-              <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url(${cls.image})` }}></div>
+              <img src={cls.image} alt={cls.title} loading="lazy" width="400" height="533" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h3 className="text-2xl font-bold text-slate-100 mb-2 font-display">{cls.title}</h3>
@@ -747,7 +686,7 @@ function TourSpace() {
       </div>
 
       <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[500px]">
-        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Imagem anterior">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
@@ -783,9 +722,9 @@ function TourSpace() {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
                   onClick={() => setActiveIndex(i)}
-                  className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10"
+                   className="absolute w-[260px] md:w-[350px] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl cursor-pointer bg-white/5 border border-white/10 will-change-transform"
                 >
-                  <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url('${item.image}')` }}></div>
+                  <img src={item.image} alt={item.title} loading="lazy" width="350" height="622" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
                   <div className={`absolute bottom-6 md:bottom-8 left-6 md:left-8 pointer-events-none transition-opacity duration-300 ${isCenter ? 'opacity-100' : 'opacity-0'}`}>
                     <h3 className="text-white text-xl md:text-3xl font-bold font-display drop-shadow-lg leading-tight">
@@ -798,7 +737,7 @@ function TourSpace() {
           </AnimatePresence>
         </div>
 
-        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próxima imagem">
           <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
       </div>
@@ -825,6 +764,7 @@ function VisitStudio() {
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa de localização do estúdio"
             ></iframe>
           </div>
 
@@ -900,10 +840,10 @@ function Instructors() {
         {siteConfig.instructors.list.map((inst, idx) => (
           <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
             <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
-              <img src={inst.image} className="w-full h-full object-cover transition-all duration-700 object-top group-hover:scale-105 md:grayscale-[20%] md:mix-blend-luminosity md:hover:grayscale-0 md:hover:mix-blend-normal" alt={inst.name} />
+              <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-top group-hover:scale-105 md:grayscale-[20%] md:mix-blend-luminosity md:hover:grayscale-0 md:hover:mix-blend-normal" alt={inst.name} />
             </div>
             <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">{inst.name}</h3>
-            <p className="text-slate-500 uppercase text-xs font-bold tracking-[0.2em] mb-4">{inst.role}</p>
+            <p className="text-slate-400 uppercase text-xs font-bold tracking-[0.2em] mb-4">{inst.role}</p>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto">{inst.bio}</p>
           </div>
         ))}
@@ -923,12 +863,12 @@ function Testimonials() {
   return (
     <section id="depoimentos" className="py-12 px-6 md:px-24 relative overflow-hidden z-10 border-b border-white/5">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <span className="text-slate-500 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.testimonials.badge}</span>
+        <span className="text-slate-400 text-xs font-bold tracking-[0.3em] uppercase block mb-4">{siteConfig.testimonials.badge}</span>
         <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.testimonials.title}</h2>
       </div>
 
       <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px]">
-        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Depoimento anterior">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
@@ -957,20 +897,20 @@ function Testimonials() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
                   onClick={() => setActiveIndex(i)}
-                  className="absolute w-[260px] md:w-[350px] aspect-square rounded-3xl bg-white/5 backdrop-blur-md p-6 md:p-8 border border-white/20 shadow-2xl flex flex-col justify-center gap-4 cursor-pointer"
+                  className="absolute w-[260px] md:w-[350px] aspect-square rounded-3xl bg-white/5 backdrop-blur-md p-6 md:p-8 border border-white/20 shadow-2xl flex flex-col justify-center gap-4 cursor-pointer will-change-transform"
                 >
                   <div>
-                    <Quote className="w-8 h-8 text-slate-500 mb-4" />
+                    <Quote className="w-8 h-8 text-slate-400 mb-4" aria-hidden="true" />
                     <p className="text-slate-300 italic mb-4 leading-relaxed text-sm">"{t.text}"</p>
                   </div>
-                  <h4 className="text-slate-100 font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">- {t.author}</h4>
+                  <h3 className="text-slate-100 font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">- {t.author}</h3>
                 </motion.div>
               );
             })}
           </AnimatePresence>
         </div>
 
-        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all">
+        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
           <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
       </div>
@@ -984,7 +924,7 @@ function CTA() {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
           <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo" className="w-full h-full object-cover scale-110" />
+            <img src="/images/logo.jpg" alt="Logo" width="96" height="96" className="w-full h-full object-cover scale-110" />
           </div>
         </div>
         <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">
@@ -1353,20 +1293,25 @@ export default function App() {
 
   return (
     <div className="bg-[#121212] min-h-screen text-slate-100 font-sans selection:bg-slate-100 selection:text-black relative overflow-hidden">
+      <div className="noise-overlay" />
       <PilatesOnlineModal />
       <LightTransition />
       <ElasticMouse />
-      <Particles />
+      <Suspense fallback={null}>
+        <Particles />
+      </Suspense>
       <FloatingScienceStats />
       <Navbar />
-      <Hero />
-      <Features />
-      <Classes />
-      <TourSpace />
-      <Instructors />
-      <Testimonials />
-      <CTA />
-      <VisitStudio />
+      <main>
+        <Hero />
+        <Features />
+        <Classes />
+        <TourSpace />
+        <Instructors />
+        <Testimonials />
+        <CTA />
+        <VisitStudio />
+      </main>
       <Footer />
     </div>
   );
