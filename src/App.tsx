@@ -677,20 +677,20 @@ function TourSpace() {
   const prev = () => setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
-    <section id="estudio" className="py-12 px-6 md:px-24 relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center mb-20 relative z-20">
+    <section id="estudio" className="py-24 px-6 md:px-24 relative z-10">
+      <div className="max-w-7xl mx-auto text-center mb-32 relative z-20">
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.tourSpace.title}</h2>
         {siteConfig.tourSpace.subtitle && (
           <p className="text-slate-400 text-lg uppercase tracking-widest">{siteConfig.tourSpace.subtitle}</p>
         )}
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[500px]">
+      <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[650px]">
         <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Imagem anterior">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
-        <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible" style={{ perspective: "1000px" }}>
+        <div className="relative w-full h-[650px] flex justify-center items-center overflow-visible" style={{ perspective: "1000px" }}>
           <AnimatePresence>
             {images.map((item, i) => {
               let offset = i - activeIndex;
