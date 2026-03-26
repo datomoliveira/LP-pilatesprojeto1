@@ -21,10 +21,10 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-2 md:py-3 md:px-12 bg-transparent backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 md:py-1.5 md:px-12 bg-transparent backdrop-blur-md">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo Cult Pilates" width="40" height="40" className="w-full h-full object-cover scale-110" />
+          <div className="size-7 md:size-8.5 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
+            <img src="/images/logo.jpg" alt="Logo Cult Pilates" width="34" height="34" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
@@ -1164,14 +1164,11 @@ function LightTransition() {
       const { scroll, limit } = e.detail;
       if (limit > 0 && smokeRef.current) {
         let p = 0;
-        const threshold = window.innerHeight * 0.25; // Diminishing the fade area to 25% height
+        const threshold = window.innerHeight * 0.05; // 5% height - for a "surprise" glow
 
-        if (scroll < threshold) {
-          // Approaching the top, or just wrapped to the top
-          p = Math.pow(1 - (scroll / threshold), 3);
-        } else if (scroll > limit - threshold) {
-          // Approaching the bottom
-          p = Math.pow(1 - ((limit - scroll) / threshold), 3);
+        if (scroll > limit - threshold) {
+          // Approaching the bottom only
+          p = Math.pow(1 - ((limit - scroll) / threshold), 4); // Even sharper curve
         }
 
         gsap.set(smokeRef.current, { opacity: p });
@@ -1249,6 +1246,7 @@ function PilatesOnlineModal() {
 export default function App() {
   // Update SEO Title and Description
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = `${siteConfig.brand.name} | ${siteConfig.features.title}`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
