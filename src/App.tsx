@@ -104,7 +104,11 @@ function Hero() {
   useEffect(() => {
     let isCancelled = false;
     const loadImages = async () => {
-      const loadedCount = 0;
+      // If we have a custom static hero image, don't load the sequence
+      if (siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence')) {
+        return;
+      }
+
       const loadedImages: HTMLImageElement[] = [];
       const count = isMobile ? 66 : 82;
       const pathPrefix = isMobile ? '/images/hero_mobile/202603221804_' : '/images/hero/Woman_performin_';
@@ -244,7 +248,7 @@ function Hero() {
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ 
-              backgroundImage: `url("${siteConfig.hero.backgroundImage}")` 
+              backgroundImage: `url("${isMobile ? siteConfig.instructors.list[0].image : siteConfig.hero.backgroundImage}")` 
             }}
           ></div>
         ) : (
