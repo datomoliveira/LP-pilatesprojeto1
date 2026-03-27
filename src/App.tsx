@@ -266,8 +266,8 @@ function Hero() {
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24 xl:gap-40 mt-10 lg:mt-0">
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-2xl">
+      <div className="relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col lg:flex-row items-center lg:items-start justify-start gap-12 lg:gap-20 xl:gap-24 mt-16 lg:mt-32">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
           <div ref={badgeRef} className="mb-4">
             <span className="text-slate-400 text-xs font-bold tracking-[0.5em] uppercase">{siteConfig.brand.badge}</span>
           </div>
@@ -289,7 +289,7 @@ function Hero() {
         </div>
 
         {/* Booking Card */}
-        <div ref={cardRef} className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+        <div ref={cardRef} className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden lg:mt-24">
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
           <div className="relative z-10">
             <div className="text-center mb-6">
