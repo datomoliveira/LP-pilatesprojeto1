@@ -24,7 +24,7 @@ function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 md:py-1.5 md:px-12 bg-transparent backdrop-blur-md">
         <div className="flex items-center gap-3 relative z-50">
           <div className="size-7 md:size-8.5 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo Cult Pilates" width="34" height="34" className="w-full h-full object-cover scale-110" />
+            <img src={siteConfig.brand.logoUrl} alt={`Logo ${siteConfig.brand.name}`} width="34" height="34" className="w-full h-full object-cover scale-110" />
           </div>
           <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
@@ -240,17 +240,28 @@ function Hero() {
   return (
     <section id="hero" ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <canvas
-          ref={canvasRef}
-          className="w-full h-full"
-        />
-        {images.length === 0 && (
+        {siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence') ? (
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ 
-              backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
+              backgroundImage: `url(${siteConfig.hero.backgroundImage})` 
             }}
           ></div>
+        ) : (
+          <>
+            <canvas
+              ref={canvasRef}
+              className="w-full h-full"
+            />
+            {images.length === 0 && (
+              <div 
+                className="absolute inset-0 z-0 bg-cover bg-center" 
+                style={{ 
+                  backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
+                }}
+              ></div>
+            )}
+          </>
         )}
         <div className="absolute inset-0 hero-gradient"></div>
       </div>
@@ -490,7 +501,7 @@ function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
               <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-                <img src="/images/logo.jpg" alt="Logo" width="48" height="48" className="w-full h-full object-cover scale-110" />
+                <img src={siteConfig.brand.logoUrl} alt="Logo" width="48" height="48" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
             </div>
@@ -563,7 +574,7 @@ function Footer() {
               </button>
 
               <div className="size-16 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 mb-6">
-                <img src="/images/logo.jpg" alt="Logo" width="64" height="64" className="w-full h-full object-cover scale-110" />
+                <img src={siteConfig.brand.logoUrl} alt="Logo" width="64" height="64" className="w-full h-full object-cover scale-110" />
               </div>
               <h2 className="text-2xl md:text-3xl font-display font-bold text-slate-100 mb-6">{modalContent[modalType].title}</h2>
               <div
@@ -924,7 +935,7 @@ function CTA() {
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
           <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src="/images/logo.jpg" alt="Logo" width="96" height="96" className="w-full h-full object-cover scale-110" />
+            <img src={siteConfig.brand.logoUrl} alt="Logo" width="96" height="96" className="w-full h-full object-cover scale-110" />
           </div>
         </div>
         <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">

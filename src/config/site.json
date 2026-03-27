@@ -1,24 +1,24 @@
 {
     "brand": {
-        "name": "CULT PILATES",
-        "shortName": "Cult Pilates",
-        "badge": "Refinamento em Movimento",
+        "name": "Body Fit Pilates & Estética",
+        "shortName": "Body Fit",
+        "badge": "Emagrecimento e Terapias Manuais",
         "logoIcon": "all_inclusive",
         "logoUrl": "/logo.jpg",
         "tagline": "A Arte do Movimento"
     },
     "seo": {
-        "title": "MS Studio Pilates | A Arte do Movimento",
-        "description": "Cult Pilates - A interseção entre engenharia física e clareza mental. Estúdio de Pilates premium focado em alta performance e reabilitação.",
-        "keywords": "Pilates, Original Pilates, Estúdio, Saúde, Reabilitação, Alta Performance, Aparelhos"
+        "title": "Body Fit Pilates & Estética – Emagrecimento e Terapias Manuais",
+        "description": "Body Fit Pilates & Estética - A interseção entre engenharia física e clareza mental. Estúdio de Pilates premium focado em alta performance e reabilitação.",
+        "keywords": "Pilates, Body Fit, Estúdio, Saúde, Reabilitação, Alta Performance, Aparelhos"
     },
     "contact": {
-        "whatsappNumber": "5521983199177",
-        "whatsappFormatted": "(21) 98319-9177",
-        "phone2": "(21) 3245-5758",
-        "email": "contato@originalpilates.com.br",
+        "whatsappNumber": "5521975447256",
+        "whatsappFormatted": "(21) 97544-7256",
+        "phone2": "(21) 97544-7256",
+        "email": "contato@bodyfitpilates.com.br",
         "youtubeUrl": "https://www.youtube.com",
-        "instagramUrl": "https://www.instagram.com"
+        "instagramUrl": "https://www.instagram.com/bodyfitpilates_/"
     },
     "nav": {
         "links": [
@@ -49,7 +49,7 @@
         "titleLine1": "DÓI FAZER O",
         "titleLine2": "SIMPLES?",
         "subtitle": "Recupere sua postura e viva sem dor para brincar com quem ama. Fortaleça o corpo em um ambiente acolhedor, durma melhor e elimine a tensão diária.",
-        "backgroundImage": "",
+        "backgroundImage": "/images/hero-new.png",
         "ctaButton1": "O Método",
         "ctaButton2": "AGENDE UMA VISITA",
         "formTitle": "Inicie Sua Transformação",
@@ -95,7 +95,7 @@
         "sectionId": "aulas",
         "sectionNumber": "01",
         "title": "O Método",
-        "titleAccent": "Estúdio Katia Rodrigues",
+        "titleAccent": "Body Fit Pilates & Estética",
         "description": "Nossa abordagem moderna combina princípios clássicos com a ciência atlética contemporânea para entregar resultados inigualáveis para sua postura, força e clareza mental.",
         "exploreLinkLabel": "Explore todos os programas",
         "cards": [
@@ -146,19 +146,24 @@
         "subtitle": "Experimente nosso estúdio de forma imersiva.",
         "images": [
             {
-                "title": "Vestiários",
+                "title": "Nosso Estúdio",
                 "description": "Aconchego & Privacidade",
-                "image": "/images/locker.webp"
+                "image": "/images/fernanda1.webp"
             },
             {
-                "title": "Reformers",
+                "title": "Nossos Aparelhos",
                 "description": "Equipamento de Elite",
-                "image": "/images/reformer.webp"
+                "image": "/images/fernanda2.webp"
             },
             {
-                "title": "Recepção",
+                "title": "Área de Pilates",
                 "description": "Boas-Vindas Calorosas",
-                "image": "/images/reception.webp"
+                "image": "/images/fernanda3.webp"
+            },
+            {
+                "title": "Conforto",
+                "description": "Bem-estar garantido",
+                "image": "/images/fernanda4.webp"
             }
         ]
     },
@@ -168,16 +173,10 @@
         "subtitle": "Profissionais experientes para guiar sua jornada de corpo e mente.",
         "list": [
             {
-                "name": "Rafael Costa",
-                "role": "Mestre Especialista",
-                "bio": "Com mais de 10 anos de experiência, possui foco cirúrgico na reabilitação e alinhamento biomecânico para alta performance física.",
-                "image": "/images/rafael.webp"
-            },
-            {
-                "name": "Camila Mendes",
-                "role": "Instrutora Sênior",
-                "bio": "Especialista certificada no método clássico, guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
-                "image": "/images/camila.webp"
+                "name": "Fernanda",
+                "role": "Mestra Especialista",
+                "bio": "Profissional maravilhosa guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
+                "image": "/images/fernanda_instructor.png"
             }
         ]
     },
@@ -187,24 +186,16 @@
         "title": "O Que Dizem Nossos Alunos",
         "list": [
             {
-                "text": "Minha vida se transformou. O foco absoluto na respiração e no movimento exato curou minhas dores das costas em poucas semanas. A melhor escolha que fiz!",
-                "author": "João Silva"
+                "text": "A Profissional é super atenciosa e o ambiente é acolhedor.",
+                "author": "Mariane Lima"
             },
             {
-                "text": "Nunca experimentei um estúdio com uma estrutura tão luxuosa. As aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.",
-                "author": "Mariana Souza"
+                "text": "Minha vida mudou completamente depois que comecei a fazer Pilates neste estúdio!",
+                "author": "Ana Brito"
             },
             {
-                "text": "Os instrutores são atenciosos ao extremo. Vale cada centavo do investimento pelo nível de cuidado e personalização no meu treino atlético.",
-                "author": "Carlos Ferreira"
-            },
-            {
-                "text": "Melhor espaço de Pilates que já visitei, com equipamentos de elite e acolhimento em excelência. Recomendo muito o trabalho.",
-                "author": "Aline Bastos"
-            },
-            {
-                "text": "As instrutoras foram o divisor de águas na minha mobilidade este ano. Resultados incríveis em pouco tempo.",
-                "author": "Guilherme Santos"
+                "text": "Um Studio muito aconchegante , a professora Fernanda é maravilhosa",
+                "author": "Profa Michele Jeane"
             }
         ]
     },
@@ -218,17 +209,17 @@
     "visitStudio": {
         "sectionId": "localizacao",
         "title": "Visite Nosso Estúdio",
-        "subtitle": "Afastado do barulho. Projetado para harmonia.",
-        "mapEmbedUrl": "https://maps.google.com/maps?q=Rua+Vitor+Alves,+2096,+Campo+Grande,+Rio+de+Janeiro&t=&z=16&ie=UTF8&iwloc=&output=embed",
+        "subtitle": "Projetado para harmonia.",
+        "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.38048995393!2d-43.5510626!3d-22.906755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9be3f21a690e5b%3A0x6b4c125d886616!2sRua%20Ivo%20Baptista%20Suzano%2C%20SN%20-%20Campo%20Grande%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2023093-705!5e0!3m2!1spt-BR!2sbr!4v1711585500000!5m2!1spt-BR!2sbr",
         "locationBadge": "Rio de Janeiro",
-        "studioName": "Original Pilates",
-        "addressDetails": "Rua Vitor Alves, 2096 Sala-101 Sobreloja<br />Campo Grande, Rio de Janeiro – RJ<br />23087-230",
+        "studioName": "Body Fit Pilates & Estética",
+        "addressDetails": "Rua Ivo Baptista Suzano, SN - Lote3, Quadra N<br />Campo Grande, Rio de Janeiro – RJ<br />23093-705",
         "hoursTitle": "Horário do Estúdio",
-        "hoursDetails": "Segunda-feira: 07:00 – 21:00<br />Terça-feira: 06:00 – 21:00<br />Quarta-feira: 07:00 – 21:00<br />Quinta-feira: 06:00 – 21:00<br />Sexta-feira: 07:00 – 21:00<br />Sábado: 07:00 – 12:00<br />Domingo: Fechado"
+        "hoursDetails": "Segunda-feira: 07:00 – 18:00<br />Terça-feira: 07:00 – 18:00<br />Quarta-feira: 07:00 – 18:00<br />Quinta-feira: 07:00 – 18:00<br />Sexta-feira: 07:00 – 18:00<br />Sábado: Fechado<br />Domingo: Fechado"
     },
     "footer": {
         "description": "Redefinando o padrão de movimento e bem-estar através de precisão, prática e orientação profissional.",
-        "copyright": "© 2026 ORIGINAL PILATES. TODOS OS DIREITOS RESERVADOS.",
+        "copyright": "© 2026 BODY FIT PILATES & ESTÉTICA. TODOS OS DIREITOS RESERVADOS.",
         "links": {
             "studio": [
                 {
@@ -288,6 +279,6 @@
         "termsTitle": "Termos de Uso",
         "termsText": "Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
-        "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento prévio conforme diretrizes da LGPD."
+        "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento previdência conforme diretrizes da LGPD."
     }
 }
