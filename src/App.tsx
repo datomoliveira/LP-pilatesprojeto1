@@ -23,10 +23,14 @@ function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 md:py-1.5 md:px-12 bg-transparent backdrop-blur-md">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-7 md:size-8.5 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src={siteConfig.brand.logoUrl} alt={`Logo ${siteConfig.brand.name}`} width="34" height="34" className="w-full h-full object-cover scale-110" />
+          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black/40 flex items-center justify-center flex-shrink-0">
+            {siteConfig.brand.logoUrl ? (
+              <img src={siteConfig.brand.logoUrl} alt={`Logo ${siteConfig.brand.name}`} width="40" height="40" className="w-full h-full object-cover scale-110" />
+            ) : (
+              <CircleDot className="w-5 h-5 md:w-6 md:h-6 text-slate-100" />
+            )}
           </div>
-          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
+          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display select-none">
             {siteConfig.brand.name}
           </h2>
         </div>
@@ -851,7 +855,7 @@ function Instructors() {
         {siteConfig.instructors.list.map((inst, idx) => (
           <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
             <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
-              <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-top group-hover:scale-105 md:grayscale-[20%] md:mix-blend-luminosity md:hover:grayscale-0 md:hover:mix-blend-normal" alt={inst.name} />
+              <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-center group-hover:scale-105 md:grayscale-[20%] md:mix-blend-luminosity md:hover:grayscale-0 md:hover:mix-blend-normal" alt={inst.name} />
             </div>
             <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">{inst.name}</h3>
             <p className="text-slate-400 uppercase text-xs font-bold tracking-[0.2em] mb-4">{inst.role}</p>

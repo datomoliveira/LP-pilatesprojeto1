@@ -3,7 +3,7 @@
         "name": "Body Fit Pilates & Estética",
         "shortName": "Body Fit",
         "badge": "Emagrecimento e Terapias Manuais",
-        "logoIcon": "all_inclusive",
+        "logoIcon": "Activity",
         "logoUrl": "",
         "tagline": "A Arte do Movimento"
     },
@@ -49,7 +49,7 @@
         "titleLine1": "DÓI FAZER O",
         "titleLine2": "SIMPLES?",
         "subtitle": "Recupere sua postura e viva sem dor para brincar com quem ama. Fortaleça o corpo em um ambiente acolhedor, durma melhor e elimine a tensão diária.",
-        "backgroundImage": "/images/hero-new.png",
+        "backgroundImage": "/images/dra. fernandaferreira.png",
         "ctaButton1": "O Método",
         "ctaButton2": "AGENDE UMA VISITA",
         "formTitle": "Inicie Sua Transformação",
@@ -280,5 +280,7 @@
         "termsText": "Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
         "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento previdência conforme diretrizes da LGPD."
+    }
+}�rios para o funcionamento básico do site, que não requerem consentimento previdência conforme diretrizes da LGPD."
     }
 }
