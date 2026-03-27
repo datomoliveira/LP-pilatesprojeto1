@@ -504,8 +504,8 @@ function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col gap-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
-              <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-                <img src={siteConfig.brand.logoUrl} alt="Logo" width="48" height="48" className="w-full h-full object-cover scale-110" />
+              <div className="size-12 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 flex items-center justify-center">
+                <Activity className="w-6 h-6 text-slate-100" />
               </div>
               <h2 className="text-slate-100 text-sm font-bold tracking-widest uppercase">{siteConfig.brand.shortName}</h2>
             </div>
@@ -956,8 +956,8 @@ function CTA() {
     <section className="py-12 px-6 z-10 relative">
       <div className="max-w-4xl mx-auto text-center space-y-8">
         <div className="inline-flex items-center justify-center p-2 bg-white/5 border border-white/10 rounded-full mb-2">
-          <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0">
-            <img src={siteConfig.brand.logoUrl} alt="Logo" width="96" height="96" className="w-full h-full object-cover scale-110" />
+          <div className="size-24 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 flex items-center justify-center">
+            <Activity className="w-12 h-12 text-slate-100" />
           </div>
         </div>
         <h2 className="text-5xl md:text-7xl font-display font-bold text-slate-100 tracking-tighter">
