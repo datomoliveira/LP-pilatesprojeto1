@@ -4,7 +4,7 @@
         "shortName": "Body Fit",
         "badge": "Emagrecimento e Terapias Manuais",
         "logoIcon": "Activity",
-        "logoUrl": "",
+        "logoUrl": "/logo.jpg",
         "tagline": "A Arte do Movimento"
     },
     "seo": {
@@ -176,7 +176,7 @@
                 "name": "Fernanda",
                 "role": "Mestra Especialista",
                 "bio": "Profissional maravilhosa guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
-                "image": "/images/fernanda_instructor.png"
+                "image": "/images/dra. fernandaferreira.png"
             }
         ]
     },
@@ -186,16 +186,28 @@
         "title": "O Que Dizem Nossos Alunos",
         "list": [
             {
-                "text": "A Profissional é super atenciosa e o ambiente é acolhedor.",
-                "author": "Mariane Lima"
+                "text": "Minha vida se transformou. O foco absoluto na respiração e no movimento exato curou minhas dores nas costas em poucas semanas. A melhor escolha que fiz!",
+                "author": "João Silva"
             },
             {
                 "text": "Minha vida mudou completamente depois que comecei a fazer Pilates neste estúdio!",
                 "author": "Ana Brito"
             },
             {
+                "text": "As instrutoras foram o divisor de águas na minha mobilidade este ano. Resultados incríveis em pouco tempo.",
+                "author": "Guilherme Santos"
+            },
+            {
+                "text": "O Profissional é super atencioso e o ambiente é acolhedor.",
+                "author": "Mariane Lima"
+            },
+            {
                 "text": "Um Studio muito aconchegante , a professora Fernanda é maravilhosa",
                 "author": "Profa Michele Jeane"
+            },
+            {
+                "text": "Nunca experimentei um estúdio com uma estrutura tão luxuosa. As aulas são o meu momento de terapia para semana toda, um oásis de calma na cidade.",
+                "author": "Mariana Souza"
             }
         ]
     },
@@ -279,8 +291,6 @@
         "termsTitle": "Termos de Uso",
         "termsText": "Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
-        "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento previdência conforme diretrizes da LGPD."
-    }
-}�rios para o funcionamento básico do site, que não requerem consentimento previdência conforme diretrizes da LGPD."
+        "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento prévio conforme diretrizes da LGPD."
     }
 }

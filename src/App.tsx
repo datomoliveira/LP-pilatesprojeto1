@@ -23,14 +23,10 @@ function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 md:py-1.5 md:px-12 bg-transparent backdrop-blur-md">
         <div className="flex items-center gap-3 relative z-50">
-          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black/40 flex items-center justify-center flex-shrink-0">
-            {siteConfig.brand.logoUrl ? (
-              <img src={siteConfig.brand.logoUrl} alt={`Logo ${siteConfig.brand.name}`} width="40" height="40" className="w-full h-full object-cover scale-110" />
-            ) : (
-              <CircleDot className="w-5 h-5 md:w-6 md:h-6 text-slate-100" />
-            )}
+          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 flex items-center justify-center">
+            <Activity className="w-5 h-5 text-slate-100" />
           </div>
-          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display select-none">
+          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
             {siteConfig.brand.name}
           </h2>
         </div>
@@ -248,7 +244,7 @@ function Hero() {
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ 
-              backgroundImage: `url(${siteConfig.hero.backgroundImage})` 
+              backgroundImage: `url("${siteConfig.hero.backgroundImage}")` 
             }}
           ></div>
         ) : (
@@ -854,8 +850,8 @@ function Instructors() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 xl:gap-32 text-center">
         {siteConfig.instructors.list.map((inst, idx) => (
           <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
-            <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a]">
-              <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-center group-hover:scale-105 md:grayscale-[20%] md:mix-blend-luminosity md:hover:grayscale-0 md:hover:mix-blend-normal" alt={inst.name} />
+            <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a] flex items-center justify-center">
+              <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-center group-hover:scale-105" alt={inst.name} />
             </div>
             <h3 className="text-2xl font-bold font-display mt-8 mb-2 text-slate-100 transition-colors group-hover:text-slate-300">{inst.name}</h3>
             <p className="text-slate-400 uppercase text-xs font-bold tracking-[0.2em] mb-4">{inst.role}</p>
@@ -887,7 +883,7 @@ function Testimonials() {
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
-        <div className="relative w-full h-[400px] flex justify-center items-center overflow-visible">
+        <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible" style={{ perspective: "1200px" }}>
           <AnimatePresence>
             {testimonials.map((t, i) => {
               let offset = i - activeIndex;
@@ -904,25 +900,43 @@ function Testimonials() {
                 <motion.div
                   key={i}
                   animate={{
-                    x: offset * (window.innerWidth < 768 ? 90 : 220),
-                    scale: isCenter ? 1 : (absOffset === 1 ? 0.8 : 0.6),
-                    z: isCenter ? 100 : (absOffset === 1 ? 50 : 0),
-                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.5 : 0.2),
+                    x: offset * (window.innerWidth < 768 ? 60 : 280),
+                    rotateY: offset * -25,
+                    scale: isCenter ? 1.1 : (absOffset === 1 ? 0.85 : 0.7),
+                    z: isCenter ? 200 : (absOffset === 1 ? 0 : -200),
+                    opacity: isCenter ? 1 : (absOffset === 1 ? 0.6 : 0.2),
+                    filter: isCenter ? "blur(0px)" : "blur(2px)",
                   }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10) }}
+                  transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                  style={{ zIndex: isCenter ? 30 : (absOffset === 1 ? 20 : 10), transformStyle: "preserve-3d" }}
                   onClick={() => setActiveIndex(i)}
-                  className="absolute w-[260px] md:w-[350px] aspect-square rounded-3xl bg-white/5 backdrop-blur-md p-6 md:p-8 border border-white/20 shadow-2xl flex flex-col justify-center gap-4 cursor-pointer will-change-transform"
+                  className="absolute w-[280px] md:w-[380px] aspect-[4/5] md:aspect-square rounded-[2rem] bg-zinc-900/90 backdrop-blur-xl p-8 md:p-10 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col justify-between cursor-pointer will-change-transform"
                 >
-                  <div>
-                    <Quote className="w-8 h-8 text-slate-400 mb-4" aria-hidden="true" />
-                    <p className="text-slate-300 italic mb-4 leading-relaxed text-sm">"{t.text}"</p>
+                  <div className="relative">
+                    <div className="text-amber-500 font-serif text-6xl mb-4 leading-none select-none opacity-50">“</div>
+                    <p className="text-slate-100 text-base md:text-lg leading-relaxed font-medium italic">
+                      {t.text}
+                    </p>
                   </div>
-                  <h3 className="text-slate-100 font-bold uppercase text-xs tracking-widest border-t border-white/10 pt-4">- {t.author}</h3>
+                  <div className="pt-6 border-t border-white/5 mt-auto flex flex-col gap-1">
+                    <h3 className="text-white font-bold text-sm tracking-widest uppercase">— {t.author}</h3>
+                  </div>
                 </motion.div>
               );
             })}
           </AnimatePresence>
+        </div>
+        
+        {/* Carousel Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-40">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`w-2.5 h-1 md:w-8 md:h-1.5 rounded-full transition-all duration-300 ${i === activeIndex ? 'bg-amber-500 w-8 md:w-12' : 'bg-white/20'}`}
+              aria-label={`Ir para depoimento ${i + 1}`}
+            />
+          ))}
         </div>
 
         <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
