@@ -1294,12 +1294,12 @@ function FAQModal() {
           >
             <div className="p-8 md:p-10 border-b border-white/5 flex justify-between items-center bg-[#111]">
               <div>
-                <h3 className="text-3xl font-bold font-display text-white">{siteConfig.faq.title}</h3>
-                <p className="text-slate-400 text-sm font-bold tracking-widest uppercase mt-2">{siteConfig.faq.subtitle}</p>
+                <h3 className="text-2xl md:text-3xl font-bold font-display text-white">{siteConfig.faq.title}</h3>
+                <p className="text-slate-400 text-xs md:text-sm font-bold tracking-widest uppercase mt-2">{siteConfig.faq.subtitle}</p>
               </div>
               <button 
                 onClick={() => setIsOpen(false)} 
-                className="text-slate-400 hover:text-white transition-colors bg-white/5 p-3 rounded-full hover:rotate-90 duration-300"
+                className="text-slate-400 hover:text-white transition-colors bg-white/5 p-2 rounded-full hover:rotate-90 duration-300"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -1309,7 +1309,7 @@ function FAQModal() {
               {/* Seta Esquerda */}
               <button 
                 onClick={prev} 
-                className="absolute left-4 md:left-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
+                className="hidden md:flex absolute left-4 md:left-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
               >
                 <ChevronLeft className="w-6 h-6 text-white group-hover:-translate-x-1 transition-transform" />
               </button>
@@ -1346,7 +1346,7 @@ function FAQModal() {
                         transformStyle: "preserve-3d",
                         position: 'absolute'
                       }}
-                      className="w-[280px] md:w-[320px] aspect-[4/5] md:h-[400px] rounded-3xl bg-[#141414] p-8 border border-white/10 shadow-2xl flex flex-col group cursor-pointer will-change-transform"
+                      className="w-[300px] md:w-[320px] aspect-[4/5] md:h-[400px] rounded-3xl bg-[#141414] p-8 md:p-10 border border-white/10 shadow-2xl flex flex-col group cursor-pointer lg:will-change-transform"
                       onClick={() => setCurrentIndex(i)}
                     >
                       <div className="mb-6">
@@ -1365,7 +1365,7 @@ function FAQModal() {
               {/* Seta Direita */}
               <button 
                 onClick={next} 
-                className="absolute right-4 md:right-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
+                className="hidden md:flex absolute right-4 md:right-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
               >
                 <ChevronRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" />
               </button>
