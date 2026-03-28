@@ -293,7 +293,7 @@ function Hero() {
         </div>
 
         {/* Booking Card */}
-        <div ref={cardRef} className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden lg:mt-24">
+        <div ref={cardRef} className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden lg:mt-48">
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
           <div className="relative z-10">
             <div className="text-center mb-6">
