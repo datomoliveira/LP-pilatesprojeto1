@@ -1315,6 +1315,9 @@ function PilatesOnlineModal() {
 export default function App() {
   // Update SEO Title and Description
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
     window.scrollTo(0, 0);
     document.title = `${siteConfig.brand.name} | ${siteConfig.features.title}`;
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -1334,6 +1337,7 @@ export default function App() {
       touchMultiplier: 2,
       infinite: true, // Native smooth infinite scrolling (Efeito Igloo real)
     });
+    lenis.scrollTo(0, { immediate: true });
 
     lenis.on('scroll', (e: any) => {
       ScrollTrigger.update();
