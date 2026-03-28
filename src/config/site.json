@@ -291,5 +291,32 @@
         "termsText": "Ao utilizar nosso site e serviços, você concorda expressamente com os presentes Termos de Uso. Os planos e pacotes adquiridos são pessoais e intransferíveis. O uso das dependências do estúdio exige o acompanhamento estrito de nossos profissionais certificados. A remarcação de aulas deve ser realizada com aviso prévio.",
         "privacyTitle": "Política de Privacidade",
         "privacyText": "A sua privacidade é uma prioridade. Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), garantimos que todos os dados pessoais fornecidos serão utilizados exclusivamente para facilitar seu agendamento e melhorar sua experiência. Utilizamos apenas cookies estritamente necessários para o funcionamento básico do site, que não requerem consentimento prévio conforme diretrizes da LGPD."
+    },
+    "faq": {
+        "title": "Dúvidas Frequentes",
+        "subtitle": "Esclareça suas dúvidas",
+        "badge": "Pergunta",
+        "list": [
+            {
+                "q": "Preciso ter experiência para começar o Pilates?",
+                "a": "Não! O Pilates é adaptável a todos os níveis. No nosso estúdio, personalizamos cada aula para o seu condicionamento atual, garantindo uma evolução segura e eficiente desde a primeira sessão."
+            },
+            {
+                "q": "Quantas vezes por semana devo praticar?",
+                "a": "Para resultados consistentes em postura e tonificação, recomendamos de 2 a 3 vezes por semana. No entanto, mesmo uma sessão semanal já traz benefícios significativos para a mobilidade e consciência corporal."
+            },
+            {
+                "q": "O Pilates ajuda no emagrecimento?",
+                "a": "O Pilates foca no fortalecimento profundo e alongamento, o que acelera o metabolismo e define a silhueta. Combinado a uma vida ativa, é um excelente aliado para a perda de medidas e melhora da composição corporal."
+            },
+            {
+                "q": "Gestantes podem praticar Pilates?",
+                "a": "Sim, com autorização médica! O Pilates é um dos melhores exercícios para gestantes, pois fortalece o assoalho pélvico, melhora a respiração e ajuda a sustentar o peso da barriga, reduzindo dores lombares."
+            },
+            {
+                "q": "Pilates é para homens também?",
+                "a": "Com certeza! Inclusive, o criador do método, Joseph Pilates, era um atleta. Muitos homens buscam o Pilates para ganho de flexibilidade, prevenção de lesões esportivas e correção postural."
+            }
+        ]
     }
 }

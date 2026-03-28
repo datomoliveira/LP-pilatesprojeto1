@@ -21,12 +21,12 @@ function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-1 md:py-1.5 md:px-12 bg-transparent backdrop-blur-md">
-        <div className="flex items-center gap-3 relative z-50">
-          <div className="size-8 md:size-10 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 flex items-center justify-center">
-            <Activity className="w-5 h-5 text-slate-100" />
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-0 md:py-0.5 md:px-12 bg-transparent backdrop-blur-md">
+        <div className="flex items-center gap-2 relative z-50">
+          <div className="size-6 md:size-7 text-slate-100 rounded-full overflow-hidden border border-white/20 bg-black flex-shrink-0 flex items-center justify-center">
+            <Activity className="w-3.5 h-3.5 text-slate-100" />
           </div>
-          <h2 className="text-slate-100 text-lg md:text-xl font-bold leading-tight tracking-widest uppercase font-display">
+          <h2 className="text-slate-100 text-sm md:text-base font-bold leading-tight tracking-[0.2em] uppercase font-display">
             {siteConfig.brand.name}
           </h2>
         </div>
@@ -38,15 +38,15 @@ function Navbar() {
               </a>
               <div className="absolute top-full left-0 mt-4 w-60 bg-[#1a1a1a] backdrop-blur-xl border border-white/10 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-3 shadow-2xl z-50">
                 {siteConfig.classes.cards.map((card, idx) => (
-                  <a key={idx} href="#metodo" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="px-5 py-2.5 text-slate-300 text-xs font-semibold hover:text-white hover:bg-white/10 transition-colors cursor-pointer tracking-wide">{card.title}</a>
+                  <a key={idx} href="#metodo" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="px-5 py-2 text-slate-300 text-[10px] font-semibold hover:text-white hover:bg-white/10 transition-colors cursor-pointer tracking-wide">{card.title}</a>
                 ))}
               </div>
             </div>
-            <a href="#online" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }}>PILATES ONLINE</a>
-            <a href="#estudio" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
-            <a href="#instrutores" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>PROFISSIONAIS</a>
-            <a href="#depoimentos" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
-            <a href="#contato" className="text-slate-100 text-xs font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
+            <a href="#online" className="text-slate-100 text-[10px] font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('open-pilates-modal')); }}>PILATES ONLINE</a>
+            <a href="#estudio" className="text-slate-100 text-[10px] font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'estudio' } })); }}>ESTÚDIO</a>
+            <a href="#instrutores" className="text-slate-100 text-[10px] font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'instrutores' } })); }}>PROFISSIONAIS</a>
+            <a href="#depoimentos" className="text-slate-100 text-[10px] font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'depoimentos' } })); }}>DEPOIMENTOS</a>
+            <a href="#contato" className="text-slate-100 text-[10px] font-semibold tracking-widest uppercase hover:text-slate-400 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'contato' } })); }}>CONTATO</a>
           </nav>
           <div className="flex items-center gap-4">
             <button
@@ -242,11 +242,11 @@ function Hero() {
   }, []);
 
   return (
-    <section id="hero" ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
+    <section id="hero" ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-0 pb-12 lg:pb-0" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
         {!isMobile && siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence') ? (
           <div 
-            className="absolute inset-0 z-0 bg-cover bg-center" 
+            className="absolute inset-0 z-0 bg-cover bg-top" 
             style={{ 
               backgroundImage: `url("${siteConfig.hero.backgroundImage}")` 
             }}
@@ -259,7 +259,7 @@ function Hero() {
             />
             {images.length === 0 && (
               <div 
-                className="absolute inset-0 z-0 bg-cover bg-center" 
+                className="absolute inset-0 z-0 bg-cover bg-top" 
                 style={{ 
                   backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
                 }}
@@ -282,7 +282,7 @@ function Hero() {
             {siteConfig.hero.subtitle}
           </p>
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 items-center w-full sm:w-auto">
-            <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto text-center">
+            <a href="#metodo" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: { targetId: 'metodo' } })); }} className="bg-slate-100 text-black px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-slate-200 transition-all shadow-xl w-full sm:w-auto text-center">
               {siteConfig.hero.ctaButton1}
             </a>
             <a href={`https://wa.me/${siteConfig.contact.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-center gap-3 text-slate-100 px-10 py-4 font-bold text-sm tracking-widest uppercase transition-all w-full sm:w-auto">
@@ -670,6 +670,14 @@ function Classes() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-16 text-center">
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-faq-modal'))}
+              className="inline-flex items-center gap-3 px-10 py-4 bg-white/5 border border-white/10 rounded-full text-slate-100 font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all hover:scale-105"
+            >
+              Dúvidas Frequentes <ChevronRight className="w-5 h-5" />
+            </button>
         </div>
       </div>
     </section>
@@ -1253,6 +1261,134 @@ function LightTransition() {
   );
 }
 
+function FAQModal() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const faqItems = siteConfig.faq.list;
+
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener('open-faq-modal', handleOpen);
+    return () => window.removeEventListener('open-faq-modal', handleOpen);
+  }, []);
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % faqItems.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + faqItems.length) % faqItems.length);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 50 }}
+            className="bg-[#0A0A0A]/95 border border-white/10 rounded-3xl max-w-4xl w-full relative shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-8 md:p-10 border-b border-white/5 flex justify-between items-center bg-[#111]">
+              <div>
+                <h3 className="text-3xl font-bold font-display text-white">{siteConfig.faq.title}</h3>
+                <p className="text-slate-400 text-sm font-bold tracking-widest uppercase mt-2">{siteConfig.faq.subtitle}</p>
+              </div>
+              <button 
+                onClick={() => setIsOpen(false)} 
+                className="text-slate-400 hover:text-white transition-colors bg-white/5 p-3 rounded-full hover:rotate-90 duration-300"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="relative w-full h-[500px] md:h-[550px] flex items-center justify-center overflow-hidden" style={{ perspective: "1500px" }}>
+              {/* Seta Esquerda */}
+              <button 
+                onClick={prev} 
+                className="absolute left-4 md:left-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
+              >
+                <ChevronLeft className="w-6 h-6 text-white group-hover:-translate-x-1 transition-transform" />
+              </button>
+
+              <div className="relative w-full h-full flex items-center justify-center mt-[-20px]" style={{ transformStyle: "preserve-3d" }}>
+                {faqItems.map((item, i) => {
+                  let offset = i - currentIndex;
+                  const n = faqItems.length;
+                  if (offset > n/2) offset -= n;
+                  if (offset < -n/2) offset += n;
+                  const absOffset = Math.abs(offset);
+
+                  if (absOffset > 2) return null;
+
+                  const tx = offset * (window.innerWidth < 768 ? 160 : 250);
+                  const tz = absOffset === 0 ? 150 : -150 * absOffset;
+                  const scale = 1 - (absOffset * 0.15);
+                  const rotateY = offset * 25;
+                  const opacity = absOffset > 2 ? 0 : 1 - (absOffset * 0.4);
+
+                  return (
+                    <motion.div
+                      key={i}
+                      animate={{
+                        x: tx,
+                        z: tz,
+                        scale: scale,
+                        rotateY: rotateY,
+                        opacity: opacity,
+                      }}
+                      transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+                      style={{
+                        zIndex: 10 - absOffset,
+                        transformStyle: "preserve-3d",
+                        position: 'absolute'
+                      }}
+                      className="w-[280px] md:w-[320px] aspect-[4/5] md:h-[400px] rounded-3xl bg-[#141414] p-8 border border-white/10 shadow-2xl flex flex-col group cursor-pointer will-change-transform"
+                      onClick={() => setCurrentIndex(i)}
+                    >
+                      <div className="mb-6">
+                          <span className="bg-white/10 text-slate-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">
+                            {siteConfig.faq.badge} {i+1}
+                          </span>
+                          <h4 className="text-white font-bold text-lg md:text-xl leading-snug group-hover:text-amber-500 transition-colors">{item.q}</h4>
+                      </div>
+                      <div className="w-12 h-0.5 bg-white/10 mb-6 group-hover:bg-amber-500/40 transition-colors"></div>
+                      <p className="text-slate-400 leading-relaxed text-sm md:text-base italic">{item.a}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Seta Direita */}
+              <button 
+                onClick={next} 
+                className="absolute right-4 md:right-8 z-[120] bg-white/10 hover:bg-white/20 p-4 rounded-full backdrop-blur-md transition-all top-[45%] group"
+              >
+                <ChevronRight className="w-6 h-6 text-white group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="pb-10 pt-2 flex justify-center gap-2">
+              {faqItems.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-amber-500 w-8' : 'bg-white/30 w-2'}`}
+                  aria-label={`FAQ slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function PilatesOnlineModal() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -1356,6 +1492,7 @@ export default function App() {
     <div className="bg-[#121212] min-h-screen text-slate-100 font-sans selection:bg-slate-100 selection:text-black relative overflow-hidden">
       <div className="noise-overlay" />
       <PilatesOnlineModal />
+      <FAQModal />
       <LightTransition />
       <ElasticMouse />
       <Suspense fallback={null}>
