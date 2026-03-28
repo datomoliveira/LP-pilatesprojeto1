@@ -704,7 +704,7 @@ function TourSpace() {
       <div className="max-w-7xl mx-auto text-center mb-32 relative z-20">
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.tourSpace.title}</h2>
         {siteConfig.tourSpace.subtitle && (
-          <p className="text-slate-400 text-lg uppercase tracking-widest">{siteConfig.tourSpace.subtitle}</p>
+          <p className="text-slate-400 text-lg">{siteConfig.tourSpace.subtitle}</p>
         )}
       </div>
 
