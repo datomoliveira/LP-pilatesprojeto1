@@ -248,7 +248,7 @@ function Hero() {
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ 
-              backgroundImage: `url("${isMobile ? siteConfig.instructors.list[0].image : siteConfig.hero.backgroundImage}")` 
+              backgroundImage: `url("${isMobile ? (siteConfig.hero.mobileBackgroundImage || siteConfig.instructors.list[0].image) : siteConfig.hero.backgroundImage}")` 
             }}
           ></div>
         ) : (
@@ -261,7 +261,7 @@ function Hero() {
               <div 
                 className="absolute inset-0 z-0 bg-cover bg-center" 
                 style={{ 
-                  backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
+                  backgroundImage: `url(${isMobile ? (siteConfig.hero.mobileBackgroundImage || '/images/hero_mobile/202603221804_000.webp') : siteConfig.hero.backgroundImage})` 
                 }}
               ></div>
             )}
