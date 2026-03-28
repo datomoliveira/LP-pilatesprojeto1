@@ -881,6 +881,14 @@ function Instructors() {
 
 function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(2);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const testimonials = siteConfig.testimonials.list;
 
@@ -896,9 +904,11 @@ function Testimonials() {
 
       <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px] md:min-h-[550px]">
         {/* Desktop Buttons */}
-        <button onClick={prev} className="hidden md:flex absolute left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Depoimento anterior">
-          <ChevronLeft className="w-6 h-6 text-slate-100" />
-        </button>
+        {!isMobile && (
+          <button onClick={prev} className="absolute left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Depoimento anterior">
+            <ChevronLeft className="w-6 h-6 text-slate-100" />
+          </button>
+        )}
 
         <div className="relative w-full h-[450px] flex justify-center items-center overflow-visible" style={{ perspective: "1200px" }}>
           <AnimatePresence>
@@ -957,9 +967,11 @@ function Testimonials() {
         </div>
 
         {/* Desktop Buttons */}
-        <button onClick={next} className="hidden md:flex absolute right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
-          <ChevronRight className="w-6 h-6 text-slate-100" />
-        </button>
+        {!isMobile && (
+          <button onClick={next} className="absolute right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
+            <ChevronRight className="w-6 h-6 text-slate-100" />
+          </button>
+        )}
       </div>
 
       {/* Mobile Navigation Buttons */}
