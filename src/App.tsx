@@ -851,9 +851,9 @@ function Instructors() {
         <h2 className="text-4xl md:text-5xl font-secondary font-bold text-slate-100 mb-4 tracking-wider uppercase">{siteConfig.instructors.title}</h2>
         <p className="text-slate-400 text-lg">{siteConfig.instructors.subtitle}</p>
       </div>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 xl:gap-32 text-center">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-center gap-12 lg:gap-24 xl:gap-32 text-center">
         {siteConfig.instructors.list.map((inst, idx) => (
-          <div key={idx} className={`group ${idx > 0 ? 'mt-12 md:mt-0' : ''}`}>
+          <div key={idx} className="group max-w-sm w-full">
             <div className="w-full aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 shadow-xl relative bg-[#1a1a1a] flex items-center justify-center">
               <img src={inst.image} width="400" height="500" className="w-full h-full object-cover transition-all duration-700 object-center group-hover:scale-105" alt={inst.name} />
             </div>

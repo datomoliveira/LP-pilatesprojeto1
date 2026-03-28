@@ -168,12 +168,12 @@
         ]
     },
     "instructors": {
-        "sectionId": "instrutores",
-        "title": "Nossos Instrutores",
+        "sectionId": "instrutora",
+        "title": "Nossa Instrutora",
         "subtitle": "Profissionais experientes para guiar sua jornada de corpo e mente.",
         "list": [
             {
-                "name": "Fernanda",
+                "name": "Fernanda Ferreira",
                 "role": "Mestra Especialista",
                 "bio": "Profissional maravilhosa guia você em um ritmo impecável para equilibrar sua mente enquanto tonifica o corpo.",
                 "image": "/images/dra. fernandaferreira.png"
