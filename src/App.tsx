@@ -244,11 +244,11 @@ function Hero() {
   return (
     <section id="hero" ref={containerRef} className="relative flex flex-col items-center justify-center min-h-screen pt-24 pb-12 lg:pt-0 lg:pb-0" style={{ perspective: "1000px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence') ? (
+        {!isMobile && siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence') ? (
           <div 
             className="absolute inset-0 z-0 bg-cover bg-center" 
             style={{ 
-              backgroundImage: `url("${isMobile ? (siteConfig.hero.mobileBackgroundImage || siteConfig.instructors.list[0].image) : siteConfig.hero.backgroundImage}")` 
+              backgroundImage: `url("${siteConfig.hero.backgroundImage}")` 
             }}
           ></div>
         ) : (
@@ -261,7 +261,7 @@ function Hero() {
               <div 
                 className="absolute inset-0 z-0 bg-cover bg-center" 
                 style={{ 
-                  backgroundImage: `url(${isMobile ? (siteConfig.hero.mobileBackgroundImage || '/images/hero_mobile/202603221804_000.webp') : siteConfig.hero.backgroundImage})` 
+                  backgroundImage: `url(${isMobile ? '/images/hero_mobile/202603221804_000.webp' : '/images/hero/Woman_performin_000.webp'})` 
                 }}
               ></div>
             )}
