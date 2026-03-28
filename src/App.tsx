@@ -104,8 +104,8 @@ function Hero() {
   useEffect(() => {
     let isCancelled = false;
     const loadImages = async () => {
-      // If we have a custom static hero image, don't load the sequence
-      if (siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence')) {
+      // If we have a custom static hero image, don't load the sequence (unless we're on mobile and need it)
+      if (!isMobile && siteConfig.hero.backgroundImage && !siteConfig.hero.backgroundImage.includes('sequence')) {
         return;
       }
 
