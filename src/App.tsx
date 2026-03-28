@@ -700,8 +700,9 @@ function TourSpace() {
         )}
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[650px]">
-        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Imagem anterior">
+      <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center min-h-[600px] md:min-h-[650px]">
+        {/* Desktop Buttons */}
+        <button onClick={prev} className="hidden md:flex absolute left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Imagem anterior">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
@@ -752,7 +753,18 @@ function TourSpace() {
           </AnimatePresence>
         </div>
 
-        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próxima imagem">
+        {/* Desktop Buttons */}
+        <button onClick={next} className="hidden md:flex absolute right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próxima imagem">
+          <ChevronRight className="w-6 h-6 text-slate-100" />
+        </button>
+      </div>
+
+      {/* Mobile Navigation Buttons */}
+      <div className="flex items-center justify-center gap-8 mt-12 md:hidden">
+        <button onClick={prev} className="p-4 rounded-full bg-white/5 border border-white/20 active:bg-white/10 transition-colors" aria-label="Imagem anterior">
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
+        </button>
+        <button onClick={next} className="p-4 rounded-full bg-white/5 border border-white/20 active:bg-white/10 transition-colors" aria-label="Próxima imagem">
           <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
       </div>
@@ -882,8 +894,9 @@ function Testimonials() {
         <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-100 mb-4">{siteConfig.testimonials.title}</h2>
       </div>
 
-      <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px]">
-        <button onClick={prev} className="absolute left-0 md:left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Depoimento anterior">
+      <div className="relative w-full max-w-[1200px] mx-auto flex items-center justify-center min-h-[500px] md:min-h-[550px]">
+        {/* Desktop Buttons */}
+        <button onClick={prev} className="hidden md:flex absolute left-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Depoimento anterior">
           <ChevronLeft className="w-6 h-6 text-slate-100" />
         </button>
 
@@ -932,7 +945,7 @@ function Testimonials() {
         </div>
         
         {/* Carousel Dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-40">
+        <div className="absolute bottom-4 md:bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-2 z-40">
           {testimonials.map((_, i) => (
             <button
               key={i}
@@ -943,7 +956,18 @@ function Testimonials() {
           ))}
         </div>
 
-        <button onClick={next} className="absolute right-0 md:right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
+        {/* Desktop Buttons */}
+        <button onClick={next} className="hidden md:flex absolute right-4 z-40 bg-white/5 hover:bg-white/10 border border-white/20 p-3 rounded-full backdrop-blur-md transition-all" aria-label="Próximo depoimento">
+          <ChevronRight className="w-6 h-6 text-slate-100" />
+        </button>
+      </div>
+
+      {/* Mobile Navigation Buttons */}
+      <div className="flex items-center justify-center gap-8 mt-12 md:hidden">
+        <button onClick={prev} className="p-4 rounded-full bg-white/5 border border-white/20 active:bg-white/10 transition-colors" aria-label="Depoimento anterior">
+          <ChevronLeft className="w-6 h-6 text-slate-100" />
+        </button>
+        <button onClick={next} className="p-4 rounded-full bg-white/5 border border-white/20 active:bg-white/10 transition-colors" aria-label="Próximo depoimento">
           <ChevronRight className="w-6 h-6 text-slate-100" />
         </button>
       </div>
