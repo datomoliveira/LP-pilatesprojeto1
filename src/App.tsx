@@ -818,16 +818,6 @@ function VisitStudio() {
                   )}
                 </div>
               </div>
-
-              {siteConfig.contact.email && (
-                <div className="flex gap-4">
-                  <Mail className="w-6 h-6 text-slate-400 shrink-0" />
-                  <div>
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-slate-100 font-medium hover:underline word-break break-all">{siteConfig.contact.email}</a>
-                  </div>
-                </div>
-              )}
-
               <div className="flex flex-col gap-4 w-full">
                 <div className="flex gap-4 items-center">
                   <Clock className="w-6 h-6 text-slate-400 shrink-0" />
